@@ -1,0 +1,51 @@
+$primary_1: white;
+
+/* prevent padding from affecting element's width or height */
+* {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+body {
+  margin: 0 auto; /* extends AppBar fully */
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  font-family: "Work Sans", sans-serif;
+}
+
+#navItems {
+  margin-left: auto;
+  list-style: none;
+  li {
+    display: inline-block;
+    font-size: 18px;
+    margin-left: 10px;
+    a {
+      color: white;
+      text-decoration: none;
+    }
+  }
+}
+
+#signUp,
+#logIn {
+  text-align: center;
+  width: 400px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin: 4rem auto 4rem auto;
+  padding: 2rem;
+  input {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    line-height: 28px;
+    padding: 5px;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+}

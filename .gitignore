@@ -1,0 +1,15 @@
+
+# dependencies
+/node_modules
+
+# build
+/dist
+
+# misc
+.DS_Store
+.vscode
+.env
+.babelrc
+Procfile
+nodemon.json
+package-lock.json
