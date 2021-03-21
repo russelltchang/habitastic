@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router";
 import axios from "axios";
 
 const Login = (props) => {
+  let history = useHistory();
   let [email, setEmail] = useState("");
   let [password, setPassword] = useState("");
 
@@ -22,7 +24,9 @@ const Login = (props) => {
 
     axios.post(url, data).then((res) => {
       console.log(`Login POST response: ${res.data}`);
-      // history.push('/');
+      props.onLogin(true);
+      //is pushing while Navbar updating state correct?
+      history.push("/dashboard");
     });
   };
 
@@ -44,7 +48,7 @@ const Login = (props) => {
           onChange={(e) => setPassword(e.target.value)}
         />
         <br />
-        <input type="submit" />
+        <input className="authSubmit" type="submit" value="Log In" />
       </form>
     </div>
   );

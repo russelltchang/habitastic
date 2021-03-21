@@ -55,7 +55,7 @@ const Signup = (props) => {
           onChange={(e) => setPassword(e.target.value)}
         />
         <br />
-        <input type="submit" />
+        <input className="authSubmit" type="submit" value="Sign Up" />
       </form>
     </div>
   );

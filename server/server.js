@@ -4,8 +4,20 @@ var cors = require("cors");
 var mongoose = require("mongoose");
 var port = process.env.PORT || 3000;
 var passport = require("passport");
+var MongoStore = require("connect-mongo");
+//use dotenv variable here, change to atlas on production
+var session = require("express-session")({
+  secret: "secret",
+  resave: false,
+  saveUninitialized: false,
+  store: new MongoStore({
+    mongoUrl: "mongodb://localhost:27017/project",
+  }),
+});
 
 var app = express();
+//needs to be above passport.session()
+app.use(session);
 //initialize passport, allows passport to maintain persistent sessions
 //needs to be used before "routes/auth.js" is called in this file
 app.use(passport.initialize());

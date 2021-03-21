@@ -4,6 +4,7 @@ import {
   Switch,
   Route,
   Link,
+  useHistory,
   browserHistory,
 } from "react-router-dom";
 import Login from "./Login";
@@ -13,10 +14,13 @@ import Dashboard from "./Dashboard";
 import Toolbar from "@material-ui/core/Toolbar";
 
 const App = () => {
-  //an extra render sets isLoggedIn back to FALSE after signup sets it to TRUE
   let [isLoggedIn, setIsLoggedIn] = useState(false);
 
   let handleSignup = (loginStatus) => {
+    setIsLoggedIn(loginStatus);
+  };
+
+  let handleLogin = (loginStatus) => {
     setIsLoggedIn(loginStatus);
   };
 
@@ -29,7 +33,7 @@ const App = () => {
       <Navbar isLoggedIn={isLoggedIn} onLogout={handleLogout} />
       <main id="container">
         <Toolbar />
-        <Route path="/login" component={Login} />
+        <Route path="/login" render={() => <Login onLogin={handleLogin} />} />
         <Route
           path="/signup"
           render={() => <Signup onSignup={handleSignup} />}
