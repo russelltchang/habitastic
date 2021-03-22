@@ -39,6 +39,7 @@ mongoose
   .then(() => console.log("DB Connected!"));
 
 app.use(require("./routes/auth.js"));
+app.use(require("./routes/habit.js"));
 
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "../dist/index.html"));

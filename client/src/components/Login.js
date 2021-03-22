@@ -6,6 +6,7 @@ const Login = (props) => {
   let history = useHistory();
   let [email, setEmail] = useState("");
   let [password, setPassword] = useState("");
+  let [errorMsg, setErrorMsg] = useState("");
 
   let submit = (e) => {
     //prevents form submitting to 8080.  Post to 3000 while developing
@@ -22,32 +23,37 @@ const Login = (props) => {
       password: password,
     };
 
+    //login route returns success even if pw is wrong
     axios.post(url, data).then((res) => {
-      console.log(`Login POST response: ${res.data}`);
-      props.onLogin(true);
-      //is pushing while Navbar updating state correct?
-      history.push("/dashboard");
+      if ((res.data = "Successfully Authenticated")) {
+        console.log(res.data);
+        props.onLogin(true);
+        //is pushing while Navbar updating state correct?
+        history.push("/dashboard");
+      } else if ((res.data = "No User Exists")) {
+        //set error message
+        setErrorMsg("Invalid email or password");
+      }
     });
   };
 
   return (
     <div id="logIn">
       <h2>Login</h2>
+      {errorMsg}
       <form onSubmit={submit}>
+        <label>Email</label>
         <input
           required
           type="text"
-          placeholder="Email"
           onChange={(e) => setEmail(e.target.value)}
         />
-        <br />
+        <label>Password</label>
         <input
           required
           type="password"
-          placeholder="Password"
           onChange={(e) => setPassword(e.target.value)}
         />
-        <br />
         <input className="authSubmit" type="submit" value="Log In" />
       </form>
     </div>

@@ -1,21 +1,89 @@
 import React, { useState } from "react";
-import Button from "@material-ui/core/Button";
 import axios from "axios";
+import Button from "@material-ui/core/Button";
+import Dialog from "@material-ui/core/Dialog";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogActions from "@material-ui/core/DialogActions";
+import Typography from "@material-ui/core/Typography";
 
 const Dashboard = (props) => {
-  let handleClick = (e) => {
-    axios.get("http://localhost:3000/test").then((res) => {
-      console.log(res.data);
-    });
+  let [modalOpen, setModalOpen] = useState(false);
+  let [newHabit, setNewHabit] = useState("");
+  let [habits, setHabits] = useState([]);
+
+  //useEffect to retrieve data from LocalStorage if possible, if not, then DB
+
+  //componentwillunmount rehydrate localStorage, incase client deleted them.
+
+  let handleOpen = () => {
+    setModalOpen(true);
   };
 
+  let handleClose = () => {
+    setModalOpen(false);
+  };
+
+  let submitNewHabit = () => {
+    // let url =
+    //   process.env.NODE_ENV === "development"
+    //     ? process.env.DEV_API_HABIT
+    //     : process.env.PRO_API_HABIT;
+
+    // //this works
+    // console.log(newHabit);
+    // let a = habits.slice();
+    // a.push(newHabit);
+    // //this works, new array
+    // console.log(a);
+    // //this doesn't work
+    // setHabits(a);
+    // //empty array
+    // console.log(habits);
+
+    setHabits([...habits, newHabit]);
+    console.log(habits);
+
+    //close modal
+    setModalOpen(false);
+  };
   return (
-    <div>
-      <h3>Oops! Looks like you aren't tracking any habits yet.</h3>
-      <Button onClick={handleClick} variant="contained" color="primary">
-        Add Habit
-      </Button>
-    </div>
+    <>
+      {habits.length ? (
+        <div>
+          {habits.map((habit) => {
+            <li>{habit}</li>;
+          })}
+        </div>
+      ) : (
+        <div>
+          <h3>Oops! Looks like you aren't tracking any habits yet.</h3>
+          <Button onClick={handleOpen} variant="contained" color="primary">
+            Add Habit
+          </Button>
+          <Dialog id="habitModal" onClose={handleClose} open={modalOpen}>
+            <DialogTitle>New Habit</DialogTitle>
+            <DialogContent dividers>
+              <input
+                id="newHabitInput"
+                type="text"
+                onChange={(e) => setNewHabit(e.target.value)}
+                placeholder="Eat veggies"
+              ></input>
+            </DialogContent>
+            <DialogActions>
+              <Button
+                variant="contained"
+                onClick={submitNewHabit}
+                color="primary"
+              >
+                Add Habit
+              </Button>
+            </DialogActions>
+          </Dialog>
+        </div>
+      )}
+    </>
   );
 };
 

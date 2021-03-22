@@ -34,27 +34,20 @@ const Signup = (props) => {
     <div id="signUp">
       <h2>Signup</h2>
       <form onSubmit={submit}>
-        <input
-          required
-          type="text"
-          placeholder="Name"
-          onChange={(e) => setName(e.target.value)}
-        />
-        <br />
+        <label>Name</label>
+        <input required type="text" onChange={(e) => setName(e.target.value)} />
+        <label>Email</label>
         <input
           required
           type="email"
-          placeholder="Email"
           onChange={(e) => setEmail(e.target.value)}
         />
-        <br />
+        <label>Password</label>
         <input
           required
           type="password"
-          placeholder="Password"
           onChange={(e) => setPassword(e.target.value)}
         />
-        <br />
         <input className="authSubmit" type="submit" value="Sign Up" />
       </form>
     </div>

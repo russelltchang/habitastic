@@ -12,7 +12,7 @@ passport.use(User.createStrategy());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-//start express session here...can you "next" to login route?
+//start express session here
 router.post("/signup", (req, res) => {
   var newUser = new User({
     username: req.body.username,
@@ -29,20 +29,18 @@ router.post("/signup", (req, res) => {
   });
 });
 
-// //passport by default takes req.body.username and req.body.password to use in verify function
+//authorizing incorrect pw and emails...but correctly doesn't start session for those
 router.post("/login", (req, res, next) => {
   passport.authenticate("local", (err, user, info) => {
+    console.log(user);
     if (err) throw err;
+    //this isn't sending when user is false.
     if (!user) {
       res.send("No User Exists");
     } else {
       //req.logIn calls passport.serializeUser()
       req.logIn(user, (err) => {
         if (err) throw err;
-        //according to express-session docs, since Passport saves to req.session.passport user, the session is modified and saved
-        console.log(req.user); //entire user object
-        console.log(req.session.passport.user); //username
-        // user object is added to the req object and accessible as user or req.user
         res.send("Successfully Authenticated");
       });
     }
@@ -56,9 +54,6 @@ router.post("/login", (req, res, next) => {
 
 router.get("/logout", (req, res) => {
   if (req.user) {
-    //removes serialized user from session in the DB.  Necessary if we're gonna delete whole thing?
-    req.logout();
-    //deletes session from DB
     req.session.destroy((err) => {
       //need res.send to delete client cookie, can't res.redirect after AJAX
       res.clearCookie("connect.sid").send("Logged Out");
