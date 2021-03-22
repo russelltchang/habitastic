@@ -23,14 +23,13 @@ const Login = (props) => {
       password: password,
     };
 
-    //login route returns success even if pw is wrong
     axios.post(url, data).then((res) => {
-      if ((res.data = "Successfully Authenticated")) {
-        console.log(res.data);
+      console.log(res.data);
+      if (res.data === "Successfully Authenticated") {
         props.onLogin(true);
         //is pushing while Navbar updating state correct?
         history.push("/dashboard");
-      } else if ((res.data = "No User Exists")) {
+      } else if (res.data === "No User Exists") {
         //set error message
         setErrorMsg("Invalid email or password");
       }
@@ -40,7 +39,7 @@ const Login = (props) => {
   return (
     <div id="logIn">
       <h2>Login</h2>
-      {errorMsg}
+      <p id="errorMsg">{errorMsg}</p>
       <form onSubmit={submit}>
         <label>Email</label>
         <input

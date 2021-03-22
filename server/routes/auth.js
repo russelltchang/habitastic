@@ -32,9 +32,7 @@ router.post("/signup", (req, res) => {
 //authorizing incorrect pw and emails...but correctly doesn't start session for those
 router.post("/login", (req, res, next) => {
   passport.authenticate("local", (err, user, info) => {
-    console.log(user);
     if (err) throw err;
-    //this isn't sending when user is false.
     if (!user) {
       res.send("No User Exists");
     } else {
@@ -47,7 +45,7 @@ router.post("/login", (req, res, next) => {
   })(req, res, next);
 });
 
-//this works and is much less code
+//this doesn't save to session
 // router.post("/login", passport.authenticate("local"), function (req, res) {
 //   console.log(req.user);
 // });
