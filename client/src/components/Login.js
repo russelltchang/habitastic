@@ -24,7 +24,6 @@ const Login = (props) => {
     };
 
     axios.post(url, data).then((res) => {
-      console.log(res.data);
       if (res.data === "Successfully Authenticated") {
         props.onLogin(true);
         //is pushing while Navbar updating state correct?

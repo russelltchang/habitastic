@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
@@ -13,8 +13,7 @@ const Dashboard = (props) => {
   let [habits, setHabits] = useState([]);
 
   //useEffect to retrieve data from LocalStorage if possible, if not, then DB
-
-  //componentwillunmount rehydrate localStorage, incase client deleted them.
+  //componentwillunmount rehydrate localStorage, incase client deleted them
 
   let handleOpen = () => {
     setModalOpen(true);
@@ -29,31 +28,17 @@ const Dashboard = (props) => {
     //   process.env.NODE_ENV === "development"
     //     ? process.env.DEV_API_HABIT
     //     : process.env.PRO_API_HABIT;
-
-    // //this works
-    // console.log(newHabit);
-    // let a = habits.slice();
-    // a.push(newHabit);
-    // //this works, new array
-    // console.log(a);
-    // //this doesn't work
-    // setHabits(a);
-    // //empty array
-    // console.log(habits);
-
     setHabits([...habits, newHabit]);
-    console.log(habits);
-
-    //close modal
     setModalOpen(false);
   };
+
   return (
     <>
-      {habits.length ? (
+      {habits.length > 0 ? (
         <div>
-          {habits.map((habit) => {
-            <li>{habit}</li>;
-          })}
+          {habits.map((habit) => (
+            <li>{habit}</li>
+          ))}
         </div>
       ) : (
         <div>
