@@ -45,6 +45,63 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "../dist/index.html"));
 });
 
+function codingScoreReportPercent(scores) {
+  console.log("running");
+  var totalScores = scores.length;
+  var poorCount,
+    fairCount,
+    goodCount,
+    excellentCount,
+    eliteCount = 0;
+  var poorPercent, fairPercent, goodPercent, excellentPercent, elitePercent;
+
+  for (i = 0; i < scores.length; i++) {
+    if (scores[i] >= 300 && scores[i] <= 599) {
+      poorCount++;
+    }
+    if (scores[i] >= 600 && scores[i] <= 699) {
+      fairCount++;
+    }
+    if (scores[i] >= 700 && scores[i] <= 749) {
+      goodCount++;
+    }
+    if (scores[i] >= 750 && scores[i] <= 799) {
+      excellentCount++;
+    }
+    if (scores[i] >= 800) {
+      eliteCount++;
+    }
+  }
+
+  poorPercent = (poorCount / totalScores) * 100;
+  fairPercent = (fairCount / totalScores) * 100;
+  goodPercent = (goodCount / totalScores) * 100;
+  excellentPercent = (excellentCount / totalScores) * 100;
+  elitePercent = (eliteCount / totalScores) * 100;
+
+  console.log(poorPercent);
+
+  var answer = [];
+
+  if (poorPercent > 0) {
+    answer.push(`Poor: ${poorPercent}%`);
+  }
+  if (fairPercent > 0) {
+    answer.push(`Fair: ${fairPercent}%`);
+  }
+  if (goodPercent > 0) {
+    answer.push(`Good: ${goodPercent}%`);
+  }
+  if (excellentPercent > 0) {
+    answer.push(`Excellent: ${excellentPercent}%`);
+  }
+  if (elitePercent > 0) {
+    answer.push(`Elite: ${elitePercent}`);
+  }
+}
+
+console.log(codingScoreReportPercent([330, 723, 730, 825]));
+
 app.listen(port, () => {
   console.log("Listening at " + port);
 });

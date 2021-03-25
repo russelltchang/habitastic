@@ -12,7 +12,6 @@ passport.use(User.createStrategy());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-//start express session here
 router.post("/signup", (req, res) => {
   var newUser = new User({
     username: req.body.username,
@@ -21,11 +20,15 @@ router.post("/signup", (req, res) => {
 
   //this PLM method checks if above email is already registered
   User.register(newUser, req.body.password, function (err, user) {
-    console.log(user);
+    //if already registered, res.send something
     if (err) {
-      console.log("Error: " + err);
+      throw err;
     }
-    res.send({ msg: "Sign up success!" });
+    //add new user to session
+    req.logIn(newUser, (err) => {
+      if (err) throw err;
+      res.send("Sign up success!");
+    });
   });
 });
 
@@ -45,7 +48,7 @@ router.post("/login", (req, res, next) => {
   })(req, res, next);
 });
 
-//this doesn't save to session
+//this doesn't save to session, but shows req.user correctly
 // router.post("/login", passport.authenticate("local"), function (req, res) {
 //   console.log(req.user);
 // });
