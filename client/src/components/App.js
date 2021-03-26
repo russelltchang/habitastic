@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {
   BrowserRouter as Router,
-  Switch,
   Route,
   Link,
   useHistory,
@@ -15,17 +14,20 @@ import Toolbar from "@material-ui/core/Toolbar";
 
 const App = () => {
   let [isLoggedIn, setIsLoggedIn] = useState(false);
+  let [username, setUsername] = useState("");
 
   let handleSignup = (loginStatus) => {
     setIsLoggedIn(loginStatus);
   };
 
-  let handleLogin = (loginStatus) => {
+  let handleLogin = (loginStatus, username) => {
     setIsLoggedIn(loginStatus);
+    setUsername(username);
   };
 
-  let handleLogout = (loginStatus) => {
+  let handleLogout = (loginStatus, username) => {
     setIsLoggedIn(loginStatus);
+    setUsername(username);
   };
 
   return (

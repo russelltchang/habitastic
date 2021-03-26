@@ -27,12 +27,11 @@ router.post("/signup", (req, res) => {
     //add new user to session
     req.logIn(newUser, (err) => {
       if (err) throw err;
-      res.send("Sign up success!");
+      res.send(newUser.username);
     });
   });
 });
 
-//authorizing incorrect pw and emails...but correctly doesn't start session for those
 router.post("/login", (req, res, next) => {
   passport.authenticate("local", (err, user, info) => {
     if (err) throw err;
@@ -42,21 +41,15 @@ router.post("/login", (req, res, next) => {
       //req.logIn calls passport.serializeUser()
       req.logIn(user, (err) => {
         if (err) throw err;
-        res.send("Successfully Authenticated");
+        res.send(req.user.username);
       });
     }
   })(req, res, next);
 });
 
-//this doesn't save to session, but shows req.user correctly
-// router.post("/login", passport.authenticate("local"), function (req, res) {
-//   console.log(req.user);
-// });
-
 router.get("/logout", (req, res) => {
   if (req.user) {
     req.session.destroy((err) => {
-      //need res.send to delete client cookie, can't res.redirect after AJAX
       res.clearCookie("connect.sid").send("Logged Out");
     });
   } else {

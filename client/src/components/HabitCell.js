@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import data from "../data/Data.js";
 
-const HabitTd = (props) => {
+const HabitCell = (props) => {
   let [active, setActive] = useState(false);
 
   let localStorageDate = `${
@@ -36,4 +36,4 @@ const HabitTd = (props) => {
   );
 };
 
-export default HabitTd;
+export default HabitCell;

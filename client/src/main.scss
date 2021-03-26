@@ -87,16 +87,20 @@ body,
   text-align: center;
   margin-top: 6rem;
   color: $primary_2;
-  button {
-    @include button;
-    padding: 1rem 2rem 1rem 2rem;
-    margin: 2rem 0 2rem 0;
-  }
 }
 
-#newHabitInput {
+#habitInput {
   @include input;
-  margin: 1rem;
+}
+
+#addHabitBtn {
+  @include button;
+}
+
+#openModalBtn {
+  @include button;
+  padding: 1rem 2rem 1rem 2rem;
+  margin: 2rem 0 2rem 0;
 }
 
 table {

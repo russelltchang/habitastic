@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import data from "../data/Data.js";
+import HabitCell from "./HabitCell";
 
-import HabitTd from "./HabitTd";
-
-const Table = (props) => {
+const HabitTable = (props) => {
   let [dateInfo, setDateInfo] = useState({
     startIndex: 0,
     endIndex: 0,
@@ -76,7 +75,7 @@ const Table = (props) => {
               {dateInfo.dates
                 .slice(dateInfo.startIndex, dateInfo.endIndex)
                 .map((date) => (
-                  <HabitTd date={date} key={date.toString()} />
+                  <HabitCell date={date} key={date.toString()} />
                 ))}
             </tr>
           ))}
@@ -86,4 +85,4 @@ const Table = (props) => {
   );
 };
 
-export default Table;
+export default HabitTable;
