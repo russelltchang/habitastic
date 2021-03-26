@@ -1,70 +1,84 @@
 import React, { useState, useEffect } from "react";
+import data from "../data/Data.js";
+
+import HabitTd from "./HabitTd";
 
 const Table = (props) => {
-  let [baseDate, setBaseDate] = useState(new Date());
+  let [dateInfo, setDateInfo] = useState({
+    startIndex: 0,
+    endIndex: 0,
+    dates: [],
+  });
 
-  const monthNames = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
+  useEffect(() => {
+    let today = new Date();
+    let oneYearAgo = new Date().setDate(today.getDate() - 365);
+    //convert milliseconds to Date
+    let currentDate = new Date(oneYearAgo);
+    let dateArray = new Array();
 
-  const dayNames = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
-
-  let today = new Date();
-  //set a variable as last year's date
-  let lastYear = new Date().setDate(today.getDate() - 365);
-  //convert milliseconds to Date, toString needs to be called here, not in render
-  let lastYearDate = new Date(lastYear).toString();
-
-  //useEffect this.
-  function getDates(startDate, stopDate) {
-    var dateArray = new Array();
-    //deserialize startDate (lastYearDate) string into date object
-    var currentDate = new Date(startDate);
-
-    while (currentDate <= stopDate) {
+    while (currentDate <= today) {
       dateArray.push(new Date(currentDate));
       currentDate = new Date(currentDate.setDate(currentDate.getDate() + 1));
     }
-    return dateArray;
-  }
+    setDateInfo({
+      dates: dateArray,
+      endIndex: dateArray.length,
+      startIndex: dateArray.length - 7,
+    });
+  }, []);
 
-  let dateArray = getDates(lastYearDate, today);
+  let handleLeftClick = () => {
+    //setState if index doesn't go past zero
+    //could be missing dates here, if -2 works or -3, it won't change index
+    if (dateInfo.startIndex - 7 >= 0) {
+      setDateInfo({
+        ...dateInfo,
+        startIndex: dateInfo.startIndex - 7,
+        endIndex: dateInfo.endIndex - 7,
+      });
+    }
+  };
+
+  let handleRightClick = () => {
+    if (dateInfo.endIndex + 7 <= dateInfo.dates.length) {
+      setDateInfo({
+        ...dateInfo,
+        startIndex: dateInfo.startIndex + 7,
+        endIndex: dateInfo.endIndex + 7,
+      });
+    }
+  };
 
   return (
     <>
+      <i className="fa fa-angle-left fa-2x" onClick={handleLeftClick}></i>
+
+      <i className="fa fa-angle-right fa-2x" onClick={handleRightClick}></i>
+
       <table>
         <tbody>
           <tr>
             <th>Habit</th>
-            {dateArray.map((date, i) => (
-              <td key={i}>
-                <div>{monthNames[date.getMonth()].substring(0, 3)}</div>
-                <div>{date.getDate()}</div>
-                <div>{dayNames[date.getDay()].substring(0, 3)}</div>
-              </td>
-            ))}
+            {dateInfo.dates
+              .slice(dateInfo.startIndex, dateInfo.endIndex)
+              .map((date, i) => (
+                <td key={i}>
+                  <div>{data.monthNames[date.getMonth()].substring(0, 3)}</div>
+                  <div>{date.getDate()}</div>
+                  <div>{data.dayNames[date.getDay()].substring(0, 3)}</div>
+                </td>
+              ))}
           </tr>
           {props.habits.map((habit, i) => (
-            <tr key={i}>{habit}</tr>
+            <tr>
+              <th key={i}>{habit}</th>
+              {dateInfo.dates
+                .slice(dateInfo.startIndex, dateInfo.endIndex)
+                .map((date) => (
+                  <HabitTd date={date} key={date.toString()} />
+                ))}
+            </tr>
           ))}
         </tbody>
       </table>
