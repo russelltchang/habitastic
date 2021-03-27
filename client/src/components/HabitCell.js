@@ -8,7 +8,6 @@ const HabitCell = (props) => {
     data.monthNames[props.date.getMonth()]
   } ${props.date.getDate()} ${props.date.getFullYear()}`;
 
-  //how to save to DB on componentwillunMount.  this is an individual cell
   useEffect(() => {
     if (localStorageDate in localStorage) {
       setActive(true);

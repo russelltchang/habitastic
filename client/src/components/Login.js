@@ -24,13 +24,11 @@ const Login = (props) => {
     };
 
     axios.post(url, data).then((res) => {
+      //is pushing while Navbar updating state correct?
       if (res.data === data.username) {
-        console.log("Login POST response: " + res.data);
-        props.onLogin(true);
-        //is pushing while Navbar updating state correct?
+        props.onLogin(data.username);
         history.push("/dashboard");
       } else if (res.data === "No User Exists") {
-        //set error message
         setErrorMsg("Invalid email or password");
       }
     });

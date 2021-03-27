@@ -9,7 +9,7 @@ const Signup = (props) => {
   let [password, setPassword] = useState("");
 
   let submit = (e) => {
-    //prevent default form submit behavior of posting to 8080.  Post to 3000 while developing
+    //prevents form submitting to 8080.  Post to 3000 while developing
     e.preventDefault();
 
     let url =
@@ -24,9 +24,10 @@ const Signup = (props) => {
     };
 
     axios.post(url, data).then((res) => {
-      console.log(`Signup POST response: ${res.data}`);
-      // history.push('/');
-      props.onSignup(true);
+      if (res.data === data.username) {
+        props.onSignup(data.username);
+        history.push("/dashboard");
+      }
     });
   };
 

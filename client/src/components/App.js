@@ -16,18 +16,18 @@ const App = () => {
   let [isLoggedIn, setIsLoggedIn] = useState(false);
   let [username, setUsername] = useState("");
 
-  let handleSignup = (loginStatus) => {
-    setIsLoggedIn(loginStatus);
+  let handleSignup = (username) => {
+    setIsLoggedIn(true);
+    // setUsername(username);
   };
 
-  let handleLogin = (loginStatus, username) => {
-    setIsLoggedIn(loginStatus);
-    setUsername(username);
+  let handleLogin = (username) => {
+    setIsLoggedIn(true);
+    // setUsername(username);
   };
 
-  let handleLogout = (loginStatus, username) => {
-    setIsLoggedIn(loginStatus);
-    setUsername(username);
+  let handleLogout = () => {
+    setIsLoggedIn(false);
   };
 
   return (

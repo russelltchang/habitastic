@@ -5,6 +5,7 @@ const userSchema = new mongoose.Schema({
   name: { type: String, trim: true },
   username: { type: String, lowercase: true, trim: true },
   password: { type: String, trim: true },
+  habits: { type: Array },
 });
 
 //this adds salt and hash field to schema
