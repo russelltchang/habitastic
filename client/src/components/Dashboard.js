@@ -5,6 +5,7 @@ import axios from "axios";
 
 const Dashboard = () => {
   let [habits, setHabits] = useState([]);
+  let [modalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
     let url =
@@ -19,6 +20,14 @@ const Dashboard = () => {
     });
   }, []);
 
+  let handleOpen = () => {
+    setModalOpen(true);
+  };
+
+  let handleClose = () => {
+    setModalOpen(false);
+  };
+
   let handleAddHabit = (newHabit) => {
     let url =
       process.env.NODE_ENV === "development"
@@ -28,6 +37,7 @@ const Dashboard = () => {
     axios.post(url, { newhabit: newHabit }).then((res) => {
       if (res.data) {
         setHabits([...habits, newHabit]);
+        setModalOpen(false);
       }
     });
   };
@@ -39,7 +49,14 @@ const Dashboard = () => {
       ) : (
         <div id="noHabitMsg">
           <h1>Oops! Looks like you aren't tracking any habits yet.</h1>
-          <HabitModal addHabit={handleAddHabit} />
+          <button id="openModalBtn" onClick={handleOpen}>
+            Add Habit
+          </button>
+          <HabitModal
+            status={modalOpen}
+            addHabit={handleAddHabit}
+            close={handleClose}
+          />
         </div>
       )}
     </>

@@ -89,12 +89,30 @@ body,
   color: $primary_2;
 }
 
-#habitInput {
-  @include input;
-}
+#dialog {
+  .MuiPaper-root {
+    width: 1000px;
+  }
+  #titleContainer {
+    text-align: center;
+    .fa {
+      display: inline-block;
+    }
+    .MuiDialogTitle-root {
+      display: inline-block;
+    }
+  }
 
-#addHabitBtn {
-  @include button;
+  #habitInput {
+    @include input;
+    margin-top: 1rem;
+  }
+  #addHabitBtn {
+    @include button;
+    padding: 1rem 2rem 1rem 2rem;
+    margin: 1rem 0 0 auto;
+    display: block;
+  }
 }
 
 #openModalBtn {

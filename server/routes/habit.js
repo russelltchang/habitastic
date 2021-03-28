@@ -14,9 +14,6 @@ router.get("/habits", (req, res) => {
     if (err) {
       console.log("error: " + err);
     } else {
-      //this IS an array right here
-      console.log(Array.isArray(result.habits));
-      console.log(result.habits);
       res.send(result.habits);
     }
   });

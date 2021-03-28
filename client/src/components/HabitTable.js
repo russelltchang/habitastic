@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import data from "../data/Data.js";
+import HabitModal from "./HabitModal";
 import HabitCell from "./HabitCell";
 
 const HabitTable = (props) => {
@@ -50,11 +51,17 @@ const HabitTable = (props) => {
   };
 
   return (
-    <>
-      <i className="fa fa-angle-left fa-2x" onClick={handleLeftClick}></i>
-
-      <i className="fa fa-angle-right fa-2x" onClick={handleRightClick}></i>
-
+    <div style={{ display: "inline - block" }}>
+      <i
+        style={{ float: "left" }}
+        className="fa fa-angle-left fa-2x"
+        onClick={handleLeftClick}
+      ></i>
+      <i
+        style={{ float: "right" }}
+        className="fa fa-angle-right fa-2x"
+        onClick={handleRightClick}
+      ></i>
       <table>
         <tbody>
           <tr>
@@ -81,7 +88,8 @@ const HabitTable = (props) => {
           ))}
         </tbody>
       </table>
-    </>
+      {/* <HabitModal /> */}
+    </div>
   );
 };
 

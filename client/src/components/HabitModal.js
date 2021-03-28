@@ -6,31 +6,26 @@ import DialogActions from "@material-ui/core/DialogActions";
 
 const HabitModal = (props) => {
   let [newHabit, setNewHabit] = useState("");
-  let [modalOpen, setModalOpen] = useState(false);
-
-  let handleOpen = () => {
-    setModalOpen(true);
-  };
-
-  let handleClose = () => {
-    setModalOpen(false);
-  };
 
   let submitNewHabit = () => {
-    //is this anti pattern.  add Habit, and setstate
     if (newHabit.length > 0) {
       props.addHabit(newHabit);
-      setModalOpen(false);
     }
   };
 
   return (
     <>
-      <button id="openModalBtn" onClick={handleOpen}>
-        Add Habit
-      </button>
-      <Dialog onClose={handleClose} open={modalOpen}>
-        <DialogTitle>New Habit</DialogTitle>
+      <Dialog
+        id="dialog"
+        onClose={props.close}
+        open={props.status}
+        transitionDuration={0}
+      >
+        <div id="titleContainer">
+          <DialogTitle>New Habit</DialogTitle>
+          <i className="fa fa-times fa-1x" onClick={props.close}></i>
+        </div>
+
         <DialogContent dividers>
           <input
             id="habitInput"
@@ -38,12 +33,10 @@ const HabitModal = (props) => {
             onChange={(e) => setNewHabit(e.target.value)}
             placeholder="Eat veggies"
           ></input>
-        </DialogContent>
-        <DialogActions>
           <button id="addHabitBtn" onClick={() => submitNewHabit(newHabit)}>
             Add Habit
           </button>
-        </DialogActions>
+        </DialogContent>
       </Dialog>
     </>
   );
