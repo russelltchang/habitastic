@@ -17,6 +17,11 @@ const Modal = (props) => {
     }
   };
 
+  //Table actually has access to habitID, don't need to pass down to Modal
+  let deleteHabit = () => {
+    props.deleteHabit(props.id);
+  };
+
   let submitNewHabit = (newHabit) => {
     if (newHabit.length > 0) {
       props.addHabit(newHabit);
@@ -47,6 +52,9 @@ const Modal = (props) => {
                 type="text"
                 onChange={(e) => setHabitToEdit(e.target.value)}
               ></input>
+              <button className="addHabitBtn" onClick={deleteHabit}>
+                Delete Habit
+              </button>
               <button className="addHabitBtn" onClick={editHabit}>
                 Edit Habit
               </button>

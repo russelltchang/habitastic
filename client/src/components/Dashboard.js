@@ -28,21 +28,6 @@ const Dashboard = () => {
     setModalOpen(false);
   };
 
-  let handleEditHabit = (habitName, habitID) => {
-    let url =
-      process.env.NODE_ENV === "development"
-        ? process.env.DEV_API_EDIT_HABIT
-        : process.env.PRO_API_EDIT_HABIT;
-
-    let data = { habit: habitName, id: habitID };
-
-    axios.put(url, data).then((res) => {
-      if (res.data) {
-        setHabits(res.data);
-      }
-    });
-  };
-
   let handleAddHabit = (newHabit) => {
     let url =
       process.env.NODE_ENV === "development"
@@ -59,6 +44,37 @@ const Dashboard = () => {
     });
   };
 
+  let handleEditHabit = (habitName, habitID) => {
+    let url =
+      process.env.NODE_ENV === "development"
+        ? process.env.DEV_API_EDIT_HABIT
+        : process.env.PRO_API_EDIT_HABIT;
+
+    let data = { habit: habitName, id: habitID };
+
+    axios.put(url, data).then((res) => {
+      if (res.data) {
+        setHabits(res.data);
+      }
+    });
+  };
+
+  let handleDeleteHabit = (habitID) => {
+    let url =
+      process.env.NODE_ENV === "development"
+        ? process.env.DEV_API_DELETE_HABIT
+        : process.env.PRO_API_DELETE_HABIT;
+
+    let data = { id: habitID };
+
+    //we're deleting an object, not the whole doc, use PUT
+    axios.put(url, data).then((res) => {
+      if (res.data) {
+        setHabits(res.data);
+      }
+    });
+  };
+
   return (
     <>
       {habits.length > 0 ? (
@@ -66,6 +82,7 @@ const Dashboard = () => {
           habits={habits}
           addHabit={handleAddHabit}
           editHabit={handleEditHabit}
+          deleteHabit={handleDeleteHabit}
         />
       ) : (
         <div id="noHabitMsg">

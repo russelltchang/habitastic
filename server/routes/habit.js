@@ -52,4 +52,20 @@ router.put("/edit", (req, res) => {
   );
 });
 
+router.put("/delete", (req, res) => {
+  User.findOneAndUpdate(
+    //find with req.session or axios data?
+    { username: req.session.passport.user },
+    { $pull: { habits: { id: req.body.id } } },
+    { new: true },
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send(result.habits);
+      }
+    }
+  );
+});
+
 module.exports = router;

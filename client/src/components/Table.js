@@ -39,15 +39,19 @@ const Table = (props) => {
     setModalEdit(false);
   };
 
-  //we do this in Dashboard to re-render HabitTable
+  //we do this in Dashboard to re-render this Table with updated habits
   let handleAddHabit = (newHabit) => {
     props.addHabit(newHabit);
     setModalOpen(false);
   };
 
-  //we do this in Dashboard to re-render HabitTable
   let handleEditHabit = (habitName, habitID) => {
     props.editHabit(habitName, habitID);
+    handleClose();
+  };
+
+  let handleDeleteHabit = (habitID) => {
+    props.deleteHabit(habitID);
     handleClose();
   };
 
@@ -108,9 +112,10 @@ const Table = (props) => {
             id={habitID}
             habit={habitToEdit}
             editMode={modalEdit}
-            editHabit={handleEditHabit}
             open={modalOpen}
             addHabit={handleAddHabit}
+            editHabit={handleEditHabit}
+            deleteHabit={handleDeleteHabit}
             close={handleClose}
           />
         </tbody>
