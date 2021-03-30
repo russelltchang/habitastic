@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import data from "../data/Data.js";
 
-const HabitCell = (props) => {
+const Cell = (props) => {
   let [active, setActive] = useState(false);
 
   let localStorageDate = `${
@@ -14,6 +14,7 @@ const HabitCell = (props) => {
     }
   });
 
+  //since the date for columns are the same, all habits fill
   let handleClick = () => {
     if (localStorageDate in localStorage) {
       localStorage.removeItem(localStorageDate);
@@ -35,4 +36,4 @@ const HabitCell = (props) => {
   );
 };
 
-export default HabitCell;
+export default Cell;

@@ -20,11 +20,11 @@ router.get("/habits", (req, res) => {
 });
 
 //add if req.user
-router.post("/addhabit", (req, res) => {
+router.post("/add", (req, res) => {
   User.findOneAndUpdate(
     //find with req.session or axios data?
     { username: req.session.passport.user },
-    { $push: { habits: req.body.newhabit } },
+    { $push: { habits: { id: req.body.id, habit: req.body.habit } } },
     { new: true },
     (err, result) => {
       if (err) {
@@ -34,6 +34,10 @@ router.post("/addhabit", (req, res) => {
       }
     }
   );
+});
+
+router.put("/edit", (req, res) => {
+  console.log("edit route going");
 });
 
 module.exports = router;
