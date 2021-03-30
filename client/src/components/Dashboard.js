@@ -18,7 +18,7 @@ const Dashboard = () => {
         setHabits(res.data);
       }
     });
-  });
+  }, []);
 
   let handleOpen = () => {
     setModalOpen(true);
@@ -29,7 +29,18 @@ const Dashboard = () => {
   };
 
   let handleEditHabit = (habitName, habitID) => {
-    console.log(habitName + " " + habitID);
+    let url =
+      process.env.NODE_ENV === "development"
+        ? process.env.DEV_API_EDIT_HABIT
+        : process.env.PRO_API_EDIT_HABIT;
+
+    let data = { habit: habitName, id: habitID };
+
+    axios.put(url, data).then((res) => {
+      if (res.data) {
+        setHabits(res.data);
+      }
+    });
   };
 
   let handleAddHabit = (newHabit) => {

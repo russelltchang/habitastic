@@ -37,7 +37,19 @@ router.post("/add", (req, res) => {
 });
 
 router.put("/edit", (req, res) => {
-  console.log("edit route going");
+  User.findOneAndUpdate(
+    //find with req.session or axios data?
+    { username: req.session.passport.user, "habits.id": req.body.id },
+    { "habits.$.habit": req.body.habit },
+    { new: true },
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send(result.habits);
+      }
+    }
+  );
 });
 
 module.exports = router;
