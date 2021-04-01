@@ -28,6 +28,7 @@ const Login = (props) => {
       if (res.data === data.username) {
         props.onLogin(data.username);
         history.push("/dashboard");
+        //doesn't really match, no user exists doesn't mean invalid email
       } else if (res.data === "No User Exists") {
         setErrorMsg("Invalid email or password");
       }

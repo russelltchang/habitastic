@@ -6,6 +6,7 @@ import {
   useHistory,
   browserHistory,
 } from "react-router-dom";
+import axios from "axios";
 import Login from "./Login";
 import Signup from "./Signup";
 import Navbar from "./Navbar";
@@ -16,23 +17,34 @@ const App = () => {
   let [isLoggedIn, setIsLoggedIn] = useState(false);
   let [username, setUsername] = useState("");
 
-  let handleSignup = (username) => {
+  useEffect(() => {
+    console.log("App useEffect going");
+    let url =
+      process.env.NODE_ENV === "development"
+        ? process.env.DEV_API_AUTH
+        : process.env.PRO_API_AUTH;
+
+    axios.get(url).then((res) => {
+      if (res.data) {
+        setUsername(res.data);
+        setIsLoggedIn(true);
+      } else {
+        setIsLoggedIn(false);
+      }
+    });
+  }, []);
+
+  let handleSignup = () => {
     setIsLoggedIn(true);
-    // setUsername(username);
   };
 
-  let handleLogin = (username) => {
+  let handleLogin = () => {
     setIsLoggedIn(true);
-    // setUsername(username);
-  };
-
-  let handleLogout = () => {
-    setIsLoggedIn(false);
   };
 
   return (
     <Router>
-      <Navbar isLoggedIn={isLoggedIn} onLogout={handleLogout} />
+      <Navbar isLoggedIn={isLoggedIn} user={username} />
       <main id="container">
         <Toolbar />
         <Route path="/login" render={() => <Login onLogin={handleLogin} />} />

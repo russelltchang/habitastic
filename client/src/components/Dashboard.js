@@ -38,7 +38,7 @@ const Dashboard = () => {
 
     axios.post(url, data).then((res) => {
       if (res.data) {
-        setHabits([...habits, newHabit]);
+        setHabits(res.data);
         setModalOpen(false);
       }
     });
@@ -67,7 +67,6 @@ const Dashboard = () => {
 
     let data = { id: habitID };
 
-    //we're deleting an object, not the whole doc, use PUT
     axios.put(url, data).then((res) => {
       if (res.data) {
         setHabits(res.data);

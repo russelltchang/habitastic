@@ -7,9 +7,10 @@ const Signup = (props) => {
   let [name, setName] = useState("");
   let [email, setEmail] = useState("");
   let [password, setPassword] = useState("");
+  let [errorMsg, setErrorMsg] = useState("");
 
   let submit = (e) => {
-    //prevents form submitting to 8080.  Post to 3000 while developing
+    //prevents form submitting twice.  Without this, Mongo E1100 error
     e.preventDefault();
 
     let url =
@@ -27,6 +28,8 @@ const Signup = (props) => {
       if (res.data === data.username) {
         props.onSignup(data.username);
         history.push("/dashboard");
+      } else if (res.data === "User Exists") {
+        setErrorMsg("Email already exists");
       }
     });
   };
@@ -34,20 +37,27 @@ const Signup = (props) => {
   return (
     <div id="signUp">
       <h2>Signup</h2>
-      {/* <p id="errorMsg">{errorMsg}</p> */}
+      <p id="errorMsg">{errorMsg}</p>
       <form onSubmit={submit}>
         <label>Name</label>
-        <input required type="text" onChange={(e) => setName(e.target.value)} />
+        <input
+          required
+          type="text"
+          maxLength="40"
+          onChange={(e) => setName(e.target.value)}
+        />
         <label>Email</label>
         <input
           required
           type="email"
+          maxLength="40"
           onChange={(e) => setEmail(e.target.value)}
         />
         <label>Password</label>
         <input
           required
           type="password"
+          minLength="8"
           onChange={(e) => setPassword(e.target.value)}
         />
         <input className="authSubmit" type="submit" value="Sign Up" />

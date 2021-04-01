@@ -9,10 +9,14 @@ const Habits = (props) => {
           className="fa fa-pencil"
           onClick={() => props.edit(habit.id, habit.habit)}
         ></i>
-        {habit.habit}
+        <span>{habit.habit}</span>
       </th>
       {props.dates.slice(props.start, props.end).map((date) => (
-        <Cell id={habit.id} date={date} key={date.toString()} />
+        <Cell
+          id={habit.id}
+          date={date}
+          key={habit.id + " " + new Date(date).toLocaleString().split(",")[0]}
+        />
       ))}
     </tr>
   ));

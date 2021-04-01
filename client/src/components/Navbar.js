@@ -7,12 +7,14 @@ import axios from "axios";
 
 const Navbar = (props) => {
   let handleLogout = () => {
-    let url = process.env.DEV_API_LOGOUT;
+    let url =
+      process.env.NODE_ENV === "development"
+        ? process.env.DEV_API_LOGOUT
+        : process.env.PRO_API_LOGOUT;
 
     axios.get(url).then((res) => {
-      //if success, move to home
       if (res.data) {
-        props.onLogout(false);
+        history.push("/");
       }
     });
   };
@@ -25,6 +27,9 @@ const Navbar = (props) => {
         </Typography>
         {props.isLoggedIn ? (
           <ul id="navItems">
+            <li>
+              <span>{props.user}</span>
+            </li>
             <li>
               <a href="/" onClick={handleLogout}>
                 Logout

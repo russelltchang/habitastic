@@ -11,6 +11,15 @@ const Modal = (props) => {
     setHabitToEdit(props.habit);
   }, [props.editMode]);
 
+  let handleKeyPress = (e) => {
+    if (e.key === "Enter" && props.editMode) {
+      editHabit();
+    }
+    if (e.key === "Enter" && !props.editMode) {
+      submitNewHabit(newHabit);
+    }
+  };
+
   let editHabit = () => {
     if (habitToEdit.length > 0) {
       props.editHabit(habitToEdit, props.id);
@@ -37,9 +46,7 @@ const Modal = (props) => {
         transitionDuration={0}
       >
         <div className="titleContainer">
-          <DialogTitle>
-            {props.editMode ? "Edit Habit" : "New Habit"}
-          </DialogTitle>
+          <h2>{props.editMode ? "Edit Habit" : "New Habit"}</h2>
           <i className="fa fa-times fa-1x" onClick={props.close}></i>
         </div>
 
@@ -50,21 +57,29 @@ const Modal = (props) => {
                 className="habitInput"
                 value={habitToEdit}
                 type="text"
+                maxLength="40"
                 onChange={(e) => setHabitToEdit(e.target.value)}
+                onKeyPress={handleKeyPress}
               ></input>
-              <button className="addHabitBtn" onClick={deleteHabit}>
-                Delete Habit
-              </button>
-              <button className="addHabitBtn" onClick={editHabit}>
-                Edit Habit
-              </button>
+              <div className="editBtns">
+                <div className="deleteContainer" onClick={deleteHabit}>
+                  <i className="fa fa-trash-o"></i>
+                  <span> delete</span>
+                </div>
+
+                <button className="editBtn" onClick={editHabit}>
+                  Edit Habit
+                </button>
+              </div>
             </>
           ) : (
             <>
               <input
                 className="habitInput"
                 type="text"
+                maxLength="40"
                 onChange={(e) => setNewHabit(e.target.value)}
+                onKeyPress={handleKeyPress}
                 placeholder="Eat veggies"
               ></input>
               <button

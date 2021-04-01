@@ -19,7 +19,7 @@ const Table = (props) => {
     setDateInfo({
       dates: dateArray(),
       endIndex: dateArray().length,
-      startIndex: dateArray().length - 7,
+      startIndex: dateArray().length - 14,
     });
   }, []);
 
@@ -39,7 +39,6 @@ const Table = (props) => {
     setModalEdit(false);
   };
 
-  //we do this in Dashboard to re-render this Table with updated habits
   let handleAddHabit = (newHabit) => {
     props.addHabit(newHabit);
     setModalOpen(false);
@@ -58,21 +57,21 @@ const Table = (props) => {
   let handleLeftClick = () => {
     //setState if index doesn't go past zero
     //could be missing dates here, if -2 works or -3, it won't change index
-    if (dateInfo.startIndex - 7 >= 0) {
+    if (dateInfo.startIndex - 14 >= 0) {
       setDateInfo({
         ...dateInfo,
-        startIndex: dateInfo.startIndex - 7,
-        endIndex: dateInfo.endIndex - 7,
+        startIndex: dateInfo.startIndex - 14,
+        endIndex: dateInfo.endIndex - 14,
       });
     }
   };
 
   let handleRightClick = () => {
-    if (dateInfo.endIndex + 7 <= dateInfo.dates.length) {
+    if (dateInfo.endIndex + 14 <= dateInfo.dates.length) {
       setDateInfo({
         ...dateInfo,
-        startIndex: dateInfo.startIndex + 7,
-        endIndex: dateInfo.endIndex + 7,
+        startIndex: dateInfo.startIndex + 14,
+        endIndex: dateInfo.endIndex + 14,
       });
     }
   };
@@ -105,7 +104,8 @@ const Table = (props) => {
           />
           <tr>
             <th id="newHabitCell" onClick={handleOpen}>
-              New Habit
+              <i className="fa fa-plus"></i>
+              <span> New Habit</span>
             </th>
           </tr>
           <Modal

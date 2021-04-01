@@ -12,6 +12,14 @@ passport.use(User.createStrategy());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+router.get("/auth", (req, res) => {
+  if (req.user) {
+    res.send(req.user.name);
+  } else {
+    res.send(false);
+  }
+});
+
 router.post("/signup", (req, res) => {
   var newUser = new User({
     username: req.body.username,
@@ -19,10 +27,9 @@ router.post("/signup", (req, res) => {
   });
 
   //this PLM method checks if above email is already registered
-  User.register(newUser, req.body.password, function (err, user) {
-    //if already registered, res.send something
+  User.register(newUser, req.body.password, function (err) {
     if (err) {
-      throw err;
+      res.send("User Exists");
     }
     //add new user to session
     req.logIn(newUser, (err) => {

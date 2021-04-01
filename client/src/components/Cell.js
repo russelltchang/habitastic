@@ -4,23 +4,21 @@ import data from "../data/Data.js";
 const Cell = (props) => {
   let [active, setActive] = useState(false);
 
-  let localStorageDate = `${
-    data.monthNames[props.date.getMonth()]
-  } ${props.date.getDate()} ${props.date.getFullYear()}`;
+  let localStorageField =
+    props.id + " " + new Date(props.date).toLocaleString().split(",")[0];
 
   useEffect(() => {
-    if (localStorageDate in localStorage) {
+    if (localStorageField in localStorage) {
       setActive(true);
     }
   });
 
-  //since the date for columns are the same, all habits fill
   let handleClick = () => {
-    if (localStorageDate in localStorage) {
-      localStorage.removeItem(localStorageDate);
+    if (localStorageField in localStorage) {
+      localStorage.removeItem(localStorageField);
       setActive(false);
     } else {
-      localStorage.setItem(localStorageDate, true);
+      localStorage.setItem(localStorageField, true);
       setActive(true);
     }
   };
