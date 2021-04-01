@@ -24,7 +24,15 @@ router.post("/add", (req, res) => {
   User.findOneAndUpdate(
     //find with req.session or axios data?
     { username: req.session.passport.user },
-    { $push: { habits: { id: req.body.id, habit: req.body.habit } } },
+    {
+      $push: {
+        habits: {
+          id: req.body.id,
+          habit: req.body.habit,
+          dates: req.body.dates,
+        },
+      },
+    },
     { new: true },
     (err, result) => {
       if (err) {
@@ -57,6 +65,44 @@ router.put("/delete", (req, res) => {
     //find with req.session or axios data?
     { username: req.session.passport.user },
     { $pull: { habits: { id: req.body.id } } },
+    { new: true },
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send(result.habits);
+      }
+    }
+  );
+});
+
+router.put("/mark", (req, res) => {
+  User.findOneAndUpdate(
+    { username: req.session.passport.user, "habits.id": req.body.id },
+    {
+      $push: {
+        "habits.$.dates": req.body.date,
+      },
+    },
+    { new: true },
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send(result.habits);
+      }
+    }
+  );
+});
+
+router.put("/unmark", (req, res) => {
+  User.findOneAndUpdate(
+    { username: req.session.passport.user, "habits.id": req.body.id },
+    {
+      $pull: {
+        "habits.$.dates": req.body.date,
+      },
+    },
     { new: true },
     (err, result) => {
       if (err) {

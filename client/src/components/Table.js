@@ -54,6 +54,10 @@ const Table = (props) => {
     handleClose();
   };
 
+  let handleMarkHabit = (habits) => {
+    props.markHabit(habits);
+  };
+
   let handleLeftClick = () => {
     //setState if index doesn't go past zero
     //could be missing dates here, if -2 works or -3, it won't change index
@@ -96,6 +100,7 @@ const Table = (props) => {
             end={dateInfo.endIndex}
           />
           <Habits
+            handleMark={handleMarkHabit}
             habits={props.habits}
             dates={dateInfo.dates}
             start={dateInfo.startIndex}

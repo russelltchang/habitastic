@@ -2,9 +2,13 @@ import React, { useState, useEffect } from "react";
 import Cell from "./Cell";
 
 const Habits = (props) => {
+  let handleMarkHabit = (habits) => {
+    props.handleMark(habits);
+  };
+
   return props.habits.map((habit, i) => (
-    <tr>
-      <th key={i}>
+    <tr key={habit.id}>
+      <th>
         <i
           className="fa fa-pencil"
           onClick={() => props.edit(habit.id, habit.habit)}
@@ -16,6 +20,12 @@ const Habits = (props) => {
           id={habit.id}
           date={date}
           key={habit.id + " " + new Date(date).toLocaleString().split(",")[0]}
+          active={
+            habit.dates.includes(new Date(date).toLocaleString().split(",")[0])
+              ? true
+              : false
+          }
+          handleMark={handleMarkHabit}
         />
       ))}
     </tr>

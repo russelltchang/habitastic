@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Table from "./Table";
 import Modal from "./Modal";
 import axios from "axios";
+import { set } from "mongoose";
 
 const Dashboard = () => {
   let [habits, setHabits] = useState([]);
@@ -34,7 +35,7 @@ const Dashboard = () => {
         ? process.env.DEV_API_ADD_HABIT
         : process.env.PRO_API_ADD_HABIT;
 
-    let data = { habit: newHabit, id: Date.now().toString() };
+    let data = { habit: newHabit, id: Date.now().toString(), dates: [] };
 
     axios.post(url, data).then((res) => {
       if (res.data) {
@@ -74,11 +75,18 @@ const Dashboard = () => {
     });
   };
 
+  let handleMarkHabit = (habits) => {
+    console.log("dashboard going");
+    console.log(habits);
+    setHabits(habits);
+  };
+
   return (
     <>
       {habits.length > 0 ? (
         <Table
           habits={habits}
+          markHabit={handleMarkHabit}
           addHabit={handleAddHabit}
           editHabit={handleEditHabit}
           deleteHabit={handleDeleteHabit}

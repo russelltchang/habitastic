@@ -18,7 +18,6 @@ const App = () => {
   let [username, setUsername] = useState("");
 
   useEffect(() => {
-    console.log("App useEffect going");
     let url =
       process.env.NODE_ENV === "development"
         ? process.env.DEV_API_AUTH

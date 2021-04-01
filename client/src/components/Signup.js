@@ -26,7 +26,7 @@ const Signup = (props) => {
 
     axios.post(url, data).then((res) => {
       if (res.data === data.username) {
-        props.onSignup(data.username);
+        props.onSignup();
         history.push("/dashboard");
       } else if (res.data === "User Exists") {
         setErrorMsg("Email already exists");
