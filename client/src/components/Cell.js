@@ -4,24 +4,11 @@ import axios from "axios";
 const Cell = (props) => {
   let [active, setActive] = useState(false);
 
-  let localStorageField =
-    props.id + " " + new Date(props.date).toLocaleString().split(",")[0];
-
   useEffect(() => {
-    // if (localStorageField in localStorage) {
-    //   setActive(true);
-    // }
     setActive(props.active);
   }, [props.active]);
 
   let handleClick = () => {
-    // if (localStorageField in localStorage) {
-    //   localStorage.removeItem(localStorageField);
-    //   setActive(false);
-    // } else {
-    //   localStorage.setItem(localStorageField, true);
-    //   setActive(true);
-    // }
     let url = active
       ? process.env.NODE_ENV === "development"
         ? process.env.DEV_API_UNMARK

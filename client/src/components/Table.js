@@ -109,8 +109,7 @@ const Table = (props) => {
           />
           <tr>
             <th id="newHabitCell" onClick={handleOpen}>
-              <i className="fa fa-plus"></i>
-              <span> New Habit</span>
+              <div id="newHabitBtn">New Habit</div>
             </th>
           </tr>
           <Modal

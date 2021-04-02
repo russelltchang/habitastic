@@ -9,11 +9,13 @@ const Habits = (props) => {
   return props.habits.map((habit, i) => (
     <tr key={habit.id}>
       <th>
-        <i
-          className="fa fa-pencil"
-          onClick={() => props.edit(habit.id, habit.habit)}
-        ></i>
-        <span>{habit.habit}</span>
+        <div className="habitTitle">
+          <i
+            className="fa fa-pencil"
+            onClick={() => props.edit(habit.id, habit.habit)}
+          ></i>
+          <span> {habit.habit}</span>
+        </div>
       </th>
       {props.dates.slice(props.start, props.end).map((date) => (
         <Cell

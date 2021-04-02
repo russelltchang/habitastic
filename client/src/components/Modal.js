@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import DeleteModal from "./DeleteModal";
 import Dialog from "@material-ui/core/Dialog";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent";
@@ -6,6 +7,7 @@ import DialogContent from "@material-ui/core/DialogContent";
 const Modal = (props) => {
   let [newHabit, setNewHabit] = useState("");
   let [habitToEdit, setHabitToEdit] = useState("");
+  let [deleteModal, setDeleteModal] = useState(false);
 
   useEffect(() => {
     setHabitToEdit(props.habit);
@@ -28,6 +30,7 @@ const Modal = (props) => {
 
   //Table actually has access to habitID, don't need to pass down to Modal
   let deleteHabit = () => {
+    setDeleteModal(false);
     props.deleteHabit(props.id);
   };
 
@@ -35,6 +38,15 @@ const Modal = (props) => {
     if (newHabit.length > 0) {
       props.addHabit(newHabit);
     }
+  };
+
+  let openDeleteModal = (e) => {
+    props.close();
+    setDeleteModal(true);
+  };
+
+  let closeDeleteModal = (e) => {
+    setDeleteModal(false);
   };
 
   return (
@@ -58,11 +70,12 @@ const Modal = (props) => {
                 value={habitToEdit}
                 type="text"
                 maxLength="40"
+                autoFocus
                 onChange={(e) => setHabitToEdit(e.target.value)}
                 onKeyPress={handleKeyPress}
               ></input>
               <div className="editBtns">
-                <div className="deleteContainer" onClick={deleteHabit}>
+                <div className="deleteContainer" onClick={openDeleteModal}>
                   <i className="fa fa-trash-o"></i>
                   <span> delete</span>
                 </div>
@@ -78,6 +91,7 @@ const Modal = (props) => {
                 className="habitInput"
                 type="text"
                 maxLength="40"
+                autoFocus
                 onChange={(e) => setNewHabit(e.target.value)}
                 onKeyPress={handleKeyPress}
                 placeholder="Eat veggies"
@@ -92,6 +106,11 @@ const Modal = (props) => {
           )}
         </DialogContent>
       </Dialog>
+      <DeleteModal
+        open={deleteModal}
+        delete={deleteHabit}
+        close={closeDeleteModal}
+      />
     </>
   );
 };

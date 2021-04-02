@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import Table from "./Table";
 import Modal from "./Modal";
 import axios from "axios";
-import { set } from "mongoose";
 
 const Dashboard = () => {
   let [habits, setHabits] = useState([]);
@@ -19,6 +18,7 @@ const Dashboard = () => {
         setHabits(res.data);
       }
     });
+    // return () => localStorage.setItem("storage", habits);
   }, []);
 
   let handleOpen = () => {
@@ -76,8 +76,6 @@ const Dashboard = () => {
   };
 
   let handleMarkHabit = (habits) => {
-    console.log("dashboard going");
-    console.log(habits);
     setHabits(habits);
   };
 

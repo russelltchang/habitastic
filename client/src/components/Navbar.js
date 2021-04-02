@@ -22,7 +22,7 @@ const Navbar = (props) => {
   };
 
   return (
-    <AppBar position="fixed">
+    <AppBar position="fixed" elevation={0}>
       <Toolbar>
         <Typography variant="h6" noWrap>
           Project Name

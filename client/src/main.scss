@@ -129,6 +129,11 @@ body,
       }
     }
   }
+  .deleteBtn {
+    @include button;
+    padding: 1rem 2rem 1rem 2rem;
+    float: right;
+  }
 }
 
 #openModalBtn {
@@ -138,33 +143,54 @@ body,
 }
 
 table {
-  border: 1px solid black;
-  width: 90%;
+  width: 80%;
   margin: 4rem auto 4rem auto;
   border-collapse: collapse;
-  td,
-  th {
-    border: 1px solid black;
+
+  td {
     width: 40px;
     height: 50px;
+    text-align: center;
+    border: 1px solid lightgrey;
+  }
+  th {
+    border: 1px solid lightgrey;
+
+    height: 50px;
+    max-width: 70px;
+    text-align: left;
+    font-weight: normal;
+    background-color: #4a4a4a;
+    color: white;
+  }
+
+  #emptyDate {
+    border: none;
+  }
+  .dates {
+    border: 1px solid lightgrey;
+  }
+
+  .habitTitle {
+    margin-left: 0.75rem;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
   }
-  td {
-    text-align: center;
-  }
-  th {
-    max-width: 70px;
-    text-align: left;
-    border: none;
-    background-color: lightgrey;
-  }
   .habitCell {
     cursor: pointer;
   }
+
   #newHabitCell {
-    cursor: pointer;
+    text-align: center;
+    #newHabitBtn {
+      cursor: pointer;
+      background-color: #8c8c8c;
+      border-radius: 3px;
+      width: 80%;
+      padding: 3px;
+      margin: 0 auto;
+    }
   }
 }
 
