@@ -13,7 +13,6 @@ const Navbar = (props) => {
         : process.env.PRO_API_LOGOUT;
 
     axios.get(url).then((res) => {
-      console.log("axios ");
       if (res.data) {
         console.log(res.data);
         // history.push("/");
