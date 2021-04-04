@@ -37,8 +37,10 @@ const App = () => {
     setIsLoggedIn(true);
   };
 
-  let handleLogin = () => {
+  let handleLogin = (user) => {
     setIsLoggedIn(true);
+    console.log(user);
+    setUsername(user);
   };
 
   return (

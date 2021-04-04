@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { currentStreak } from "../utils/currentStreak";
 import { longestStreak } from "../utils/longestStreak";
 import Cell from "./Cell";
 
@@ -8,7 +9,7 @@ const Habits = (props) => {
   };
 
   return props.habits.map((habit, i) => (
-    <tr key={habit.id}>
+    <tr key={i}>
       <th className="habitTitleCell">
         <div className="habitTitle">
           <i
@@ -32,6 +33,8 @@ const Habits = (props) => {
         />
       ))}
       <td>{longestStreak(habit.dates)}</td>
+      <td>{currentStreak(habit.dates)}</td>
+      <td>{habit.dates.length}</td>
     </tr>
   ));
 };

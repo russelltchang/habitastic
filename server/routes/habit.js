@@ -19,29 +19,46 @@ router.get("/habits", (req, res) => {
   });
 });
 
+router.get("/count", (req, res) => {
+  User.findOne({ username: req.user.username }, (err, result) => {
+    if (err) {
+      console.log("error: " + err);
+    } else {
+      res.send({ count: result.habits.length });
+    }
+  });
+});
+
 //add if req.user
 router.post("/add", (req, res) => {
-  User.findOneAndUpdate(
-    //find with req.session or axios data?
-    { username: req.session.passport.user },
-    {
-      $push: {
-        habits: {
-          id: req.body.id,
-          habit: req.body.habit,
-          dates: req.body.dates,
-        },
-      },
-    },
-    { new: true },
-    (err, result) => {
-      if (err) {
-        console.log(err);
-      } else {
-        res.send(result.habits);
-      }
+  User.findOne({ username: req.user.username }, (err, result) => {
+    if (err) {
+      console.log("error: " + err);
     }
-  );
+    if (result.habits.length < 5) {
+      User.findOneAndUpdate(
+        //find with req.session or axios data?
+        { username: req.session.passport.user },
+        {
+          $push: {
+            habits: {
+              id: req.body.id,
+              habit: req.body.habit,
+              dates: req.body.dates,
+            },
+          },
+        },
+        { new: true },
+        (err, result) => {
+          if (err) {
+            console.log(err);
+          } else {
+            res.send(result.habits);
+          }
+        }
+      );
+    }
+  });
 });
 
 router.put("/edit", (req, res) => {
@@ -108,6 +125,7 @@ router.put("/unmark", (req, res) => {
       if (err) {
         console.log(err);
       } else {
+        //don't have to do this. just send a success msg to reduce req header size
         res.send(result.habits);
       }
     }

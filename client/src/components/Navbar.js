@@ -15,7 +15,6 @@ const Navbar = (props) => {
     axios.get(url).then((res) => {
       if (res.data) {
         console.log(res.data);
-        // history.push("/");
       }
     });
   };
@@ -24,7 +23,7 @@ const Navbar = (props) => {
     <AppBar position="fixed" elevation={0}>
       <Toolbar>
         <Typography variant="h6" noWrap>
-          Project Name
+          Name
         </Typography>
         {props.isLoggedIn ? (
           <ul id="navItems">

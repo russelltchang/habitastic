@@ -1,8 +1,10 @@
+import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { dateArray } from "../utils/dateArray";
 import Dates from "./Dates";
 import Habits from "./Habits";
 import Modal from "./Modal";
+import SubscribeModal from "./SubscribeModal";
 
 const Table = (props) => {
   let [dateInfo, setDateInfo] = useState({
@@ -12,6 +14,8 @@ const Table = (props) => {
   });
   let [modalOpen, setModalOpen] = useState(false);
   let [modalEdit, setModalEdit] = useState(false);
+  let [modalSubscribe, setModalSubscribe] = useState(false);
+
   let [habitID, setHabitID] = useState("");
   let [habitToEdit, setHabitToEdit] = useState("");
 
@@ -24,7 +28,18 @@ const Table = (props) => {
   }, []);
 
   let handleOpen = () => {
-    setModalOpen(true);
+    let url =
+      process.env.NODE_ENV === "development"
+        ? process.env.DEV_API_COUNT_HABITS
+        : process.env.PRO_API_COUNT_HABITS;
+
+    axios.get(url).then((res) => {
+      if (res.data.count < 5) {
+        setModalOpen(true);
+      } else {
+        setModalSubscribe(true);
+      }
+    });
   };
 
   let handleEditOpen = (habitID, habitName) => {
@@ -37,6 +52,7 @@ const Table = (props) => {
   let handleClose = () => {
     setModalOpen(false);
     setModalEdit(false);
+    setModalSubscribe(false);
   };
 
   let handleAddHabit = (newHabit) => {
@@ -122,6 +138,7 @@ const Table = (props) => {
             deleteHabit={handleDeleteHabit}
             close={handleClose}
           />
+          <SubscribeModal open={modalSubscribe} close={handleClose} />
         </tbody>
       </table>
     </div>

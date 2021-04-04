@@ -3,8 +3,8 @@ import data from "../data/Data.js";
 
 const Dates = (props) => {
   return (
-    <tr>
-      <td id="emptyDate"></td>
+    <tr className="datesRow">
+      <th id="emptyDate"></th>
       {props.dates.slice(props.start, props.end).map((date, i) => (
         <td className="date" key={i}>
           <div>{data.monthNames[date.getMonth()].substring(0, 3)}</div>
@@ -12,6 +12,9 @@ const Dates = (props) => {
           <div>{data.dayNames[date.getDay()].substring(0, 3)}</div>
         </td>
       ))}
+      <td></td>
+      <td></td>
+      <td></td>
     </tr>
   );
 };

@@ -3,12 +3,28 @@ import axios from "axios";
 
 const Cell = (props) => {
   let [active, setActive] = useState(false);
+  let [hover, setHover] = useState(false);
+
+  let style = {
+    backgroundColor: hover
+      ? active
+        ? "white"
+        : "#3f51b5"
+      : active
+      ? "#3f51b5"
+      : "white",
+    // border: hover ? (active ? "2px solid #3f51b5" : "none") : "none",
+  };
 
   useEffect(() => {
     setActive(props.active);
   }, [props.active]);
 
-  let handleClick = () => {
+  let toggleHover = () => {
+    setHover(!hover);
+  };
+
+  let handleClick = (e) => {
     let url = active
       ? process.env.NODE_ENV === "development"
         ? process.env.DEV_API_UNMARK
@@ -32,10 +48,14 @@ const Cell = (props) => {
   return (
     <>
       <td
-        style={{ backgroundColor: active ? "#3f51b5" : "white" }}
         className="habitCell"
+        onMouseEnter={toggleHover}
+        onMouseLeave={toggleHover}
+        style={style}
         onClick={handleClick}
-      ></td>
+      >
+        {hover ? (active ? "unmark" : "mark") : ""}
+      </td>
     </>
   );
 };

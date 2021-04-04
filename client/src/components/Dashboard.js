@@ -7,7 +7,16 @@ const Dashboard = () => {
   let [habits, setHabits] = useState([]);
   let [modalOpen, setModalOpen] = useState(false);
 
+  window.onbeforeunload = function () {
+    localStorage.setItem("storage", JSON.stringify(habits));
+  };
+
   useEffect(() => {
+    if (localStorage.storage) {
+      setHabits(JSON.parse(localStorage.storage));
+      return;
+    }
+
     let url =
       process.env.NODE_ENV === "development"
         ? process.env.DEV_API_GET_HABITS
@@ -18,7 +27,6 @@ const Dashboard = () => {
         setHabits(res.data);
       }
     });
-    // return () => localStorage.setItem("storage", habits);
   }, []);
 
   let handleOpen = () => {

@@ -48,7 +48,7 @@ router.post("/login", (req, res, next) => {
       //req.logIn calls passport.serializeUser()
       req.logIn(user, (err) => {
         if (err) throw err;
-        res.send(req.user.username);
+        res.send({ username: req.user.username, name: req.user.name });
       });
     }
   })(req, res, next);

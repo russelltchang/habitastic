@@ -145,18 +145,21 @@ body,
 table {
   width: 90%;
   margin: 4rem auto 4rem auto;
+  box-sizing: border-box;
   border-collapse: collapse;
   border: 1px solid lightgrey;
-
   td {
     width: 40px;
+    max-width: 40px;
     height: 50px;
     text-align: center;
-    border-bottom: 1px solid lightgrey;
+    overflow: hidden;
+    // border-bottom: 1px solid lightgrey;
   }
   th {
-    border: 1px solid lightgrey;
+    border-bottom: 1px solid lightgrey;
     height: 50px;
+    width: 80px;
     max-width: 80px;
     text-align: left;
     font-weight: normal;
@@ -164,8 +167,12 @@ table {
     color: white;
   }
 
-  #emptyDate {
-    border: none;
+  .datesRow {
+    border-bottom: 1px solid white;
+    #emptyDate {
+      border: none;
+      background-color: white;
+    }
   }
 
   .habitTitleCell {
@@ -185,6 +192,7 @@ table {
 
   .habitCell {
     cursor: pointer;
+    font-size: 0.75rem;
   }
 
   #newHabitCell {
