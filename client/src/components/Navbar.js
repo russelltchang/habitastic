@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
 import Toolbar from "@material-ui/core/Toolbar";
 import AppBar from "@material-ui/core/AppBar";
@@ -6,15 +7,20 @@ import Typography from "@material-ui/core/Typography";
 import axios from "axios";
 
 const Navbar = (props) => {
+  let history = useHistory();
+
   let handleLogout = () => {
+    localStorage.clear();
+
     let url =
       process.env.NODE_ENV === "development"
         ? process.env.DEV_API_LOGOUT
         : process.env.PRO_API_LOGOUT;
 
     axios.get(url).then((res) => {
-      if (res.data) {
-        console.log(res.data);
+      if (res.data === "Logged Out") {
+        props.onLogout();
+        history.push("/login");
       }
     });
   };
@@ -31,9 +37,9 @@ const Navbar = (props) => {
               <span>{props.user}</span>
             </li>
             <li>
-              <a href="/" onClick={handleLogout}>
+              <p id="logOut" onClick={handleLogout}>
                 Logout
-              </a>
+              </p>
             </li>
           </ul>
         ) : (

@@ -34,7 +34,7 @@ router.post("/signup", (req, res) => {
     //add new user to session
     req.logIn(newUser, (err) => {
       if (err) throw err;
-      res.send(newUser.username);
+      res.send({ username: newUser.username, name: newUser.name });
     });
   });
 });

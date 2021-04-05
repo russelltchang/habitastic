@@ -14,7 +14,8 @@ router.get("/habits", (req, res) => {
     if (err) {
       console.log("error: " + err);
     } else {
-      res.send(result.habits);
+      // res.send(result.habits);
+      res.send(result);
     }
   });
 });

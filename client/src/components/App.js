@@ -1,11 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  useHistory,
-  browserHistory,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import axios from "axios";
 import Login from "./Login";
 import Signup from "./Signup";
@@ -33,19 +27,23 @@ const App = () => {
     });
   }, []);
 
-  let handleSignup = () => {
+  let handleSignup = (user) => {
     setIsLoggedIn(true);
+    setUsername(user);
   };
 
   let handleLogin = (user) => {
     setIsLoggedIn(true);
-    console.log(user);
     setUsername(user);
+  };
+
+  let handleLogout = () => {
+    setIsLoggedIn(false);
   };
 
   return (
     <Router>
-      <Navbar isLoggedIn={isLoggedIn} user={username} />
+      <Navbar isLoggedIn={isLoggedIn} user={username} onLogout={handleLogout} />
       <main id="container">
         <Toolbar />
         <Route path="/login" render={() => <Login onLogin={handleLogin} />} />

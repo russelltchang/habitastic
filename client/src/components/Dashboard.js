@@ -4,16 +4,17 @@ import Modal from "./Modal";
 import axios from "axios";
 
 const Dashboard = () => {
-  let [habits, setHabits] = useState([]);
+  let storageHabits = JSON.parse(localStorage.getItem("habits"));
+  let [habits, setHabits] = useState(storageHabits || []);
   let [modalOpen, setModalOpen] = useState(false);
 
+  //this will have the most updated habits
   window.onbeforeunload = function () {
-    localStorage.setItem("storage", JSON.stringify(habits));
+    localStorage.setItem("habits", JSON.stringify(habits));
   };
 
   useEffect(() => {
-    if (localStorage.storage) {
-      setHabits(JSON.parse(localStorage.storage));
+    if (localStorage.habits) {
       return;
     }
 
@@ -24,10 +25,14 @@ const Dashboard = () => {
 
     axios.get(url).then((res) => {
       if (res.data) {
-        setHabits(res.data);
+        setHabits(res.data.habits);
       }
     });
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem("habits", JSON.stringify(habits));
+  }, [habits]);
 
   let handleOpen = () => {
     setModalOpen(true);

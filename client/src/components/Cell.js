@@ -14,6 +14,7 @@ const Cell = (props) => {
       ? "#3f51b5"
       : "white",
     // border: hover ? (active ? "2px solid #3f51b5" : "none") : "none",
+    color: hover ? (active ? "black" : "white") : active ? "black" : "black",
   };
 
   useEffect(() => {
