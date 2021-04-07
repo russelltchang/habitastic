@@ -3,7 +3,7 @@ var router = express.Router();
 var passport = require("passport");
 var LocalStrategy = require("passport-local").Strategy;
 
-const User = require("../models/user");
+const User = require("../models/User");
 
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
