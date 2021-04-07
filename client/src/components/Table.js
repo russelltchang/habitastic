@@ -97,20 +97,12 @@ const Table = (props) => {
   };
 
   return (
-    <div style={{ display: "inline - block" }}>
-      <i
-        style={{ float: "left" }}
-        className="fa fa-angle-left fa-2x"
-        onClick={handleLeftClick}
-      ></i>
-      <i
-        style={{ float: "right" }}
-        className="fa fa-angle-right fa-2x"
-        onClick={handleRightClick}
-      ></i>
+    <div>
       <table>
         <tbody>
           <Dates
+            leftClick={handleLeftClick}
+            rightClick={handleRightClick}
             dates={dateInfo.dates}
             start={dateInfo.startIndex}
             end={dateInfo.endIndex}
@@ -123,11 +115,6 @@ const Table = (props) => {
             end={dateInfo.endIndex}
             edit={handleEditOpen}
           />
-          <tr>
-            <th id="newHabitCell" onClick={handleOpen}>
-              <div id="newHabitBtn">New Habit</div>
-            </th>
-          </tr>
           <Modal
             id={habitID}
             habit={habitToEdit}
@@ -141,6 +128,11 @@ const Table = (props) => {
           <SubscribeModal open={modalSubscribe} close={handleClose} />
         </tbody>
       </table>
+      <div style={{ width: "90%", margin: "0 auto" }}>
+        <button id="newHabitBtn" onClick={handleOpen}>
+          New Habit
+        </button>
+      </div>
     </div>
   );
 };

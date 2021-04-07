@@ -5,24 +5,32 @@ const Cell = (props) => {
   let [active, setActive] = useState(false);
   let [hover, setHover] = useState(false);
 
+  let colorArray = ["#3f51b5"];
+
   let style = {
     backgroundColor: hover
       ? active
         ? "white"
-        : "#3f51b5"
+        : colorArray[0]
       : active
-      ? "#3f51b5"
+      ? colorArray[0]
       : "white",
     // border: hover ? (active ? "2px solid #3f51b5" : "none") : "none",
     color: hover ? (active ? "black" : "white") : active ? "black" : "black",
+    opacity: hover ? (active ? 1 : 0.8) : active ? 1 : 1,
+    // boxShadow: active ? "0 0 10px #3f51b5" : "none",
   };
 
   useEffect(() => {
     setActive(props.active);
   }, [props.active]);
 
-  let toggleHover = () => {
-    setHover(!hover);
+  let toggleMouseEnter = () => {
+    setHover(true);
+  };
+
+  let toggleMouseLeave = () => {
+    setHover(false);
   };
 
   let handleClick = (e) => {
@@ -50,12 +58,12 @@ const Cell = (props) => {
     <>
       <td
         className="habitCell"
-        onMouseEnter={toggleHover}
-        onMouseLeave={toggleHover}
+        onMouseEnter={toggleMouseEnter}
+        onMouseLeave={toggleMouseLeave}
         style={style}
         onClick={handleClick}
       >
-        {hover ? (active ? "unmark" : "mark") : ""}
+        {hover ? (active ? "unmark" : props.name) : ""}
       </td>
     </>
   );

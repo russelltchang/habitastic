@@ -22,6 +22,7 @@ const Habits = (props) => {
       {props.dates.slice(props.start, props.end).map((date) => (
         <Cell
           id={habit.id}
+          name={habit.habit}
           date={date}
           key={habit.id + " " + new Date(date).toLocaleString().split(",")[0]}
           active={
@@ -32,9 +33,16 @@ const Habits = (props) => {
           handleMark={handleMarkHabit}
         />
       ))}
-      <td>{longestStreak(habit.dates)}</td>
-      <td>{currentStreak(habit.dates)}</td>
-      <td>{habit.dates.length}</td>
+
+      <td className="streakCell" id="currentStreak">
+        <p>{currentStreak(habit.dates)}</p>
+      </td>
+      <td className="streakCell" id="longestStreak">
+        <p>{longestStreak(habit.dates)}</p>
+      </td>
+      <td className="streakCell" id="totalCount">
+        <p>{habit.dates.length}</p>
+      </td>
     </tr>
   ));
 };

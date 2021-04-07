@@ -9,6 +9,5 @@ export const dateArray = () => {
     dateArray.push(new Date(currentDate));
     currentDate = new Date(currentDate.setDate(currentDate.getDate() + 1));
   }
-
   return dateArray;
 };
