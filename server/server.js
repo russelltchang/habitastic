@@ -6,7 +6,6 @@ var mongoose = require("mongoose");
 var port = process.env.PORT || 3000;
 var passport = require("passport");
 var MongoStore = require("connect-mongo");
-//use dotenv variable here, change to atlas on production
 var session = require("express-session")({
   secret: process.env.SESSION_SECRET,
   resave: false,
@@ -29,7 +28,6 @@ app.use(cors({ credentials: true, origin: "http://localhost:8080" }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-//change to Atlas URL on production
 mongoose
   .connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
