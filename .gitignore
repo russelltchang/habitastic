@@ -8,6 +8,6 @@
 # misc
 .DS_Store
 .vscode
-.env
+# .env
 .babelrc
 nodemon.json
