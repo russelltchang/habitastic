@@ -35,13 +35,13 @@ const Habits = (props) => {
       ))}
 
       <td className="streakCell" id="currentStreak">
-        <p>{currentStreak(habit.dates)}</p>
+        <h4>{currentStreak(habit.dates)}</h4>
       </td>
       <td className="streakCell" id="longestStreak">
-        <p>{longestStreak(habit.dates)}</p>
+        <h4>{longestStreak(habit.dates)}</h4>
       </td>
       <td className="streakCell" id="totalCount">
-        <p>{habit.dates.length}</p>
+        <h4>{habit.dates.length}</h4>
       </td>
     </tr>
   ));

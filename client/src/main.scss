@@ -151,7 +151,7 @@ body {
 table {
   width: 90%;
   table-layout: fixed;
-  margin: 4rem auto 0 auto;
+  margin: 1rem auto 0 auto;
   border-collapse: collapse;
   border: 1px solid lightgrey;
   tr {
@@ -212,17 +212,23 @@ table {
   #currentStreak {
     border-left: 1px solid lightgrey;
   }
-  #currentStreak p,
-  #longestStreak p {
+
+  #currentStreak h4,
+  #longestStreak h4 {
+    margin: 0;
     border-bottom: 3px solid $primary_1;
+    display: inline-block;
+  }
+
+  #totalCount h4 {
+    margin: 0;
     display: inline-block;
   }
 
   .habitTitleCell {
     text-align: left;
     font-weight: normal;
-    // background-color: #4a4a4a;
-    background-color: #a3a2a2;
+    background-color: #4a4a4a;
     color: white;
     .habitTitle {
       margin-left: 0.5rem;
@@ -244,10 +250,31 @@ table {
   }
 }
 
-#newHabitBtn {
-  height: 50px;
-  min-width: 120px;
-  border: none;
+#newHabitBtnWrapper {
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 4rem;
+  #newHabitBtn {
+    cursor: pointer;
+    color: white;
+    background: $primary_1;
+    height: 40px;
+    width: 90px;
+    border: none;
+    margin-left: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2px;
+    font-size: 1.2rem;
+    padding: 15px;
+    &:hover {
+      opacity: 0.8;
+    }
+    span {
+      margin-left: 0.5rem;
+    }
+  }
 }
 
 .fa {

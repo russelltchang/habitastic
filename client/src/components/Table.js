@@ -98,6 +98,12 @@ const Table = (props) => {
 
   return (
     <div>
+      <div id="newHabitBtnWrapper">
+        <button id="newHabitBtn" onClick={handleOpen}>
+          <i className="fa fa-plus"></i>
+          <span>Habit</span>
+        </button>
+      </div>
       <table>
         <tbody>
           <Dates
@@ -128,11 +134,6 @@ const Table = (props) => {
           <SubscribeModal open={modalSubscribe} close={handleClose} />
         </tbody>
       </table>
-      <div style={{ width: "90%", margin: "0 auto" }}>
-        <button id="newHabitBtn" onClick={handleOpen}>
-          New Habit
-        </button>
-      </div>
     </div>
   );
 };

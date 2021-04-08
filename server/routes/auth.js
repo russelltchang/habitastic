@@ -4,7 +4,7 @@ var passport = require("passport");
 var LocalStrategy = require("passport-local").Strategy;
 
 //import User model
-const User = require("../models/user");
+const User = require("../models/User");
 
 // PLM -> this sets up LocalStrategy with correct options (using email as username field, etc)
 passport.use(User.createStrategy());
