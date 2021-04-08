@@ -8,8 +8,6 @@
 # misc
 .DS_Store
 .vscode
-# .env
+.env
 .babelrc
-# Procfile
 nodemon.json
-# package-lock.json

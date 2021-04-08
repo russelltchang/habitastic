@@ -7,8 +7,7 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack serve --mode development --open",
-    "build": "webpack --mode production",
-    "heroku-postbuild": "webpack -p"
+    "build": "webpack --mode production"
   },
   "keywords": [],
   "author": "",
