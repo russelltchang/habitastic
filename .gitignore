@@ -3,12 +3,12 @@
 /node_modules
 
 # build
-# /dist
+/dist
 
 # misc
 .DS_Store
 .vscode
-.env
+# .env
 .babelrc
 # Procfile
 nodemon.json
