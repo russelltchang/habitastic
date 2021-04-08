@@ -12,4 +12,4 @@
 .babelrc
 # Procfile
 nodemon.json
-package-lock.json
+# package-lock.json
