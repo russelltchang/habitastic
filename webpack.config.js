@@ -58,6 +58,12 @@ module.exports = {
       chunkFilename: "[id].css",
     }),
     // new webpack.DefinePlugin(envKeys),
+    new webpack.DefinePlugin({
+      "process.env": {
+        // This has effect on the react lib size
+        NODE_ENV: JSON.stringify("production"),
+      },
+    }),
   ],
   externals: {
     cheerio: "window",
