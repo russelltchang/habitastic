@@ -30,8 +30,8 @@ const Table = (props) => {
   let handleOpen = () => {
     let url =
       process.env.NODE_ENV === "development"
-        ? process.env.DEV_API_COUNT_HABITS
-        : process.env.PRO_API_COUNT_HABITS;
+        ? process.env.DEV_API_COUNT
+        : "/count";
 
     axios.get(url).then((res) => {
       if (res.data.count < 5) {

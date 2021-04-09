@@ -1,19 +1,9 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const webpack = require("webpack");
-const dotenv = require("dotenv");
-const path = require("path");
-
-// call dotenv and it will return an Object with a parsed key
-// const env = dotenv.config().parsed;
-
-// reduce it to a nice object, the same as before
-// const envKeys = Object.keys(env).reduce((prev, next) => {
-//   prev[`process.env.${next}`] = JSON.stringify(env[next]);
-//   return prev;
-// }, {});
 
 module.exports = {
+  mode: "production",
   entry: "/client/src/index.js",
   devServer: {
     historyApiFallback: true,
@@ -56,13 +46,6 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: "[name].css",
       chunkFilename: "[id].css",
-    }),
-    // new webpack.DefinePlugin(envKeys),
-    new webpack.DefinePlugin({
-      "process.env": {
-        // This has effect on the react lib size
-        NODE_ENV: JSON.stringify("production"),
-      },
     }),
   ],
   externals: {

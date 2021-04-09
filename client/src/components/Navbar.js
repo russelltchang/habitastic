@@ -15,7 +15,7 @@ const Navbar = (props) => {
     let url =
       process.env.NODE_ENV === "development"
         ? process.env.DEV_API_LOGOUT
-        : process.env.PRO_API_LOGOUT;
+        : "/logout";
 
     axios.get(url).then((res) => {
       if (res.data === "Logged Out") {

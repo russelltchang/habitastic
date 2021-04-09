@@ -14,10 +14,8 @@ const App = () => {
   useEffect(() => {
     let url =
       process.env.NODE_ENV === "development"
-        ? "http://localhost:3000/auth"
+        ? process.env.DEV_API_AUTH
         : "/auth";
-
-    // let url = "http://localhost:3000/auth" || "/auth";
 
     axios.get(url).then((res) => {
       if (res.data) {

@@ -37,10 +37,10 @@ const Cell = (props) => {
     let url = active
       ? process.env.NODE_ENV === "development"
         ? process.env.DEV_API_UNMARK
-        : process.env.PRO_API_UNMARK
+        : "/unmark"
       : process.env.NODE_ENV === "development"
       ? process.env.DEV_API_MARK
-      : process.env.PRO_API_MARK;
+      : "/mark";
 
     let data = {
       date: new Date(props.date).toLocaleString().split(",")[0],

@@ -16,7 +16,7 @@ const Login = (props) => {
     let url =
       process.env.NODE_ENV === "development"
         ? process.env.DEV_API_LOGIN
-        : process.env.PRO_API_LOGIN;
+        : "/login";
 
     //key "username" needed, as passport takes req.body.username as default "user"
     let data = {

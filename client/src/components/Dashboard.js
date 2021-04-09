@@ -20,8 +20,8 @@ const Dashboard = () => {
 
     let url =
       process.env.NODE_ENV === "development"
-        ? process.env.DEV_API_GET_HABITS
-        : process.env.PRO_API_GET_HABITS;
+        ? "http://localhost:3000/habits"
+        : "/habits";
 
     axios.get(url).then((res) => {
       if (res.data) {
@@ -45,8 +45,8 @@ const Dashboard = () => {
   let handleAddHabit = (newHabit) => {
     let url =
       process.env.NODE_ENV === "development"
-        ? process.env.DEV_API_ADD_HABIT
-        : process.env.PRO_API_ADD_HABIT;
+        ? "http://localhost:3000/add"
+        : "/add";
 
     let data = { habit: newHabit, id: Date.now().toString(), dates: [] };
 
@@ -61,8 +61,8 @@ const Dashboard = () => {
   let handleEditHabit = (habitName, habitID) => {
     let url =
       process.env.NODE_ENV === "development"
-        ? process.env.DEV_API_EDIT_HABIT
-        : process.env.PRO_API_EDIT_HABIT;
+        ? "http://localhost:3000/edit"
+        : "/edit";
 
     let data = { habit: habitName, id: habitID };
 
@@ -77,7 +77,7 @@ const Dashboard = () => {
     let url =
       process.env.NODE_ENV === "development"
         ? process.env.DEV_API_DELETE_HABIT
-        : process.env.PRO_API_DELETE_HABIT;
+        : "/delete";
 
     let data = { id: habitID };
 
