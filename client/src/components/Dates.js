@@ -24,16 +24,22 @@ const Dates = (props) => {
         </div>
       </th>
       {props.dates.slice(props.start, props.end).map((date, i) => (
-        <td key={i}>
-          <div>{data.monthNames[date.getMonth()].substring(0, 3)}</div>
+        <td key={i} className="dateCell">
+          <div className="month">
+            {data.monthNames[date.getMonth()].substring(0, 3)}
+          </div>
           <div
             className={
-              todayDate === date.toLocaleString().split(",")[0] ? "today" : ""
+              todayDate === date.toLocaleString().split(",")[0]
+                ? "today date"
+                : "date"
             }
           >
             {date.getDate()}
           </div>
-          <div>{data.dayNames[date.getDay()].substring(0, 3)}</div>
+          <div className="day">
+            {data.dayNames[date.getDay()].substring(0, 3)}
+          </div>
         </td>
       ))}
       <td

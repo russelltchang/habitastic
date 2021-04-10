@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import axios from "axios";
+import Landing from "./Landing";
 import Login from "./Login";
 import Signup from "./Signup";
 import Navbar from "./Navbar";
@@ -46,6 +47,7 @@ const App = () => {
       <Navbar isLoggedIn={isLoggedIn} user={username} onLogout={handleLogout} />
       <main id="container">
         <Toolbar />
+        <Route exact path="/" component={Landing} />
         <Route path="/login" render={() => <Login onLogin={handleLogin} />} />
         <Route
           path="/signup"

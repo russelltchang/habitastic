@@ -30,7 +30,7 @@ const Table = (props) => {
   let handleOpen = () => {
     let url =
       process.env.NODE_ENV === "development"
-        ? process.env.DEV_API_COUNT
+        ? process.env.DEV_API_COUNT_HABITS
         : "/count";
 
     axios.get(url).then((res) => {

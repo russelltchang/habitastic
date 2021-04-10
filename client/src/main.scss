@@ -43,6 +43,11 @@ body {
   margin: 0 auto; /* extends AppBar fully */
 }
 
+#logoText {
+  text-decoration: none;
+  color: white;
+}
+
 #navItems {
   margin-left: auto;
   list-style: none;
@@ -191,15 +196,26 @@ table {
         color: $primary_1;
       }
     }
-  }
 
-  .today {
-    display: inline-block;
-    color: white;
-    background-color: $primary_1;
-    border-radius: 50%;
-    height: 20px;
-    width: 20px;
+    .today {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      color: white;
+      background-color: $primary_1;
+      border-radius: 50%;
+      height: 25px;
+      width: 25px;
+    }
+    .date {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      height: 25px;
+      width: 25px;
+    }
   }
 
   .streakTitleCell {
