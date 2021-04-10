@@ -40,9 +40,12 @@ const Navbar = (props) => {
   return (
     <AppBar position="fixed" elevation={0}>
       <Toolbar>
-        <Link to="/">
-          <h3 id="logoText">Habitastic</h3>
-        </Link>
+        <div id="logoText">
+          <Link to="/dashboard">
+            <h3>Habitastic</h3>
+          </Link>
+        </div>
+
         {props.isLoggedIn ? (
           <ul id="navItems">
             <li>
