@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router";
+import { Redirect } from "react-router-dom";
 
 import axios from "axios";
 
@@ -8,6 +9,10 @@ const Login = (props) => {
   let [email, setEmail] = useState("");
   let [password, setPassword] = useState("");
   let [errorMsg, setErrorMsg] = useState("");
+
+  if (props.isLoggedIn) {
+    history.push("/dashboard");
+  }
 
   let submit = (e) => {
     //prevents form submitting to 8080.  Post to 3000 while developing
@@ -26,8 +31,8 @@ const Login = (props) => {
 
     axios.post(url, data).then((res) => {
       if (res.data.username === data.username) {
+        localStorage.setItem("isAuth", "true");
         props.onLogin(res.data.name);
-        history.push("/dashboard");
         //doesn't really match, no user exists doesn't mean invalid email
       } else if (res.data === "No User Exists") {
         setErrorMsg("Invalid email or password");

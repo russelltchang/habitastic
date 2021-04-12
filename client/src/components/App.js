@@ -6,6 +6,7 @@ import Login from "./Login";
 import Signup from "./Signup";
 import Navbar from "./Navbar";
 import Dashboard from "./Dashboard";
+import PrivateRoute from "./PrivateRoute";
 import Toolbar from "@material-ui/core/Toolbar";
 
 const App = () => {
@@ -48,12 +49,15 @@ const App = () => {
       <main id="container">
         <Toolbar />
         <Route exact path="/" component={Landing} />
-        <Route path="/login" render={() => <Login onLogin={handleLogin} />} />
+        <Route
+          path="/login"
+          render={() => <Login onLogin={handleLogin} isLoggedIn={isLoggedIn} />}
+        />
         <Route
           path="/signup"
           render={() => <Signup onSignup={handleSignup} />}
         />
-        <Route path="/dashboard" component={Dashboard} />
+        <PrivateRoute path="/dashboard" component={Dashboard} />
       </main>
     </Router>
   );

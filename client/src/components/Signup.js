@@ -26,6 +26,7 @@ const Signup = (props) => {
 
     axios.post(url, data).then((res) => {
       if (res.data.username === data.username) {
+        localStorage.setItem("isAuth", "true");
         props.onSignup(res.data.name);
         history.push("/dashboard");
       } else if (res.data === "User Exists") {

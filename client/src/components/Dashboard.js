@@ -8,11 +8,6 @@ const Dashboard = () => {
   let [habits, setHabits] = useState(storageHabits || []);
   let [modalOpen, setModalOpen] = useState(false);
 
-  //this will have the most updated habits
-  window.onbeforeunload = function () {
-    localStorage.setItem("habits", JSON.stringify(habits));
-  };
-
   useEffect(() => {
     if (localStorage.habits) {
       return;

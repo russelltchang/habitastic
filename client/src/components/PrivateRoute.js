@@ -1,16 +1,20 @@
 import React from "react";
 import { Redirect, Route } from "react-router-dom";
-import { isAuth } from "../utils/isAuth.js";
 
-let PrivateRoute = ({ children, ...rest }) => {
+let PrivateRoute = ({ component: Component, ...rest }) => {
   return (
     <Route
       {...rest}
-      render={() => {
-        return fakeAuth.isAuthenticated === true ? (
-          children
+      render={({ location }) => {
+        return localStorage.getItem("isAuth") ? (
+          <Component />
         ) : (
-          <Redirect to="/login" />
+          <Redirect
+            to={{
+              pathname: "/login",
+              state: { from: location },
+            }}
+          />
         );
       }}
     />

@@ -8,13 +8,12 @@ const User = require("../models/User");
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-//add "if (req.user)" THEN execute
+//add if req.user
 router.get("/habits", (req, res) => {
   User.findOne({ username: req.user.username }, (err, result) => {
     if (err) {
       console.log("error: " + err);
     } else {
-      // res.send(result.habits);
       res.send(result);
     }
   });
