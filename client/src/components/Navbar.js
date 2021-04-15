@@ -37,51 +37,53 @@ const Navbar = (props) => {
   };
 
   return (
-    <AppBar position="fixed" elevation={0}>
+    <AppBar position="static" elevation={0}>
       <Toolbar>
-        <div id="logoText">
-          <Link to="/dashboard">
-            <h3>Habitastic</h3>
-          </Link>
-        </div>
+        <div id="navContainer">
+          <div id="logoText">
+            <Link to="/dashboard">
+              <h3>Habitastic</h3>
+            </Link>
+          </div>
 
-        {props.isLoggedIn ? (
-          <ul id="navItems">
-            <li>
-              <p id="logOut" onClick={handleMenuClick}>
-                <i className="fa fa-user-circle-o"></i>
-              </p>
-              <Menu
-                id="menu"
-                keepMounted
-                transitionDuration={0}
-                anchorOrigin={{
-                  vertical: "bottom",
-                  horizontal: "right",
-                }}
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
-                }}
-                getContentAnchorEl={null}
-                anchorEl={anchorEl}
-                open={Boolean(anchorEl)}
-                onClose={handleMenuClose}
-              >
-                <MenuItem onClick={handleLogout}>Logout</MenuItem>
-              </Menu>
-            </li>
-          </ul>
-        ) : (
-          <ul id="navItems">
-            <li>
-              <Link to="/login">Login</Link>
-            </li>
-            <li>
-              <Link to="/signup">Signup</Link>
-            </li>
-          </ul>
-        )}
+          {props.isLoggedIn ? (
+            <ul id="navItems">
+              <li>
+                <p id="logOut" onClick={handleMenuClick}>
+                  <i className="fa fa-user-circle-o"></i>
+                </p>
+                <Menu
+                  id="menu"
+                  keepMounted
+                  transitionDuration={0}
+                  anchorOrigin={{
+                    vertical: "bottom",
+                    horizontal: "right",
+                  }}
+                  transformOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  getContentAnchorEl={null}
+                  anchorEl={anchorEl}
+                  open={Boolean(anchorEl)}
+                  onClose={handleMenuClose}
+                >
+                  <MenuItem onClick={handleLogout}>Logout</MenuItem>
+                </Menu>
+              </li>
+            </ul>
+          ) : (
+            <ul id="navItems">
+              <li>
+                <Link to="/login">Login</Link>
+              </li>
+              <li>
+                <Link to="/signup">Signup</Link>
+              </li>
+            </ul>
+          )}
+        </div>
       </Toolbar>
     </AppBar>
   );

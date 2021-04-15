@@ -1,24 +1,27 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import colors from "../data/Colors.js";
 
 const Cell = (props) => {
   let [active, setActive] = useState(false);
   let [hover, setHover] = useState(false);
 
-  let colorArray = ["#3f51b5"];
-
   let style = {
     backgroundColor: hover
       ? active
         ? "white"
-        : colorArray[0]
+        : colors.habitPalette[props.index % colors.habitPalette.length]
       : active
-      ? colorArray[0]
+      ? colors.habitPalette[props.index % colors.habitPalette.length]
       : "white",
-    // border: hover ? (active ? "2px solid #3f51b5" : "none") : "none",
+    border: hover
+      ? active
+        ? "2px solid " +
+          colors.habitPalette[props.index % colors.habitPalette.length]
+        : "none"
+      : "none",
     color: hover ? (active ? "black" : "white") : active ? "black" : "black",
-    opacity: hover ? (active ? 1 : 0.8) : active ? 1 : 1,
-    // boxShadow: active ? "0 0 10px #3f51b5" : "none",
+    opacity: hover ? (active ? 1 : 0.5) : active ? 1 : 1,
   };
 
   useEffect(() => {
@@ -58,12 +61,49 @@ const Cell = (props) => {
     <>
       <td
         className="habitCell"
-        onMouseEnter={toggleMouseEnter}
-        onMouseLeave={toggleMouseLeave}
-        style={style}
-        onClick={handleClick}
+        // onMouseEnter={toggleMouseEnter}
+        // onMouseLeave={toggleMouseLeave}
+        // onClick={handleClick}
       >
-        {hover ? (active ? "unmark" : props.name) : ""}
+        <div
+          className="habitCellInner"
+          onMouseEnter={toggleMouseEnter}
+          onMouseLeave={toggleMouseLeave}
+          onClick={handleClick}
+          style={style}
+        >
+          {hover ? (
+            active ? (
+              "undo"
+            ) : (
+              ""
+            )
+          ) : active ? (
+            <div
+              style={{
+                backgroundColor: props.streak >= 1 ? "white" : "none",
+                height: props.streak >= 1 ? "25px" : "0",
+                width: props.streak >= 1 ? "25px" : "0",
+                borderRadius: props.streak >= 1 ? "50%" : "0",
+                fontSize: props.streak >= 1 ? ".8rem" : "0",
+                fontWeight: props.streak >= 1 ? "bold" : "none",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                color:
+                  props.streak >= 1
+                    ? colors.habitPalette[
+                        props.index % colors.habitPalette.length
+                      ]
+                    : "white",
+              }}
+            >
+              {props.streak}
+            </div>
+          ) : (
+            ""
+          )}
+        </div>
       </td>
     </>
   );

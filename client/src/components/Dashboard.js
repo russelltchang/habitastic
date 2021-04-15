@@ -3,10 +3,11 @@ import Table from "./Table";
 import Modal from "./Modal";
 import axios from "axios";
 
-const Dashboard = () => {
+const Dashboard = (props) => {
   let storageHabits = JSON.parse(localStorage.getItem("habits"));
   let [habits, setHabits] = useState(storageHabits || []);
   let [modalOpen, setModalOpen] = useState(false);
+  let [username, setUsername] = useState(null);
 
   useEffect(() => {
     if (localStorage.habits) {
@@ -28,6 +29,10 @@ const Dashboard = () => {
   useEffect(() => {
     localStorage.setItem("habits", JSON.stringify(habits));
   }, [habits]);
+
+  useEffect(() => {
+    setUsername(props.user);
+  }, [props.user]);
 
   let handleOpen = () => {
     setModalOpen(true);

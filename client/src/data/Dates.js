@@ -1,4 +1,4 @@
-const data = {
+const dates = {
   monthNames: [
     "January",
     "February",
@@ -24,4 +24,4 @@ const data = {
   ],
 };
 
-export default data;
+export default dates;

@@ -28,18 +28,11 @@ const Table = (props) => {
   }, []);
 
   let handleOpen = () => {
-    let url =
-      process.env.NODE_ENV === "development"
-        ? process.env.DEV_API_COUNT_HABITS
-        : "/count";
-
-    axios.get(url).then((res) => {
-      if (res.data.count < 5) {
-        setModalOpen(true);
-      } else {
-        setModalSubscribe(true);
-      }
-    });
+    if (props.habits.length < 8) {
+      setModalOpen(true);
+    } else {
+      setModalSubscribe(true);
+    }
   };
 
   let handleEditOpen = (habitID, habitName) => {
@@ -98,12 +91,6 @@ const Table = (props) => {
 
   return (
     <div>
-      <div id="newHabitBtnWrapper">
-        <button id="newHabitBtn" onClick={handleOpen}>
-          <i className="fa fa-plus"></i>
-          <span>Habit</span>
-        </button>
-      </div>
       <table>
         <tbody>
           <Dates
@@ -134,6 +121,12 @@ const Table = (props) => {
           <SubscribeModal open={modalSubscribe} close={handleClose} />
         </tbody>
       </table>
+      <div id="newHabitWrapper">
+        <button id="newHabitBtn" onClick={handleOpen}>
+          <i className="fa fa-plus"></i>
+          <span>New Habit</span>
+        </button>
+      </div>
     </div>
   );
 };

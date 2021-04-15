@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import colors from "../data/Colors.js";
 import { currentStreak } from "../utils/currentStreak";
 import { longestStreak } from "../utils/longestStreak";
+import { countStreak } from "../utils/countStreak";
 import Cell from "./Cell";
 
 const Habits = (props) => {
@@ -21,7 +22,9 @@ const Habits = (props) => {
       </th>
       {props.dates.slice(props.start, props.end).map((date) => (
         <Cell
+          streak={countStreak(date, habit.dates)}
           id={habit.id}
+          index={i}
           name={habit.habit}
           date={date}
           key={habit.id + " " + new Date(date).toLocaleString().split(",")[0]}
@@ -34,14 +37,44 @@ const Habits = (props) => {
         />
       ))}
 
-      <td className="streakCell" id="currentStreak">
-        <h4>{currentStreak(habit.dates)}</h4>
-      </td>
-      <td className="streakCell" id="longestStreak">
-        <h4>{longestStreak(habit.dates)}</h4>
-      </td>
-      <td className="streakCell" id="totalCount">
-        <h4>{habit.dates.length}</h4>
+      <td id="bestStreakCount">
+        <div
+          id="countBackground"
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            borderRadius: "50%",
+            fontSize: ".8rem",
+            boxShadow:
+              currentStreak(habit.dates) === longestStreak(habit.dates)
+                ? "0 0 5px 1px" +
+                  colors.habitPalette[
+                    props.habits.indexOf(habit) % colors.habitPalette.length
+                  ]
+                : "",
+            height:
+              currentStreak(habit.dates) === longestStreak(habit.dates)
+                ? "25px"
+                : "",
+            width:
+              currentStreak(habit.dates) === longestStreak(habit.dates)
+                ? "25px"
+                : "",
+            backgroundColor:
+              currentStreak(habit.dates) === longestStreak(habit.dates)
+                ? colors.habitPalette[
+                    props.habits.indexOf(habit) % colors.habitPalette.length
+                  ]
+                : "white",
+            color:
+              currentStreak(habit.dates) === longestStreak(habit.dates)
+                ? "white"
+                : "black",
+          }}
+        >
+          <p>{longestStreak(habit.dates)}</p>
+        </div>
       </td>
     </tr>
   ));

@@ -2,6 +2,7 @@ $primary_1: #3f51b5;
 $primary_2: #777;
 $error_primary1: #9f3a38;
 $error_primary2: #fff6f6;
+$tableWidth: 90%;
 
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap");
 
@@ -50,17 +51,38 @@ body {
   }
 }
 
-#navItems {
-  margin-left: auto;
-  list-style: none;
-  li {
-    display: inline-block;
-    font-size: 1.2rem;
-    margin-left: 2rem;
+#hero {
+  width: $tableWidth;
+  margin: 4rem auto 4rem auto;
+  #heroText {
+    text-align: center;
   }
-  a {
-    text-decoration: none;
-    color: white;
+  #heroImage {
+    margin-top: 2rem;
+    width: 100%;
+    height: 500px;
+    border-radius: 5px;
+    box-shadow: 0 0px 12px lightgrey;
+  }
+}
+
+#navContainer {
+  width: 95%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  #navItems {
+    margin-left: auto;
+    list-style: none;
+    li {
+      display: inline-block;
+      font-size: 1.2rem;
+      margin-left: 2rem;
+    }
+    a {
+      text-decoration: none;
+      color: white;
+    }
   }
 }
 
@@ -156,47 +178,52 @@ body {
 }
 
 table {
-  width: 90%;
+  width: $tableWidth;
   table-layout: fixed;
-  margin: 1rem auto 0 auto;
+  margin: 0 auto;
   border-collapse: collapse;
   border: 1px solid lightgrey;
-  tr {
-    border-bottom: 1px solid lightgrey;
+  td:nth-last-child(2) {
+    border-right: 1px solid darkgrey;
+    border-left: 1px solid darkgrey;
   }
+  tr:nth-child(2) td:nth-last-child(2) {
+    border-top: 1px solid darkgrey;
+  }
+  tr:first-child td:nth-last-child(2) {
+    border: none !important;
+  }
+  tr:last-child td:nth-last-child(2) {
+    border-bottom: 1px solid darkgrey;
+  }
+
   th {
-    height: 50px;
-    width: 80px;
-    max-width: 80px;
+    width: 90px;
+    max-width: 90px;
   }
   td {
-    // display: inline-block;
     width: 40px;
-    max-width: 40px;
-    height: 50px;
+    height: 40px;
     text-align: center;
     overflow: hidden;
+    padding: 0;
   }
 
   .datesRow {
-    border-bottom: none !important;
-    #dateControl {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: row;
+    border-bottom: 1px solid lightgrey;
+
+    #dateControlLeft {
+      display: inline-block;
+      position: absolute;
+      top: 0;
+      right: 0;
     }
-    #rightArrow {
-      margin-left: auto;
-      &:hover {
-        color: $primary_1;
-      }
-    }
-    #leftArrow {
-      margin-right: auto;
-      &:hover {
-        color: $primary_1;
-      }
+
+    #dateControlRight {
+      display: inline-block;
+      position: absolute;
+      top: 0;
+      left: 0;
     }
 
     .today {
@@ -205,7 +232,7 @@ table {
       justify-content: center;
       margin: 0 auto;
       color: white;
-      background-color: $primary_1;
+      background-color: #9fa8da;
       border-radius: 50%;
       height: 25px;
       width: 25px;
@@ -222,32 +249,27 @@ table {
 
   .streakTitleCell {
     vertical-align: bottom;
-    font-size: 0.8rem;
     overflow: hidden;
     text-overflow: ellipsis;
+    #bestStreakText {
+      font-size: 0.8rem;
+    }
   }
 
-  #currentStreak {
-    border-left: 1px solid lightgrey;
-  }
-
-  #currentStreak h4,
-  #longestStreak h4 {
-    margin: 0;
-    border-bottom: 3px solid $primary_1;
-    display: inline-block;
-  }
-
-  #totalCount h4 {
-    margin: 0;
-    display: inline-block;
+  #bestStreakCount {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    p {
+      margin: 0;
+    }
   }
 
   .habitTitleCell {
     text-align: left;
     font-weight: normal;
-    background-color: #4a4a4a;
-    color: white;
+    border: 1px solid lightgrey;
     .habitTitle {
       margin-left: 0.5rem;
       overflow: hidden;
@@ -264,33 +286,40 @@ table {
 
   .habitCell {
     cursor: pointer;
-    font-size: 0.75rem;
+    width: 100%;
+    .habitCellInner {
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
   }
 }
 
-#newHabitBtnWrapper {
-  width: 90%;
+#newHabitWrapper {
+  width: $tableWidth;
   margin: 0 auto;
-  margin-top: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   #newHabitBtn {
+    border: 1px solid lightgrey;
+    margin-top: 0.5rem;
     cursor: pointer;
-    color: white;
-    background: $primary_1;
+    background: white;
     height: 40px;
-    width: 90px;
-    border: none;
-    margin-left: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 2px;
-    font-size: 1.2rem;
-    padding: 15px;
+    font-size: 1rem;
+    &:focus {
+      outline: none;
+    }
     &:hover {
-      opacity: 0.8;
+      color: $primary_2;
+    }
+    .fa {
+      font-size: 16px;
     }
     span {
-      margin-left: 0.5rem;
+      margin-left: 0.3rem;
     }
   }
 }
