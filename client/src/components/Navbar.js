@@ -37,14 +37,13 @@ const Navbar = (props) => {
   };
 
   return (
-    <AppBar position="static" elevation={0}>
-      <Toolbar>
+    <AppBar className="appBar" position="static" elevation={0}>
+      <Toolbar disableGutters={true}>
         <div id="navContainer">
-          <div id="logoText">
-            <Link to="/dashboard">
-              <h3>Habitastic</h3>
-            </Link>
-          </div>
+          <Link to="/dashboard">
+            <img id="logoImg" src="../client/public/logo.png" />
+            <h2>Habitastic</h2>
+          </Link>
 
           {props.isLoggedIn ? (
             <ul id="navItems">

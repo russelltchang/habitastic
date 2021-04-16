@@ -47,7 +47,7 @@ const App = () => {
     <Router>
       <Navbar isLoggedIn={isLoggedIn} user={username} onLogout={handleLogout} />
       <main id="container">
-        <Toolbar />
+        {/* <Toolbar /> */}
         <Route exact path="/" component={Landing} />
         <Route
           path="/login"

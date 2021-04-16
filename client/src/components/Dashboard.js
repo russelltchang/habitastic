@@ -7,7 +7,6 @@ const Dashboard = (props) => {
   let storageHabits = JSON.parse(localStorage.getItem("habits"));
   let [habits, setHabits] = useState(storageHabits || []);
   let [modalOpen, setModalOpen] = useState(false);
-  let [username, setUsername] = useState(null);
 
   useEffect(() => {
     if (localStorage.habits) {
@@ -29,10 +28,6 @@ const Dashboard = (props) => {
   useEffect(() => {
     localStorage.setItem("habits", JSON.stringify(habits));
   }, [habits]);
-
-  useEffect(() => {
-    setUsername(props.user);
-  }, [props.user]);
 
   let handleOpen = () => {
     setModalOpen(true);

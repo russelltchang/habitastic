@@ -1,5 +1,6 @@
 $primary_1: #3f51b5;
 $primary_2: #777;
+$today_column: black;
 $error_primary1: #9f3a38;
 $error_primary2: #fff6f6;
 $tableWidth: 90%;
@@ -44,21 +45,15 @@ body {
   margin: 0 auto; /* extends AppBar fully */
 }
 
-#logoText {
-  a {
-    text-decoration: none;
-    color: white;
-  }
-}
-
 #hero {
-  width: $tableWidth;
-  margin: 4rem auto 4rem auto;
+  width: 80%;
+  margin: 0 auto;
   #heroText {
     text-align: center;
   }
   #heroImage {
     margin-top: 2rem;
+    margin-bottom: 4rem;
     width: 100%;
     height: 500px;
     border-radius: 5px;
@@ -66,22 +61,50 @@ body {
   }
 }
 
-#navContainer {
-  width: 95%;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  #navItems {
-    margin-left: auto;
-    list-style: none;
-    li {
-      display: inline-block;
-      font-size: 1.2rem;
-      margin-left: 2rem;
-    }
+.appBar {
+  background-color: white;
+  a {
+    text-decoration: none;
+    color: black;
+  }
+  #navContainer {
+    width: $tableWidth;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     a {
-      text-decoration: none;
-      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      &:focus {
+        outline: 0;
+        border: none;
+        -moz-outline-style: none;
+      }
+      &:active {
+        outline: 0;
+        border: none;
+        -moz-outline-style: none;
+      }
+    }
+    #logoImg {
+      width: 30px;
+      height: 30px;
+      margin-right: 0.5rem;
+    }
+
+    #navItems {
+      margin-left: auto;
+      list-style: none;
+      li {
+        display: inline-block;
+        font-size: 1.2rem;
+        margin-left: 2rem;
+      }
+      i {
+        color: black;
+      }
     }
   }
 }
@@ -180,21 +203,21 @@ body {
 table {
   width: $tableWidth;
   table-layout: fixed;
-  margin: 0 auto;
+  margin: 4rem auto 0 auto;
   border-collapse: collapse;
   border: 1px solid lightgrey;
   td:nth-last-child(2) {
-    border-right: 1px solid darkgrey;
-    border-left: 1px solid darkgrey;
+    border-right: 1px solid $today_column;
+    border-left: 1px solid $today_column;
   }
   tr:nth-child(2) td:nth-last-child(2) {
-    border-top: 1px solid darkgrey;
+    border-top: 1px solid $today_column;
   }
   tr:first-child td:nth-last-child(2) {
     border: none !important;
   }
   tr:last-child td:nth-last-child(2) {
-    border-bottom: 1px solid darkgrey;
+    border-bottom: 1px solid $today_column;
   }
 
   th {
