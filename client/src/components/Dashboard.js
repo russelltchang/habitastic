@@ -90,13 +90,15 @@ const Dashboard = (props) => {
   return (
     <>
       {habits.length > 0 ? (
-        <Table
-          habits={habits}
-          markHabit={handleMarkHabit}
-          addHabit={handleAddHabit}
-          editHabit={handleEditHabit}
-          deleteHabit={handleDeleteHabit}
-        />
+        <>
+          <Table
+            habits={habits}
+            markHabit={handleMarkHabit}
+            addHabit={handleAddHabit}
+            editHabit={handleEditHabit}
+            deleteHabit={handleDeleteHabit}
+          />
+        </>
       ) : (
         <div id="noHabitMsg">
           <h1>Oops! Looks like you aren't tracking any habits yet.</h1>

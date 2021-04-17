@@ -4,6 +4,7 @@ import { dateArray } from "../utils/dateArray";
 import Dates from "./Dates";
 import Habits from "./Habits";
 import Modal from "./Modal";
+
 import SubscribeModal from "./SubscribeModal";
 
 const Table = (props) => {
@@ -15,7 +16,6 @@ const Table = (props) => {
   let [modalOpen, setModalOpen] = useState(false);
   let [modalEdit, setModalEdit] = useState(false);
   let [modalSubscribe, setModalSubscribe] = useState(false);
-
   let [habitID, setHabitID] = useState("");
   let [habitToEdit, setHabitToEdit] = useState("");
 
@@ -90,7 +90,7 @@ const Table = (props) => {
   };
 
   return (
-    <div>
+    <>
       <table>
         <tbody>
           <Dates
@@ -127,7 +127,7 @@ const Table = (props) => {
           <span>New Habit</span>
         </button>
       </div>
-    </div>
+    </>
   );
 };
 
