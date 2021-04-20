@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from "react";
 import Table from "./Table";
+import Notes from "./Notes";
 import Modal from "./Modal";
 import axios from "axios";
 
 const Dashboard = (props) => {
+  let storageNotes = JSON.parse(localStorage.getItem("notes"));
   let storageHabits = JSON.parse(localStorage.getItem("habits"));
   let [habits, setHabits] = useState(storageHabits || []);
+  let [notes, setNotes] = useState(storageNotes || []);
   let [modalOpen, setModalOpen] = useState(false);
+  let [activeDates, setActiveDates] = useState([]);
 
   useEffect(() => {
     if (localStorage.habits) {
@@ -26,8 +30,29 @@ const Dashboard = (props) => {
   }, []);
 
   useEffect(() => {
+    let url =
+      process.env.NODE_ENV === "development"
+        ? "http://localhost:3000/notes"
+        : "/notes";
+
+    axios.get(url).then((res) => {
+      if (res.data) {
+        setNotes(res.data);
+      }
+    });
+  }, []);
+
+  useEffect(() => {
     localStorage.setItem("habits", JSON.stringify(habits));
   }, [habits]);
+
+  let handleDateChange = (dates) => {
+    let formattedDates = [];
+    for (let i = 0; i < dates.length; i++) {
+      formattedDates[i] = dates[i].toLocaleString().split(",")[0];
+    }
+    setActiveDates(formattedDates);
+  };
 
   let handleOpen = () => {
     setModalOpen(true);
@@ -71,7 +96,7 @@ const Dashboard = (props) => {
   let handleDeleteHabit = (habitID) => {
     let url =
       process.env.NODE_ENV === "development"
-        ? process.env.DEV_API_DELETE_HABIT
+        ? "http://localhost:3000/delete"
         : "/delete";
 
     let data = { id: habitID };
@@ -87,16 +112,78 @@ const Dashboard = (props) => {
     setHabits(habits);
   };
 
+  let handleAddNote = (note) => {
+    let url =
+      process.env.NODE_ENV === "development"
+        ? "http://localhost:3000/addnote"
+        : "/addnote";
+
+    let data = {
+      id: Date.now().toString(),
+      date: new Date(Date.now()).toLocaleString().split(",")[0],
+      note: note,
+    };
+
+    axios.post(url, data).then((res) => {
+      if (res.data) {
+        setNotes(res.data);
+      }
+    });
+  };
+
+  let handleEditNote = (note, id) => {
+    let url =
+      process.env.NODE_ENV === "development"
+        ? "http://localhost:3000/editnote"
+        : "/editnote";
+
+    let data = {
+      id: id,
+      note: note,
+    };
+
+    axios.put(url, data).then((res) => {
+      if (res.data) {
+        setNotes(res.data);
+      }
+    });
+  };
+
+  let handleDeleteNote = (id) => {
+    let url =
+      process.env.NODE_ENV === "development"
+        ? "http://localhost:3000/deletenote"
+        : "/deletenote";
+
+    let data = {
+      id: id,
+    };
+
+    axios.put(url, data).then((res) => {
+      if (res.data) {
+        setNotes(res.data);
+      }
+    });
+  };
+
   return (
     <>
       {habits.length > 0 ? (
         <>
           <Table
             habits={habits}
+            dateChange={handleDateChange}
             markHabit={handleMarkHabit}
             addHabit={handleAddHabit}
             editHabit={handleEditHabit}
             deleteHabit={handleDeleteHabit}
+          />
+          <Notes
+            addNote={handleAddNote}
+            editNote={handleEditNote}
+            deleteNote={handleDeleteNote}
+            notes={notes}
+            activeDates={activeDates}
           />
         </>
       ) : (

@@ -27,6 +27,12 @@ const Table = (props) => {
     });
   }, []);
 
+  useEffect(() => {
+    props.dateChange(
+      dateInfo.dates.slice(dateInfo.startIndex, dateInfo.endIndex)
+    );
+  }, [dateInfo.startIndex, dateInfo.endIndex]);
+
   let handleOpen = () => {
     if (props.habits.length < 8) {
       setModalOpen(true);
@@ -68,8 +74,6 @@ const Table = (props) => {
   };
 
   let handleLeftClick = () => {
-    //setState if index doesn't go past zero
-    //could be missing dates here, if -2 works or -3, it won't change index
     if (dateInfo.startIndex - 14 >= 0) {
       setDateInfo({
         ...dateInfo,
@@ -90,7 +94,7 @@ const Table = (props) => {
   };
 
   return (
-    <>
+    <div id="tableContainer">
       <table>
         <tbody>
           <Dates
@@ -127,7 +131,7 @@ const Table = (props) => {
           <span>New Habit</span>
         </button>
       </div>
-    </>
+    </div>
   );
 };
 

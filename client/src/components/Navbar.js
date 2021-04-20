@@ -25,7 +25,7 @@ const Navbar = (props) => {
 
     let url =
       process.env.NODE_ENV === "development"
-        ? process.env.DEV_API_LOGOUT
+        ? "http://localhost:3000/logout"
         : "/logout";
 
     axios.get(url).then((res) => {

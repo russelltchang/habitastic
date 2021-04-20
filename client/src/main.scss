@@ -28,6 +28,12 @@ $tableWidth: 90%;
   width: 100%;
 }
 
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  resize: none;
+}
+
 * {
   box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -39,6 +45,7 @@ body,
 #root {
   height: 100%;
   font-family: "Lato", sans-serif;
+  overflow-y: overlay; /*prevent scrollbar reduce page width */
 }
 
 body {
@@ -72,7 +79,7 @@ body {
 
 .appBar {
   background-color: white;
-  margin-bottom: 4rem;
+  margin-bottom: 3rem;
   a {
     text-decoration: none;
     color: black;
@@ -90,11 +97,13 @@ body {
       &:focus {
         outline: 0;
         border: none;
+        outline-style: none;
         -moz-outline-style: none;
       }
       &:active {
         outline: 0;
         border: none;
+        outline-style: none;
         -moz-outline-style: none;
       }
     }
@@ -174,7 +183,7 @@ body {
     @include input;
     margin-top: 1rem;
   }
-  .addHabitBtn {
+  .modalAddBtn {
     @include button;
     padding: 1rem 2rem 1rem 2rem;
     margin: 1rem 0 0 auto;
@@ -210,9 +219,14 @@ body {
   margin: 2rem 0 2rem 0;
 }
 
+#tableContainer {
+  margin-left: 2.5%;
+  width: 75%;
+  display: inline-block;
+  vertical-align: top;
+}
 table {
-  width: $tableWidth;
-  margin: 0 auto;
+  width: 100%;
   table-layout: fixed;
   border-collapse: collapse;
   border: 1px solid lightgrey;
@@ -230,7 +244,6 @@ table {
 
   .datesRow {
     border-bottom: 1px solid lightgrey;
-
     #dateControlLeft {
       display: inline-block;
       position: absolute;
@@ -317,11 +330,7 @@ table {
 }
 
 #newHabitWrapper {
-  width: $tableWidth;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  width: 140px;
   #newHabitBtn {
     border: 1px solid lightgrey;
     margin-top: 0.5rem;
@@ -329,11 +338,12 @@ table {
     background: white;
     height: 40px;
     font-size: 1rem;
+    color: $primary_2;
     &:focus {
       outline: none;
     }
     &:hover {
-      color: $primary_2;
+      color: black;
     }
     .fa {
       font-size: 16px;
@@ -355,10 +365,70 @@ table {
 }
 
 #notes {
+  background-color: rgb(241, 241, 241);
+  padding: 0.5rem;
+  vertical-align: top;
   display: inline-block;
-  margin-left: 5%;
-  width: 15%;
-  button {
-    margin-left: auto;
+  margin-left: 2.5%;
+  width: 17.5%;
+  #buttonContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    button {
+      padding: 0.5rem;
+      color: $primary_2;
+      background-color: white;
+      border: 1px solid lightgrey;
+      cursor: pointer;
+      &:hover {
+        color: black;
+      }
+      &:focus {
+        outline: none;
+      }
+    }
   }
+
+  .noteContainer {
+    border: 1px solid lightgrey;
+    margin-top: 15px;
+    padding: 1rem;
+    border-radius: 3px;
+    .noteControls {
+      float: right;
+    }
+    .noteDate {
+      color: grey;
+      font-size: 0.8rem;
+      margin-bottom: 1rem;
+      text-align: left;
+    }
+    .noteContent {
+      text-align: left;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    i {
+      margin-left: 1rem;
+      visibility: hidden;
+    }
+    &:hover i {
+      visibility: visible;
+    }
+  }
+  #noNotesMsg {
+    margin-top: 100px;
+    color: rgb(190, 187, 187);
+    text-align: center;
+  }
+}
+.noteInput {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  line-height: 28px;
+  padding: 5px;
+  width: 100%;
+  margin-top: 1rem;
 }

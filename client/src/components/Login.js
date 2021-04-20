@@ -20,7 +20,7 @@ const Login = (props) => {
 
     let url =
       process.env.NODE_ENV === "development"
-        ? process.env.DEV_API_LOGIN
+        ? "http://localhost:3000/login"
         : "/login";
 
     //key "username" needed, as passport takes req.body.username as default "user"

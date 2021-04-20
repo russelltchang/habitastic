@@ -7,7 +7,6 @@ import Signup from "./Signup";
 import Navbar from "./Navbar";
 import Dashboard from "./Dashboard";
 import PrivateRoute from "./PrivateRoute";
-import Toolbar from "@material-ui/core/Toolbar";
 
 const App = () => {
   let [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -16,7 +15,7 @@ const App = () => {
   useEffect(() => {
     let url =
       process.env.NODE_ENV === "development"
-        ? process.env.DEV_API_AUTH
+        ? "http://localhost:3000/auth"
         : "/auth";
 
     axios.get(url).then((res) => {

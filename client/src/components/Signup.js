@@ -15,7 +15,7 @@ const Signup = (props) => {
 
     let url =
       process.env.NODE_ENV === "development"
-        ? process.env.DEV_API_SIGNUP
+        ? "http://localhost:3000/signup"
         : "/signup";
 
     let data = {

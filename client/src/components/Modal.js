@@ -8,6 +8,11 @@ const Modal = (props) => {
   let [habitToEdit, setHabitToEdit] = useState("");
   let [deleteModal, setDeleteModal] = useState(false);
 
+  //modal apparently doesn't unmount on close, so this is needed
+  useEffect(() => {
+    setNewHabit("");
+  }, [props.open]);
+
   useEffect(() => {
     setHabitToEdit(props.habit);
   }, [props.editMode]);
@@ -21,30 +26,29 @@ const Modal = (props) => {
     }
   };
 
-  let editHabit = () => {
-    if (habitToEdit.length > 0) {
-      props.editHabit(habitToEdit, props.id);
+  let submitNewHabit = (newHabit) => {
+    if (newHabit.length > 0) {
+      props.addHabit(newHabit.trim());
     }
   };
 
-  //Table actually has access to habitID, don't need to pass down to Modal
+  let editHabit = () => {
+    if (habitToEdit.length > 0) {
+      props.editHabit(habitToEdit.trim(), props.id);
+    }
+  };
+
   let deleteHabit = () => {
     setDeleteModal(false);
     props.deleteHabit(props.id);
   };
 
-  let submitNewHabit = (newHabit) => {
-    if (newHabit.length > 0) {
-      props.addHabit(newHabit);
-    }
-  };
-
-  let openDeleteModal = (e) => {
+  let openDeleteModal = () => {
     props.close();
     setDeleteModal(true);
   };
 
-  let closeDeleteModal = (e) => {
+  let closeDeleteModal = () => {
     setDeleteModal(false);
   };
 
@@ -96,7 +100,7 @@ const Modal = (props) => {
                 placeholder="Eat veggies"
               ></input>
               <button
-                className="addHabitBtn"
+                className="modalAddBtn"
                 onClick={() => submitNewHabit(newHabit)}
               >
                 Add Habit

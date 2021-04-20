@@ -39,10 +39,10 @@ const Cell = (props) => {
   let handleClick = (e) => {
     let url = active
       ? process.env.NODE_ENV === "development"
-        ? process.env.DEV_API_UNMARK
+        ? "http://localhost:3000/unmark"
         : "/unmark"
       : process.env.NODE_ENV === "development"
-      ? process.env.DEV_API_MARK
+      ? "http://localhost:3000/mark"
       : "/mark";
 
     let data = {

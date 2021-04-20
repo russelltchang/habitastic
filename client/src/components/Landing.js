@@ -18,6 +18,9 @@ const Landing = () => {
         </div>
         <img id="heroImage" src="../client/public/hero.gif" />
       </div>
+      <div id="features">
+        <h1>Features</h1>
+      </div>
     </>
   );
 };
