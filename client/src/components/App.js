@@ -19,7 +19,7 @@ const App = () => {
         : "/auth";
 
     axios.get(url).then((res) => {
-      if (res.data) {
+      if (res.data !== "Unauthorized") {
         setUsername(res.data);
         setIsLoggedIn(true);
       } else {
@@ -46,7 +46,6 @@ const App = () => {
     <Router>
       <Navbar isLoggedIn={isLoggedIn} user={username} onLogout={handleLogout} />
       <main id="container">
-        {/* <Toolbar /> */}
         <Route exact path="/" component={Landing} />
         <Route
           path="/login"

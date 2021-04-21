@@ -1,24 +1,41 @@
-import axios from "axios";
 import NoteModal from "./NoteModal";
 import React, { useState, useEffect } from "react";
+import SubscribeModal from "./SubscribeModal";
 
 const Notes = (props) => {
   let [ID, setID] = useState(null);
   let [noteToEdit, setNoteToEdit] = useState("");
+  let [subNotes, setSubNotes] = useState(false);
+  let [subModal, setSubModal] = useState(false);
   let [noteModal, setNoteModal] = useState(false);
   let [editNote, setEditNote] = useState(false);
   let [deleteNote, setDeleteNote] = useState(false);
   let [activeNotesExist, setActiveNotesExist] = useState(false);
 
-  // useEffect(() => {
-  //   let activeNotes = props.notes.filter((note) =>
-  //     props.activesDates.includes(note.date)
-  //   );
-  //   setActiveNotes(activeNotes);
-  // }, [props.activeDates]);
+  useEffect(() => {
+    let activeNotes = props.notes.filter((note) =>
+      props.activeDates.includes(note.date)
+    );
+    activeNotes.length > 0
+      ? setActiveNotesExist(true)
+      : setActiveNotesExist(false);
+  }, [props.activeDates, props.notes]);
 
   let openNewNote = () => {
+    let today = new Date(Date.now()).toLocaleString().split(",")[0];
+    for (let i = 0; i < props.notes.length; i++) {
+      if (props.notes[i].date === today) {
+        setSubModal(true);
+        setSubNotes(true);
+        return;
+      }
+    }
     setNoteModal(true);
+  };
+
+  let handleSubscribeClose = () => {
+    setSubNotes(false);
+    setSubModal(false);
   };
 
   let handleAddNote = (note) => {
@@ -64,8 +81,9 @@ const Notes = (props) => {
           <span> New Note</span>
         </button>
       </div>
+      <hr style={{ border: "1px solid lightgrey" }} />
 
-      {props.notes.length > 0 ? (
+      {activeNotesExist ? (
         props.notes
           .sort((a, b) => b.id - a.id)
           .map((noteObj, i) =>
@@ -103,6 +121,11 @@ const Notes = (props) => {
         addNote={handleAddNote}
         editNote={handleEditNote}
         deleteNote={handleDeleteNote}
+      />
+      <SubscribeModal
+        open={subModal}
+        fromNotes={subNotes}
+        close={handleSubscribeClose}
       />
     </div>
   );

@@ -16,7 +16,7 @@ router.get("/auth", (req, res) => {
   if (req.user) {
     res.send(req.user.name);
   } else {
-    res.send(false);
+    res.send("Unauthorized");
   }
 });
 

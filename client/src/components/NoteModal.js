@@ -6,12 +6,15 @@ const NoteModal = (props) => {
   let [ID, setID] = useState(null);
   let [note, setNote] = useState("");
   let [noteToEdit, setNoteToEdit] = useState("");
+  let [errorMsg, setErrorMsg] = useState(false);
 
   useEffect(() => {
     setNote("");
+    setErrorMsg(false);
   }, [props.open]);
 
   useEffect(() => {
+    setErrorMsg(false);
     setNoteToEdit(props.noteToEdit);
   }, [props.edit]);
 
@@ -22,12 +25,16 @@ const NoteModal = (props) => {
   let submitNote = () => {
     if (note.length > 0) {
       props.addNote(note.trim());
+    } else {
+      setErrorMsg(true);
     }
   };
 
   let editNote = () => {
     if (noteToEdit.length > 0) {
       props.editNote(noteToEdit.trim(), ID);
+    } else {
+      setErrorMsg(true);
     }
   };
 
@@ -57,6 +64,7 @@ const NoteModal = (props) => {
         <DialogContent dividers>
           {props.edit ? (
             <>
+              {errorMsg ? <p className="errorMsg">Please enter a note</p> : ""}
               <textarea
                 required
                 rows="4"
@@ -85,6 +93,7 @@ const NoteModal = (props) => {
             </>
           ) : (
             <>
+              {errorMsg ? <p className="errorMsg">Please enter a note</p> : ""}
               <textarea
                 rows="4"
                 required

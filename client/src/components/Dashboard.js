@@ -49,7 +49,7 @@ const Dashboard = (props) => {
   let handleDateChange = (dates) => {
     let formattedDates = [];
     for (let i = 0; i < dates.length; i++) {
-      formattedDates[i] = dates[i].toLocaleString().split(",")[0];
+      formattedDates.push(dates[i].toLocaleString().split(",")[0]);
     }
     setActiveDates(formattedDates);
   };

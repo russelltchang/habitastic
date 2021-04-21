@@ -30,7 +30,11 @@ const SubscribeModal = (props) => {
             </div>
 
             <DialogContent dividers>
-              <p>You've reached your max number of habits!</p>
+              {props.fromNotes ? (
+                <p>You've reached your max number of new notes for today!</p>
+              ) : (
+                <p>You've reached your max number of habits!</p>
+              )}
               <button className="subscribeBtn" onClick={handlePaymentView}>
                 Subscribe
               </button>

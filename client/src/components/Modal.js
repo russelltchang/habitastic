@@ -7,13 +7,16 @@ const Modal = (props) => {
   let [newHabit, setNewHabit] = useState("");
   let [habitToEdit, setHabitToEdit] = useState("");
   let [deleteModal, setDeleteModal] = useState(false);
+  let [errorMsg, setErrorMsg] = useState(false);
 
   //modal apparently doesn't unmount on close, so this is needed
   useEffect(() => {
     setNewHabit("");
+    setErrorMsg(false);
   }, [props.open]);
 
   useEffect(() => {
+    setErrorMsg(false);
     setHabitToEdit(props.habit);
   }, [props.editMode]);
 
@@ -29,12 +32,16 @@ const Modal = (props) => {
   let submitNewHabit = (newHabit) => {
     if (newHabit.length > 0) {
       props.addHabit(newHabit.trim());
+    } else {
+      setErrorMsg(true);
     }
   };
 
   let editHabit = () => {
     if (habitToEdit.length > 0) {
       props.editHabit(habitToEdit.trim(), props.id);
+    } else {
+      setErrorMsg(true);
     }
   };
 
@@ -68,6 +75,7 @@ const Modal = (props) => {
         <DialogContent dividers>
           {props.editMode ? (
             <>
+              {errorMsg ? <p className="errorMsg">Please enter a habit</p> : ""}
               <input
                 className="habitInput"
                 value={habitToEdit}
@@ -90,6 +98,7 @@ const Modal = (props) => {
             </>
           ) : (
             <>
+              {errorMsg ? <p className="errorMsg">Please enter a habit</p> : ""}
               <input
                 className="habitInput"
                 type="text"
