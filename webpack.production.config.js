@@ -39,6 +39,7 @@ module.exports = {
     new webpack.ProvidePlugin({
       React: "react",
     }),
+    new CopyWebpackPlugin([{ from: "client/public", to: "client/public" }]),
     new HtmlWebPackPlugin({
       template: "client/src/index.html",
       filename: "./index.html",
