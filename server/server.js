@@ -30,7 +30,11 @@ app.use(passport.session());
 //goes to dist for css/js files that index.html requires
 app.use(express.static(path.resolve(__dirname, "../dist")));
 
-app.use("/logo.png", express.static(path.join(__dirname, "client/public")));
+app.use(
+  "/logo.png",
+  express.static(path.resolve(__dirname, "../client/public"))
+);
+console.log(path.join(path.resolve(__dirname, "../client/public")));
 
 app.use(cors({ credentials: true, origin: "http://localhost:8080" }));
 app.use(express.json());
