@@ -1,7 +1,5 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-var CopyWebpackPlugin = require("copy-webpack-plugin");
-
 const webpack = require("webpack");
 
 module.exports = {
@@ -12,6 +10,10 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: "asset/resource",
+      },
       {
         test: /\.js$/,
         exclude: /node_modules/,
@@ -40,9 +42,6 @@ module.exports = {
   plugins: [
     new webpack.ProvidePlugin({
       React: "react",
-    }),
-    new CopyWebpackPlugin({
-      patterns: [{ from: "./client/public", to: "client/public" }],
     }),
     new HtmlWebPackPlugin({
       template: "client/src/index.html",

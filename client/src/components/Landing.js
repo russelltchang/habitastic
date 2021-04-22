@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import HeroGIF from "/client/public/hero.gif";
 
 const Landing = () => {
   return (
@@ -16,7 +17,7 @@ const Landing = () => {
             </Link>
           </div>
         </div>
-        <img id="heroImage" src="/client/public/hero.gif" />
+        <img id="heroImage" src={HeroGIF} />
       </div>
       <div id="features">
         <h1>Features</h1>

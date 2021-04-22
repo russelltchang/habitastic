@@ -6,6 +6,7 @@ import AppBar from "@material-ui/core/AppBar";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import axios from "axios";
+import Logo from "/client/public/logo.png";
 
 const Navbar = (props) => {
   let history = useHistory();
@@ -41,7 +42,7 @@ const Navbar = (props) => {
       <Toolbar disableGutters={true}>
         <div id="navContainer">
           <Link to="/dashboard">
-            <img id="logoImg" src="/client/public/logo.png" />
+            <img id="logoImg" src={Logo} />
             <h2>Habitastic</h2>
           </Link>
 
