@@ -72,7 +72,7 @@ const Dashboard = (props) => {
 
     axios.post(url, data).then((res) => {
       if (res.data) {
-        setHabits(res.data);
+        setHabits((habits) => [...habits, data]);
         setModalOpen(false);
       }
     });
@@ -88,7 +88,13 @@ const Dashboard = (props) => {
 
     axios.put(url, data).then((res) => {
       if (res.data) {
-        setHabits(res.data);
+        let updatedHabits = habits.map((h) => Object.assign({}, h));
+        for (let i = 0; i < updatedHabits.length; i++) {
+          if (updatedHabits[i].id === habitID) {
+            updatedHabits[i].habit = habitName;
+          }
+        }
+        setHabits(updatedHabits);
       }
     });
   };
@@ -103,13 +109,38 @@ const Dashboard = (props) => {
 
     axios.put(url, data).then((res) => {
       if (res.data) {
-        setHabits(res.data);
+        let updatedHabits = habits.map((h) => Object.assign({}, h));
+        for (let i = 0; i < updatedHabits.length; i++) {
+          if (updatedHabits[i].id === habitID) {
+            updatedHabits.splice(updatedHabits.indexOf(updatedHabits[i]), 1);
+          }
+        }
+        setHabits(updatedHabits);
       }
     });
   };
 
-  let handleMarkHabit = (habits) => {
-    setHabits(habits);
+  let handleMarkHabit = (action, id, date) => {
+    //need to clone the objects in the array, not just the array
+    let updatedHabits = habits.map((h) => Object.assign({}, h));
+    if (action === "marked") {
+      for (let i = 0; i < updatedHabits.length; i++) {
+        if (updatedHabits[i].id === id) {
+          updatedHabits[i].dates.push(date);
+        }
+      }
+    }
+    if (action === "unmarked") {
+      for (let i = 0; i < updatedHabits.length; i++) {
+        if (updatedHabits[i].id === id) {
+          updatedHabits[i].dates.splice(
+            updatedHabits[i].dates.indexOf(date),
+            1
+          );
+        }
+      }
+    }
+    setHabits(updatedHabits);
   };
 
   let handleAddNote = (note) => {

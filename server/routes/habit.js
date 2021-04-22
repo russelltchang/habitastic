@@ -8,7 +8,6 @@ const User = require("../models/User");
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-//add if req.user
 router.get("/habits", (req, res) => {
   User.findOne({ username: req.user.username }, (err, result) => {
     if (err) {
@@ -19,7 +18,6 @@ router.get("/habits", (req, res) => {
   });
 });
 
-//add if req.user
 router.post("/add", (req, res) => {
   User.findOne({ username: req.user.username }, (err, result) => {
     if (err) {
@@ -43,7 +41,7 @@ router.post("/add", (req, res) => {
           if (err) {
             console.log(err);
           } else {
-            res.send(result.habits);
+            res.send({});
           }
         }
       );
@@ -53,7 +51,6 @@ router.post("/add", (req, res) => {
 
 router.put("/edit", (req, res) => {
   User.findOneAndUpdate(
-    //find with req.session or axios data?
     { username: req.session.passport.user, "habits.id": req.body.id },
     { "habits.$.habit": req.body.habit },
     { new: true },
@@ -61,7 +58,7 @@ router.put("/edit", (req, res) => {
       if (err) {
         console.log(err);
       } else {
-        res.send(result.habits);
+        res.send({});
       }
     }
   );
@@ -69,7 +66,6 @@ router.put("/edit", (req, res) => {
 
 router.put("/delete", (req, res) => {
   User.findOneAndUpdate(
-    //find with req.session or axios data?
     { username: req.session.passport.user },
     { $pull: { habits: { id: req.body.id } } },
     { new: true },
@@ -77,46 +73,7 @@ router.put("/delete", (req, res) => {
       if (err) {
         console.log(err);
       } else {
-        res.send(result.habits);
-      }
-    }
-  );
-});
-
-router.put("/mark", (req, res) => {
-  User.findOneAndUpdate(
-    { username: req.session.passport.user, "habits.id": req.body.id },
-    {
-      $push: {
-        "habits.$.dates": req.body.date,
-      },
-    },
-    { new: true },
-    (err, result) => {
-      if (err) {
-        console.log(err);
-      } else {
-        res.send(result.habits);
-      }
-    }
-  );
-});
-
-router.put("/unmark", (req, res) => {
-  User.findOneAndUpdate(
-    { username: req.session.passport.user, "habits.id": req.body.id },
-    {
-      $pull: {
-        "habits.$.dates": req.body.date,
-      },
-    },
-    { new: true },
-    (err, result) => {
-      if (err) {
-        console.log(err);
-      } else {
-        //just send a success msg to reduce req header size
-        res.send(result.habits);
+        res.send({});
       }
     }
   );

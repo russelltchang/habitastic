@@ -69,8 +69,8 @@ const Table = (props) => {
     handleClose();
   };
 
-  let handleMarkHabit = (habits) => {
-    props.markHabit(habits);
+  let handleMarkHabit = (action, id, date) => {
+    props.markHabit(action, id, date);
   };
 
   let handleLeftClick = () => {

@@ -52,19 +52,18 @@ const Cell = (props) => {
 
     axios.put(url, data).then((res) => {
       if (res.data) {
-        props.handleMark(res.data);
+        props.handleMark(
+          res.data,
+          props.id,
+          new Date(props.date).toLocaleString().split(",")[0]
+        );
       }
     });
   };
 
   return (
     <>
-      <td
-        className="habitCell"
-        // onMouseEnter={toggleMouseEnter}
-        // onMouseLeave={toggleMouseLeave}
-        // onClick={handleClick}
-      >
+      <td className="habitCell">
         <div
           className="habitCellInner"
           onMouseEnter={toggleMouseEnter}

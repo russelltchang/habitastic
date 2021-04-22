@@ -57,6 +57,9 @@ body {
   margin: 0 auto;
   #heroText {
     text-align: center;
+    #subheader {
+      color: $primary_2;
+    }
   }
   #heroImage {
     margin-top: 2rem;
@@ -75,6 +78,10 @@ body {
     text-decoration: none;
     padding: 0.8rem 2rem 0.8rem 2rem;
   }
+}
+
+#features {
+  text-align: center;
 }
 
 .appBar {

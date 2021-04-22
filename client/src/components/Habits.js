@@ -5,8 +5,8 @@ import { countStreak } from "../utils/countStreak";
 import Cell from "./Cell";
 
 const Habits = (props) => {
-  let handleMarkHabit = (habits) => {
-    props.handleMark(habits);
+  let handleMarkHabit = (action, id, date) => {
+    props.handleMark(action, id, date);
   };
 
   return props.habits.map((habit, i) => (

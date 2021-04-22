@@ -6,8 +6,8 @@ const Landing = () => {
     <>
       <div id="hero">
         <div id="heroText">
-          <h1>Form new habits with a simple habit tracker.</h1>
-          <p>
+          <h1 id="header">Keep track of your habits, simply</h1>
+          <p id="subheader">
             Keep track of your habits with a simple, clutter free experience.
           </p>
           <div id="heroBtnWrapper">

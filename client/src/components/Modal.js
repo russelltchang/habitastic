@@ -9,7 +9,7 @@ const Modal = (props) => {
   let [deleteModal, setDeleteModal] = useState(false);
   let [errorMsg, setErrorMsg] = useState(false);
 
-  //modal apparently doesn't unmount on close, so this is needed
+  //modal doesn't unmount on close, so this is needed
   useEffect(() => {
     setNewHabit("");
     setErrorMsg(false);

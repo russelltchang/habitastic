@@ -4,11 +4,14 @@ if (process.env.NODE_ENV !== "production") {
 var express = require("express");
 var path = require("path");
 var cors = require("cors");
+var helmet = require("helmet");
+var compression = require("compression");
 var mongoose = require("mongoose");
 var port = process.env.PORT || 3000;
 var passport = require("passport");
 var MongoStore = require("connect-mongo");
 var session = require("express-session")({
+  name: "sessionId",
   secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: false,
@@ -29,6 +32,8 @@ app.use(express.static(path.resolve(__dirname, "../dist")));
 app.use(cors({ credentials: true, origin: "http://localhost:8080" }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(helmet());
+app.use(compression());
 
 mongoose
   .connect(process.env.MONGODB_URI, {
@@ -42,6 +47,7 @@ mongoose
 app.use(require("./routes/auth.js"));
 app.use(require("./routes/habit.js"));
 app.use(require("./routes/note.js"));
+app.use(require("./routes/cell.js"));
 
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "../dist/index.html"));
