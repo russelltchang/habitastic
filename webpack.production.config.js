@@ -1,5 +1,7 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+var CopyWebpackPlugin = require("copy-webpack-plugin");
+
 const webpack = require("webpack");
 
 module.exports = {
@@ -38,6 +40,9 @@ module.exports = {
   plugins: [
     new webpack.ProvidePlugin({
       React: "react",
+    }),
+    new CopyWebpackPlugin({
+      patterns: [{ from: "./client/public", to: "client/public" }],
     }),
     new HtmlWebPackPlugin({
       template: "client/src/index.html",
