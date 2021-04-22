@@ -16,7 +16,7 @@ const Landing = () => {
             </Link>
           </div>
         </div>
-        <img id="heroImage" src="../client/public/hero.gif" />
+        <img id="heroImage" src="/client/public/hero.gif" />
       </div>
       <div id="features">
         <h1>Features</h1>

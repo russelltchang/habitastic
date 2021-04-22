@@ -41,7 +41,7 @@ const Navbar = (props) => {
       <Toolbar disableGutters={true}>
         <div id="navContainer">
           <Link to="/dashboard">
-            <img id="logoImg" src="../client/public/logo.png" />
+            <img id="logoImg" src="/client/public/logo.png" />
             <h2>Habitastic</h2>
           </Link>
 
