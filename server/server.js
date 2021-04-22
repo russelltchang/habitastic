@@ -27,8 +27,10 @@ app.use(session);
 //needs to be used before "routes/auth.js" is called in this file
 app.use(passport.initialize());
 app.use(passport.session());
-//goes to dist for css/jss files that index.html requires
+//goes to dist for css/js files that index.html requires
 app.use(express.static(path.resolve(__dirname, "../dist")));
+
+app.use("/logo.png", express.static(path.join(__dirname, "client/public")));
 
 app.use(cors({ credentials: true, origin: "http://localhost:8080" }));
 app.use(express.json());
