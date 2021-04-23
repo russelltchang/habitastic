@@ -9,7 +9,8 @@ const Landing = () => {
         <div id="heroText">
           <h1 id="header">Keep track of your habits, simply</h1>
           <p id="subheader">
-            Keep track of your habits with a simple, clutter free experience.
+            An intuitive daily logger with note taking functionality, all in one
+            dashboard
           </p>
           <div id="heroBtnWrapper">
             <Link to="/signup" id="heroBtn">

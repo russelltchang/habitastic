@@ -19,8 +19,8 @@ const Dashboard = (props) => {
 
     let url =
       process.env.NODE_ENV === "development"
-        ? "http://localhost:3000/habits"
-        : "/habits";
+        ? "http://localhost:3000/habits/habits"
+        : "/habits/habits";
 
     axios.get(url).then((res) => {
       if (res.data) {
@@ -32,8 +32,8 @@ const Dashboard = (props) => {
   useEffect(() => {
     let url =
       process.env.NODE_ENV === "development"
-        ? "http://localhost:3000/notes"
-        : "/notes";
+        ? "http://localhost:3000/notes/notes"
+        : "/notes/notes";
 
     axios.get(url).then((res) => {
       if (res.data) {
@@ -65,8 +65,8 @@ const Dashboard = (props) => {
   let handleAddHabit = (newHabit) => {
     let url =
       process.env.NODE_ENV === "development"
-        ? "http://localhost:3000/add"
-        : "/add";
+        ? "http://localhost:3000/habits/add"
+        : "/habits/add";
 
     let data = { habit: newHabit, id: Date.now().toString(), dates: [] };
 
@@ -81,8 +81,8 @@ const Dashboard = (props) => {
   let handleEditHabit = (habitName, habitID) => {
     let url =
       process.env.NODE_ENV === "development"
-        ? "http://localhost:3000/edit"
-        : "/edit";
+        ? "http://localhost:3000/habits/edit"
+        : "/habits/edit";
 
     let data = { habit: habitName, id: habitID };
 
@@ -102,8 +102,8 @@ const Dashboard = (props) => {
   let handleDeleteHabit = (habitID) => {
     let url =
       process.env.NODE_ENV === "development"
-        ? "http://localhost:3000/delete"
-        : "/delete";
+        ? "http://localhost:3000/habits/delete"
+        : "/habits/delete";
 
     let data = { id: habitID };
 
@@ -146,8 +146,8 @@ const Dashboard = (props) => {
   let handleAddNote = (note) => {
     let url =
       process.env.NODE_ENV === "development"
-        ? "http://localhost:3000/addnote"
-        : "/addnote";
+        ? "http://localhost:3000/notes/add"
+        : "/notes/add";
 
     let data = {
       id: Date.now().toString(),
@@ -165,8 +165,8 @@ const Dashboard = (props) => {
   let handleEditNote = (note, id) => {
     let url =
       process.env.NODE_ENV === "development"
-        ? "http://localhost:3000/editnote"
-        : "/editnote";
+        ? "http://localhost:3000/notes/edit"
+        : "/notes/edit";
 
     let data = {
       id: id,
@@ -183,8 +183,8 @@ const Dashboard = (props) => {
   let handleDeleteNote = (id) => {
     let url =
       process.env.NODE_ENV === "development"
-        ? "http://localhost:3000/deletenote"
-        : "/deletenote";
+        ? "http://localhost:3000/notes/delete"
+        : "/notes/delete";
 
     let data = {
       id: id,

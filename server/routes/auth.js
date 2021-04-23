@@ -2,11 +2,12 @@ var express = require("express");
 var router = express.Router();
 var passport = require("passport");
 var LocalStrategy = require("passport-local").Strategy;
+var { authorize } = require("../middleware/authorize");
 
 //import User model
 const User = require("../models/User");
 
-// PLM -> this sets up LocalStrategy with correct options (using email as username field, etc)
+// PLM -> sets up LocalStrategy with correct options (using email as username field)
 passport.use(User.createStrategy());
 // authenticated user must remain serialized to the session, & deserialized after each request
 passport.serializeUser(User.serializeUser());
@@ -54,14 +55,10 @@ router.post("/login", (req, res, next) => {
   })(req, res, next);
 });
 
-router.get("/logout", (req, res) => {
-  if (req.user) {
-    req.session.destroy((err) => {
-      res.clearCookie("connect.sid").send("Logged Out");
-    });
-  } else {
-    res.send("No user to log out");
-  }
+router.get("/logout", authorize, (req, res) => {
+  req.session.destroy((err) => {
+    res.clearCookie("connect.sid").send("Logged Out");
+  });
 });
 
 module.exports = router;

@@ -76,10 +76,14 @@ const Navbar = (props) => {
           ) : (
             <ul id="navItems">
               <li>
-                <Link to="/login">Login</Link>
+                <Link to="/login" id="loginLink">
+                  Login
+                </Link>
               </li>
               <li>
-                <Link to="/signup">Signup</Link>
+                <Link to="/signup" id="signupLink">
+                  Signup
+                </Link>
               </li>
             </ul>
           )}

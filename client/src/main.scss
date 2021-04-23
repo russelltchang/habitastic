@@ -94,6 +94,7 @@ body {
   #navContainer {
     width: $tableWidth;
     margin: 0 auto;
+    padding: 1rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -125,11 +126,19 @@ body {
       list-style: none;
       li {
         display: inline-block;
-        font-size: 1.2rem;
-        margin-left: 2rem;
+        margin-left: 1.5rem;
       }
       i {
         color: black;
+      }
+      #signupLink {
+        color: white;
+        background-color: $primary_1;
+        padding: 0.5rem;
+        border-radius: 3px;
+      }
+      #loginLink {
+        padding: 0.5rem;
       }
     }
   }
@@ -327,6 +336,8 @@ table {
   .habitCell {
     cursor: pointer;
     width: 100%;
+    border-bottom: 1px solid lightgrey;
+
     .habitCellInner {
       height: 100%;
       display: flex;

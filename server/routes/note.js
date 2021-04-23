@@ -2,13 +2,13 @@ var express = require("express");
 var router = express.Router();
 var passport = require("passport");
 var LocalStrategy = require("passport-local").Strategy;
-
+var { authorize } = require("../middleware/authorize");
 const User = require("../models/User");
 
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-router.get("/notes", (req, res) => {
+router.get("/notes", authorize, (req, res) => {
   User.findOne({ username: req.user.username }, (err, result) => {
     if (err) {
       console.log("error: " + err);
@@ -18,7 +18,7 @@ router.get("/notes", (req, res) => {
   });
 });
 
-router.post("/addnote", (req, res) => {
+router.post("/add", authorize, (req, res) => {
   User.findOne({ username: req.user.username }, (err, result) => {
     if (err) {
       console.log("error: " + err);
@@ -46,7 +46,7 @@ router.post("/addnote", (req, res) => {
   });
 });
 
-router.put("/editnote", (req, res) => {
+router.put("/edit", authorize, (req, res) => {
   User.findOneAndUpdate(
     { username: req.session.passport.user, "notes.id": req.body.id },
     {
@@ -63,7 +63,7 @@ router.put("/editnote", (req, res) => {
   );
 });
 
-router.put("/deletenote", (req, res) => {
+router.put("/delete", authorize, (req, res) => {
   User.findOneAndUpdate(
     { username: req.session.passport.user },
     { $pull: { notes: { id: req.body.id } } },
