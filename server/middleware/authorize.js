@@ -1,7 +1,6 @@
 const authorize = (req, res, next) => {
   if (req.user) {
-    console.log("middleware going");
-    next();
+    return next();
   } else {
     res.send("Unauthorized");
   }

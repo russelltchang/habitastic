@@ -8,7 +8,7 @@ const User = require("../models/User");
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-router.get("/notes", authorize, (req, res) => {
+router.get("/", authorize, (req, res) => {
   User.findOne({ username: req.user.username }, (err, result) => {
     if (err) {
       console.log("error: " + err);

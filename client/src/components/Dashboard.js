@@ -19,8 +19,8 @@ const Dashboard = (props) => {
 
     let url =
       process.env.NODE_ENV === "development"
-        ? "http://localhost:3000/habits/habits"
-        : "/habits/habits";
+        ? "http://localhost:3000/habits/"
+        : "/habits/";
 
     axios.get(url).then((res) => {
       if (res.data) {
@@ -32,8 +32,8 @@ const Dashboard = (props) => {
   useEffect(() => {
     let url =
       process.env.NODE_ENV === "development"
-        ? "http://localhost:3000/notes/notes"
-        : "/notes/notes";
+        ? "http://localhost:3000/notes/"
+        : "/notes/";
 
     axios.get(url).then((res) => {
       if (res.data) {
