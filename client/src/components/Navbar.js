@@ -42,7 +42,7 @@ const Navbar = (props) => {
       <Toolbar disableGutters={true}>
         <div id="navContainer">
           <Link to="/dashboard">
-            <img id="logoImg" src={Logo} />
+            <img className="logoImg" src={Logo} />
             <h2>Habitastic</h2>
           </Link>
 
@@ -50,7 +50,7 @@ const Navbar = (props) => {
             <ul id="navItems">
               <li>
                 <p id="logOut" onClick={handleMenuClick}>
-                  <i className="fa fa-user-circle-o"></i>
+                  <i className="fa fa-2x fa-user-circle-o"></i>
                 </p>
                 <Menu
                   id="menu"

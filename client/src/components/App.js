@@ -53,9 +53,15 @@ const App = () => {
         />
         <Route
           path="/signup"
-          render={() => <Signup onSignup={handleSignup} />}
+          render={() => (
+            <Signup onSignup={handleSignup} isLoggedIn={isLoggedIn} />
+          )}
         />
-        <PrivateRoute path="/dashboard" component={Dashboard} />
+        <PrivateRoute
+          path="/dashboard"
+          component={Dashboard}
+          isLoggedIn={isLoggedIn}
+        />
       </main>
     </Router>
   );

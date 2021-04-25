@@ -21,6 +21,7 @@ router.get("/auth", (req, res) => {
   }
 });
 
+//add if !req.user ?
 router.post("/signup", (req, res) => {
   var newUser = new User({
     username: req.body.username,

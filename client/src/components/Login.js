@@ -31,7 +31,6 @@ const Login = (props) => {
 
     axios.post(url, data).then((res) => {
       if (res.data.username === data.username) {
-        localStorage.setItem("isAuth", "true");
         props.onLogin(res.data.name);
         //doesn't really match, no user exists doesn't mean invalid email
       } else if (res.data === "No User Exists") {

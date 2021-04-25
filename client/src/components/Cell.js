@@ -66,8 +66,8 @@ const Cell = (props) => {
       <td className="habitCell">
         <div
           className="habitCellInner"
-          onMouseEnter={toggleMouseEnter}
-          onMouseLeave={toggleMouseLeave}
+          onMouseOver={toggleMouseEnter}
+          onMouseOut={toggleMouseLeave}
           onClick={handleClick}
           style={style}
         >
@@ -79,23 +79,11 @@ const Cell = (props) => {
             )
           ) : active ? (
             <div
-              style={{
-                backgroundColor: props.streak >= 1 ? "white" : "none",
-                height: props.streak >= 1 ? "25px" : "0",
-                width: props.streak >= 1 ? "25px" : "0",
-                borderRadius: props.streak >= 1 ? "50%" : "0",
-                fontSize: props.streak >= 1 ? ".8rem" : "0",
-                fontWeight: props.streak >= 1 ? "bold" : "none",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                color:
-                  props.streak >= 1
-                    ? colors.habitPalette[
-                        props.index % colors.habitPalette.length
-                      ]
-                    : "white",
-              }}
+              className={
+                props.streak >= 1
+                  ? `streak-${props.index % colors.habitPalette.length}`
+                  : "streak"
+              }
             >
               {props.streak}
             </div>

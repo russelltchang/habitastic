@@ -9,6 +9,10 @@ const Signup = (props) => {
   let [password, setPassword] = useState("");
   let [errorMsg, setErrorMsg] = useState("");
 
+  if (props.isLoggedIn) {
+    history.push("/dashboard");
+  }
+
   let submit = (e) => {
     //prevents form submitting twice.  Without this, Mongo E1100 error
     e.preventDefault();

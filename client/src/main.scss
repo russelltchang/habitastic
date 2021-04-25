@@ -28,6 +28,23 @@ $tableWidth: 95%;
   width: 100%;
 }
 
+@mixin heroButtonWrapper {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+@mixin heroButton {
+  @include button;
+  text-decoration: none;
+  padding: 0.8rem 2rem 0.8rem 2rem;
+}
+
+@mixin flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 textarea {
   font-family: inherit;
   font-size: inherit;
@@ -52,9 +69,10 @@ body {
   margin: 0 auto; /* extends AppBar fully */
 }
 
-#hero {
+#hero-section {
   width: 80%;
   margin: 0 auto;
+  margin-bottom: 5rem;
   #heroText {
     text-align: center;
     #subheader {
@@ -63,25 +81,81 @@ body {
   }
   #heroImage {
     margin-top: 2rem;
-    margin-bottom: 4rem;
     width: 100%;
-    height: auto;
+    height: 450px;
     border-radius: 5px;
     box-shadow: 0 0px 12px lightgrey;
   }
-  #heroBtnWrapper {
-    margin-top: 3rem;
-    margin-bottom: 3rem;
+  .heroBtnWrapper {
+    @include heroButtonWrapper;
   }
-  #heroBtn {
-    @include button;
-    text-decoration: none;
-    padding: 0.8rem 2rem 0.8rem 2rem;
+  .heroBtn {
+    @include heroButton;
   }
 }
 
-#features {
+#features-section {
+  width: $tableWidth;
+  margin: 0 auto;
+  margin-bottom: 5rem;
+  .section-title {
+    text-align: center;
+  }
+  .row {
+    @include flex;
+  }
+  .feature-col-1,
+  .feature-col-2,
+  .feature-col-3 {
+    width: 33.3%;
+    text-align: center;
+  }
+  .benefits-text {
+    color: $primary_2;
+    width: 80%;
+    margin: 0 auto;
+  }
+  img {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+  }
+}
+
+#CTA-section {
   text-align: center;
+  margin: 0 auto;
+  margin-bottom: 5rem;
+  .heroBtnWrapper {
+    @include heroButtonWrapper;
+  }
+  .heroBtn {
+    @include heroButton;
+  }
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: $tableWidth;
+  margin: 0 auto;
+  .logoImg {
+    width: 20px;
+    height: 20px;
+    margin-right: 0.5rem;
+  }
+  .logo {
+    @include flex;
+    text-decoration: none;
+    color: black;
+    &:focus {
+      outline: 0;
+      border: none;
+      outline-style: none;
+      -moz-outline-style: none;
+    }
+  }
 }
 
 .appBar {
@@ -92,16 +166,14 @@ body {
     color: black;
   }
   #navContainer {
-    width: $tableWidth;
-    margin: 0 auto;
-    padding: 1rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    width: $tableWidth;
+    margin: 0 auto;
+    padding: 1rem;
     a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      @include flex;
       &:focus {
         outline: 0;
         border: none;
@@ -115,7 +187,7 @@ body {
         -moz-outline-style: none;
       }
     }
-    #logoImg {
+    .logoImg {
       width: 30px;
       height: 30px;
       margin-right: 0.5rem;
@@ -275,9 +347,7 @@ table {
     }
 
     .today {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      @include flex;
       margin: 0 auto;
       color: white;
       background-color: #9fa8da;
@@ -286,9 +356,7 @@ table {
       width: 25px;
     }
     .date {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      @include flex;
       margin: 0 auto;
       height: 25px;
       width: 25px;
@@ -305,11 +373,42 @@ table {
   }
 
   #bestStreakCount {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include flex;
     width: 100%;
     border-left: 1px solid lightgrey;
+    .bestStreakWrapper {
+      @include flex;
+      color: black;
+      border-radius: 50%;
+      font-size: 0.8rem;
+    }
+    .bestStreakWrapper-0,
+    .bestStreakWrapper-1,
+    .bestStreakWrapper-2,
+    .bestStreakWrapper-3 {
+      @include flex;
+      color: white;
+      height: 25px;
+      width: 25px;
+      border-radius: 50%;
+      font-size: 0.8rem;
+    }
+    .bestStreakWrapper-0 {
+      box-shadow: 0 0 5px 1px #9fa8da;
+      background-color: #9fa8da;
+    }
+    .bestStreakWrapper-1 {
+      box-shadow: 0 0 5px 1px #80cbc4;
+      background-color: #80cbc4;
+    }
+    .bestStreakWrapper-2 {
+      box-shadow: 0 0 5px 1px #ffe082;
+      background-color: #ffe082;
+    }
+    .bestStreakWrapper-3 {
+      box-shadow: 0 0 5px 1px #ef9a9a;
+      background-color: #ef9a9a;
+    }
     p {
       margin: 0;
     }
@@ -340,9 +439,35 @@ table {
 
     .habitCellInner {
       height: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      @include flex;
+      .streak {
+        @include flex;
+        color: white;
+      }
+      .streak-0,
+      .streak-1,
+      .streak-2,
+      .streak-3 {
+        @include flex;
+        background-color: white;
+        height: 25px;
+        width: 25px;
+        font-size: 0.8rem;
+        font-weight: bold;
+        border-radius: 50%;
+      }
+      .streak-0 {
+        color: #9fa8da;
+      }
+      .streak-1 {
+        color: #80cbc4;
+      }
+      .streak-2 {
+        color: #ffe082;
+      }
+      .streak-3 {
+        color: #ef9a9a;
+      }
     }
   }
 }

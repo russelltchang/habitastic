@@ -39,44 +39,14 @@ const Habits = (props) => {
 
       <td id="bestStreakCount">
         <div
-          id="countBackground"
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            borderRadius: "50%",
-            fontSize: ".8rem",
-            boxShadow:
-              currentStreak(habit.dates) === longestStreak(habit.dates) &&
-              currentStreak(habit.dates) !== 0
-                ? "0 0 5px 1px" +
-                  colors.habitPalette[
-                    props.habits.indexOf(habit) % colors.habitPalette.length
-                  ]
-                : "",
-            height:
-              currentStreak(habit.dates) === longestStreak(habit.dates) &&
-              currentStreak(habit.dates) !== 0
-                ? "25px"
-                : "",
-            width:
-              currentStreak(habit.dates) === longestStreak(habit.dates) &&
-              currentStreak(habit.dates) !== 0
-                ? "25px"
-                : "",
-            backgroundColor:
-              currentStreak(habit.dates) === longestStreak(habit.dates) &&
-              currentStreak(habit.dates) !== 0
-                ? colors.habitPalette[
-                    props.habits.indexOf(habit) % colors.habitPalette.length
-                  ]
-                : "white",
-            color:
-              currentStreak(habit.dates) === longestStreak(habit.dates) &&
-              currentStreak(habit.dates) !== 0
-                ? "white"
-                : "black",
-          }}
+          className={
+            currentStreak(habit.dates) === longestStreak(habit.dates) &&
+            currentStreak(habit.dates) !== 0
+              ? `bestStreakWrapper-${
+                  props.habits.indexOf(habit) % colors.habitPalette.length
+                }`
+              : "bestStreakWrapper"
+          }
         >
           <p>{longestStreak(habit.dates)}</p>
         </div>
