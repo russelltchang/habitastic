@@ -50,7 +50,7 @@ const Navbar = (props) => {
             <ul id="navItems">
               <li>
                 <p id="logOut" onClick={handleMenuClick}>
-                  <i className="fa fa-2x fa-user-circle-o"></i>
+                  <i className="fa fa-user-circle-o"></i>
                 </p>
                 <Menu
                   id="menu"

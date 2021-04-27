@@ -70,19 +70,22 @@ body {
 }
 
 #hero-section {
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
   margin-bottom: 5rem;
   #heroText {
     text-align: center;
     #subheader {
+      width: 50%;
+      margin: 0 auto;
+      font-weight: normal;
       color: $primary_2;
     }
   }
   #heroImage {
     margin-top: 2rem;
     width: 100%;
-    height: 450px;
+    height: 500px;
     border-radius: 5px;
     box-shadow: 0 0px 12px lightgrey;
   }
@@ -94,7 +97,7 @@ body {
   }
 }
 
-#features-section {
+#benefits-section {
   width: $tableWidth;
   margin: 0 auto;
   margin-bottom: 5rem;
@@ -104,9 +107,9 @@ body {
   .row {
     @include flex;
   }
-  .feature-col-1,
-  .feature-col-2,
-  .feature-col-3 {
+  .benefits-col-1,
+  .benefits-col-2,
+  .benefits-col-3 {
     width: 33.3%;
     text-align: center;
   }
@@ -122,10 +125,102 @@ body {
   }
 }
 
-#CTA-section {
+#features-section {
+  width: $tableWidth;
+  margin: 0 auto;
+  .featureHighlight {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 300px;
+    margin-bottom: 3rem;
+    width: 100%;
+    .featureText {
+      @include flex;
+      width: 50%;
+      flex-wrap: wrap;
+    }
+    .featureImage {
+      @include flex;
+      width: 50%;
+      height: 100%;
+    }
+    .featureText3 {
+      @include flex;
+      width: 35%;
+      flex-wrap: wrap;
+    }
+    .featureImage3 {
+      @include flex;
+      width: 65%;
+      height: 100%;
+    }
+    .featureTitle,
+    .featureSubtitle {
+      width: 75%;
+    }
+    .featureTitle {
+      font-size: 1.5rem;
+      line-height: 2rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+    .featureSubtitle {
+      color: $primary_2;
+      line-height: 1.5rem;
+    }
+    #featureImage1 {
+      width: 65%;
+      height: 75%;
+      border-radius: 5px;
+      border: 1px solid lightgrey;
+      box-shadow: 0 0px 12px lightgrey;
+    }
+    #featureImage2 {
+      width: 75%;
+      height: 80%;
+      border-radius: 5px;
+      border: 1px solid lightgrey;
+      box-shadow: 0 0px 12px lightgrey;
+    }
+    #featureImage3 {
+      width: 100%;
+      height: 75%;
+      border-radius: 5px;
+      border: 1px solid lightgrey;
+      box-shadow: 0 0px 12px lightgrey;
+    }
+  }
+}
+
+#CTA-section-1 {
+  padding: 50px;
   text-align: center;
   margin: 0 auto;
-  margin-bottom: 5rem;
+  height: 250px;
+  background-color: $primary_1;
+  border-radius: 8px;
+  margin-bottom: 4rem;
+  width: 90%;
+  color: white;
+  .heroBtnWrapper {
+    @include heroButtonWrapper;
+  }
+  .heroBtn-1 {
+    padding: 0.8rem 2rem 0.8rem 2rem;
+    text-decoration: none;
+    background-color: white;
+    color: $primary_1;
+    cursor: pointer;
+    font-weight: bold;
+  }
+}
+
+#CTA-section {
+  padding: 50px;
+  text-align: center;
+  margin: 0 auto;
+  height: 250px;
   .heroBtnWrapper {
     @include heroButtonWrapper;
   }
@@ -156,11 +251,15 @@ footer {
       -moz-outline-style: none;
     }
   }
+  .footerlink {
+    display: inline-block;
+    margin-left: 1rem;
+  }
 }
 
 .appBar {
   background-color: white;
-  margin-bottom: 3rem;
+  // margin-bottom: 3rem;
   a {
     text-decoration: none;
     color: black;
@@ -171,7 +270,8 @@ footer {
     justify-content: space-between;
     width: $tableWidth;
     margin: 0 auto;
-    padding: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
     a {
       @include flex;
       &:focus {
@@ -217,6 +317,7 @@ footer {
 }
 
 #logOut {
+  font-size: 1.5rem;
   margin: 0;
   cursor: pointer;
 }
@@ -319,7 +420,7 @@ table {
   border-collapse: collapse;
   border: 1px solid lightgrey;
   th {
-    width: 90px;
+    width: 110px;
     max-width: 90px;
   }
   td {
@@ -350,8 +451,7 @@ table {
       @include flex;
       margin: 0 auto;
       color: white;
-      background-color: #9fa8da;
-      border-radius: 50%;
+      background-color: grey;
       height: 25px;
       width: 25px;
     }
@@ -546,9 +646,10 @@ table {
       text-align: left;
     }
     .noteContent {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
       overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
     }
     i {
       margin-left: 1rem;
