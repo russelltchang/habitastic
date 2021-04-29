@@ -45,6 +45,12 @@ $tableWidth: 95%;
   justify-content: center;
 }
 
+@mixin imageContainer {
+  background-color: $primary_1;
+  border-radius: 8px;
+  position: relative;
+}
+
 textarea {
   font-family: inherit;
   font-size: inherit;
@@ -63,6 +69,7 @@ body,
   height: 100%;
   font-family: "Lato", sans-serif;
   overflow-y: overlay; /*prevent scrollbar reduce page width */
+  background-color: #fafafa;
 }
 
 body {
@@ -70,23 +77,28 @@ body {
 }
 
 #hero-section {
-  width: 90%;
+  width: 85%;
   margin: 0 auto;
   margin-bottom: 5rem;
   #heroText {
     text-align: center;
+    #header {
+      font-size: 3rem;
+    }
     #subheader {
       width: 50%;
       margin: 0 auto;
-      font-weight: normal;
+      font-weight: lighter;
+      font-size: 1.3rem;
       color: $primary_2;
     }
   }
   #heroImage {
+    padding: 1.5rem;
     margin-top: 2rem;
+    height: auto;
     width: 100%;
-    height: 500px;
-    border-radius: 5px;
+    border-radius: 8px;
     box-shadow: 0 0px 12px lightgrey;
   }
   .heroBtnWrapper {
@@ -160,59 +172,86 @@ body {
       width: 75%;
     }
     .featureTitle {
-      font-size: 1.5rem;
+      font-size: 2rem;
       line-height: 2rem;
-      font-weight: bold;
+      font-weight: 900;
       margin-bottom: 1rem;
     }
     .featureSubtitle {
       color: $primary_2;
       line-height: 1.5rem;
+      font-weight: lighter;
+      font-size: 1.2rem;
     }
-    #featureImage1 {
+    .imageContainer1 {
+      @include imageContainer;
       width: 65%;
-      height: 75%;
-      border-radius: 5px;
-      border: 1px solid lightgrey;
-      box-shadow: 0 0px 12px lightgrey;
+      height: 80%;
+      border-radius: 8px;
     }
-    #featureImage2 {
+    .imageContainer2 {
+      @include imageContainer;
       width: 75%;
       height: 80%;
-      border-radius: 5px;
-      border: 1px solid lightgrey;
-      box-shadow: 0 0px 12px lightgrey;
+    }
+    .imageContainer3 {
+      @include imageContainer;
+      width: 100%;
+      height: 50%;
+    }
+    #featureImage1 {
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: 8px 8px 12px lightgrey;
+      position: absolute;
+      top: 10%;
+      left: 5%;
+    }
+    #featureImage2 {
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: -5px 5px 12px lightgrey;
+      position: absolute;
+      top: 10%;
+      right: 5%;
     }
     #featureImage3 {
+      background-color: white;
       width: 100%;
-      height: 75%;
-      border-radius: 5px;
-      border: 1px solid lightgrey;
-      box-shadow: 0 0px 12px lightgrey;
+      border-radius: 8px;
+      box-shadow: 5px -5px 12px lightgrey;
+      position: absolute;
+      bottom: 10%;
+      left: 2%;
     }
   }
 }
 
-#CTA-section-1 {
-  padding: 50px;
-  text-align: center;
+#pricing-section {
+  @include flex;
+  height: 400px;
+  width: $tableWidth;
   margin: 0 auto;
-  height: 250px;
-  background-color: $primary_1;
-  border-radius: 8px;
+  flex-wrap: wrap;
   margin-bottom: 4rem;
-  width: 90%;
-  color: white;
-  .heroBtnWrapper {
-    @include heroButtonWrapper;
+  .section-title {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 3rem;
   }
-  .heroBtn-1 {
-    padding: 0.8rem 2rem 0.8rem 2rem;
-    text-decoration: none;
+  .pricingContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 40%;
+    height: 100%;
+  }
+  .free,
+  .premium {
+    border: 1px solid lightgrey;
+    height: 60%;
+    width: 200px;
     background-color: white;
-    color: $primary_1;
-    cursor: pointer;
-    font-weight: bold;
   }
 }
 
@@ -221,6 +260,7 @@ body {
   text-align: center;
   margin: 0 auto;
   height: 250px;
+  margin-bottom: 4rem;
   .heroBtnWrapper {
     @include heroButtonWrapper;
   }
@@ -258,7 +298,7 @@ footer {
 }
 
 .appBar {
-  background-color: white;
+  background-color: #fafafa;
   // margin-bottom: 3rem;
   a {
     text-decoration: none;
@@ -324,6 +364,7 @@ footer {
 
 #signUp,
 #logIn {
+  background-color: white;
   width: 400px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -418,6 +459,7 @@ table {
   width: 100%;
   table-layout: fixed;
   border-collapse: collapse;
+  background-color: white;
   border: 1px solid lightgrey;
   th {
     width: 110px;
@@ -446,6 +488,10 @@ table {
       top: 0;
       left: 0;
     }
+    .month,
+    .day {
+      font-weight: lighter;
+    }
 
     .today {
       @include flex;
@@ -460,6 +506,7 @@ table {
       margin: 0 auto;
       height: 25px;
       width: 25px;
+      font-weight: bold;
     }
   }
 
@@ -469,6 +516,7 @@ table {
     text-overflow: ellipsis;
     #bestStreakText {
       font-size: 0.8rem;
+      font-weight: lighter;
     }
   }
 
@@ -523,6 +571,7 @@ table {
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
+      font-weight: lighter;
     }
     i {
       visibility: hidden;
@@ -607,21 +656,34 @@ table {
   float: right;
 }
 
+// ::-webkit-scrollbar {
+//   width: 0; /* Remove scrollbar space */
+//   background: transparent; /* Optional: just make scrollbar invisible */
+// }
+
 #notes {
-  vertical-align: top;
   display: inline-block;
   margin-left: 2.5%;
   width: 17.5%;
+  background-color: white;
+  border: 1px solid lightgrey;
+  margin-bottom: 2rem;
   #buttonContainer {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 0.5rem 1.5rem 0.5rem 1.5rem;
+    border-bottom: 1px solid lightgrey;
+    .title {
+      color: $primary_2;
+    }
     button {
+      font-size: 1rem;
       padding: 0.5rem;
       color: $primary_2;
-      background-color: white;
-      border: none;
       cursor: pointer;
+      border: none;
+      background-color: white;
       &:hover {
         color: black;
       }
@@ -631,38 +693,53 @@ table {
     }
   }
 
-  .noteContainer {
-    border: 1px solid lightgrey;
-    margin-top: 15px;
-    padding: 1rem;
-    border-radius: 3px;
-    .noteControls {
-      float: right;
+  #notesContainer {
+    width: 100%;
+    height: 333px;
+    overflow-y: scroll;
+    .noteContainer {
+      padding: 1.5rem;
+      border-bottom: 1px solid lightgrey;
+      .noteControls {
+        float: right;
+      }
+      .noteDate {
+        color: $primary_2;
+        font-size: 0.8rem;
+        margin-bottom: 0.5rem;
+        font-weight: lighter;
+      }
+      .noteContent {
+        font-weight: lighter;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+      }
+      i {
+        margin-left: 1rem;
+        visibility: hidden;
+      }
+      &:hover i {
+        visibility: visible;
+      }
     }
-    .noteDate {
-      color: grey;
-      font-size: 0.8rem;
-      margin-bottom: 1rem;
-      text-align: left;
+    #noNotesMsg {
+      height: 100%;
+      color: $primary_2;
+      position: relative;
+      text-align: middle;
+      h3 {
+        margin: 0;
+        height: 50px;
+        margin-top: -25px;
+        left: 50%;
+        position: absolute;
+        top: 50%;
+        width: 80px;
+        margin-left: -40px;
+      }
     }
-    .noteContent {
-      display: -webkit-box;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 2;
-      overflow: hidden;
-    }
-    i {
-      margin-left: 1rem;
-      visibility: hidden;
-    }
-    &:hover i {
-      visibility: visible;
-    }
-  }
-  #noNotesMsg {
-    margin-top: 100px;
-    color: rgb(190, 187, 187);
-    text-align: center;
   }
 }
 .noteInput {

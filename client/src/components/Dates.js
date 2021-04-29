@@ -37,7 +37,7 @@ const Dates = (props) => {
         </td>
       ))}
       <td className="streakTitleCell" style={{ position: "relative" }}>
-        <div id="bestStreakText">Best Streak</div>
+        <div id="bestStreakText">Record</div>
         <div id="dateControlRight">
           <i
             id="rightArrow"

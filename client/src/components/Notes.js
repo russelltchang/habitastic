@@ -75,42 +75,41 @@ const Notes = (props) => {
   return (
     <div id="notes">
       <div id="buttonContainer">
-        <span>Notes</span>
+        <span className="title">Notes</span>
         <button onClick={openNewNote}>
           <i className="fa fa-plus"></i>
-          <span> New Note</span>
         </button>
       </div>
-      <hr style={{ border: "1px solid lightgrey" }} />
-
-      {activeNotesExist ? (
-        props.notes
-          .sort((a, b) => b.id - a.id)
-          .map((noteObj, i) =>
-            props.activeDates.includes(noteObj.date) ? (
-              <div key={i} className="noteContainer">
-                <div className="noteControls">
-                  <i
-                    className="fa fa-pencil"
-                    onClick={() => openEditNote(noteObj.note, noteObj.id)}
-                  ></i>
-                  <i
-                    className="fa fa-trash-o"
-                    onClick={() => openDeleteNote(noteObj.id)}
-                  ></i>
+      <div id="notesContainer">
+        {activeNotesExist ? (
+          props.notes
+            .sort((a, b) => b.id - a.id)
+            .map((noteObj, i) =>
+              props.activeDates.includes(noteObj.date) ? (
+                <div key={i} className="noteContainer">
+                  <div className="noteControls">
+                    <i
+                      className="fa fa-pencil"
+                      onClick={() => openEditNote(noteObj.note, noteObj.id)}
+                    ></i>
+                    <i
+                      className="fa fa-trash-o"
+                      onClick={() => openDeleteNote(noteObj.id)}
+                    ></i>
+                  </div>
+                  <div className="noteDate">{noteObj.date}</div>
+                  <div className="noteContent">{noteObj.note}</div>
                 </div>
-                <div className="noteDate">{noteObj.date}</div>
-                <div className="noteContent">{noteObj.note}</div>
-              </div>
-            ) : (
-              ""
+              ) : (
+                ""
+              )
             )
-          )
-      ) : (
-        <div id="noNotesMsg">
-          <h3>No Notes</h3>
-        </div>
-      )}
+        ) : (
+          <div id="noNotesMsg">
+            <h3>No Notes</h3>
+          </div>
+        )}
+      </div>
       <NoteModal
         open={noteModal}
         edit={editNote}
