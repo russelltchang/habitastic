@@ -255,20 +255,6 @@ body {
   }
 }
 
-#CTA-section {
-  padding: 50px;
-  text-align: center;
-  margin: 0 auto;
-  height: 250px;
-  margin-bottom: 4rem;
-  .heroBtnWrapper {
-    @include heroButtonWrapper;
-  }
-  .heroBtn {
-    @include heroButton;
-  }
-}
-
 footer {
   display: flex;
   justify-content: space-between;
@@ -365,6 +351,7 @@ footer {
 #signUp,
 #logIn {
   background-color: white;
+  color: $primary_2;
   width: 400px;
   border: 1px solid #ccc;
   border-radius: 4px;

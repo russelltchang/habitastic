@@ -113,12 +113,10 @@ const Landing = () => {
         </div>
       </div> */}
       <div id="CTA-section">
-        <h1>Start tracking your habits for free</h1>
-        {/* <div className="heroBtnWrapper">
-          <Link to="/signup" className="heroBtn">
-            Create An Account
-          </Link>
-        </div> */}
+        <h1 style={{ textAlign: "center" }}>
+          Start tracking your habits for free
+        </h1>
+        <Signup CTA={true} />
       </div>
       <footer id="footer">
         <Link className="logo" to="/dashboard">

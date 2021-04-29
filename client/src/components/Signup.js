@@ -41,7 +41,7 @@ const Signup = (props) => {
 
   return (
     <div id="signUp">
-      <h2>Signup</h2>
+      {props.CTA ? "" : <h2>Signup</h2>}
       <p id="errorMsg">{errorMsg}</p>
       <form onSubmit={submit}>
         <label>Name</label>
