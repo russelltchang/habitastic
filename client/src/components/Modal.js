@@ -106,7 +106,7 @@ const Modal = (props) => {
                 autoFocus
                 onChange={(e) => setNewHabit(e.target.value)}
                 onKeyPress={handleKeyPress}
-                placeholder="Eat veggies"
+                placeholder="Add a habit"
               ></input>
               <button
                 className="modalAddBtn"

@@ -46,7 +46,11 @@ const App = () => {
     <Router>
       <Navbar isLoggedIn={isLoggedIn} user={username} onLogout={handleLogout} />
       <main id="container">
-        <Route exact path="/" component={Landing} />
+        <Route
+          exact
+          path="/"
+          render={() => <Landing onSignUp={handleSignup} />}
+        />
         <Route
           path="/login"
           render={() => <Login onLogin={handleLogin} isLoggedIn={isLoggedIn} />}
