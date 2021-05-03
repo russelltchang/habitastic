@@ -34,6 +34,7 @@
   },
   "dependencies": {
     "@material-ui/core": "^4.11.0",
+    "@paypal/checkout-server-sdk": "^1.0.2",
     "axios": "^0.21.1",
     "compression": "^1.7.4",
     "connect-mongo": "^4.4.0",
@@ -45,6 +46,7 @@
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^6.1.0",
+    "react-async-script-loader": "^0.3.0",
     "react-router-dom": "^5.2.0"
   }
 }

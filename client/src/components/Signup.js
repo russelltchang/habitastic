@@ -44,12 +44,23 @@ const Signup = (props) => {
       <p id="errorMsg">{errorMsg}</p>
       <form onSubmit={submit}>
         <label>Name</label>
-        <input
-          required
-          type="text"
-          maxLength="40"
-          onChange={(e) => setName(e.target.value)}
-        />
+        {props.CTA ? (
+          <input
+            required
+            type="text"
+            maxLength="40"
+            onChange={(e) => setName(e.target.value)}
+          />
+        ) : (
+          <input
+            autoFocus
+            required
+            type="text"
+            maxLength="40"
+            onChange={(e) => setName(e.target.value)}
+          />
+        )}
+
         <label>Email</label>
         <input
           required

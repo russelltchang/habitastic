@@ -46,6 +46,7 @@ const Login = (props) => {
       <form onSubmit={submit}>
         <label>Email</label>
         <input
+          autoFocus
           required
           type="text"
           onChange={(e) => setEmail(e.target.value)}

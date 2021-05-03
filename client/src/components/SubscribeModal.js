@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
+import PaypalButton from "./PaypalButton";
 
 const SubscribeModal = (props) => {
   let [paymentView, setPaymentView] = useState(false);
@@ -36,7 +37,7 @@ const SubscribeModal = (props) => {
                 <p>You've reached your max number of habits!</p>
               )}
               <button className="subscribeBtn" onClick={handlePaymentView}>
-                Subscribe
+                Upgrade
               </button>
             </DialogContent>
           </Dialog>
@@ -49,9 +50,12 @@ const SubscribeModal = (props) => {
             open={paymentView}
             transitionDuration={0}
           >
+            <div className="titleContainer">
+              <h2>Upgrade your account!</h2>
+              <i className="fa fa-times fa-1x" onClick={closePaymentView}></i>
+            </div>
             <DialogContent dividers>
-              <p>Subscribe now for more benefits!</p>
-              <button className="payBtn">Subscribe</button>
+              <PaypalButton />
             </DialogContent>
           </Dialog>
         </>

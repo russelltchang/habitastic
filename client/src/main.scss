@@ -373,10 +373,12 @@ footer {
   }
   h2 {
     text-align: center;
+    color: black;
   }
   input {
     @include input;
     margin: 0.3rem 0 1rem 0;
+    font-size: 1rem;
   }
   .authSubmit {
     @include button;
