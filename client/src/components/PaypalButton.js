@@ -53,25 +53,48 @@ const PaypalButton = (props) => {
     [props.isScriptLoadSucceed]
   );
 
-  let createOrder = (data, actions) => {
-    let url =
-      process.env.NODE_ENV === "development"
-        ? "http://localhost:3000/create-order"
-        : "/create-order";
+  // let createOrder = (data, actions) => {
+  //   let url =
+  //     process.env.NODE_ENV === "development"
+  //       ? "http://localhost:3000/create-order"
+  //       : "/create-order";
 
-    //return this
-    return axios.post(url).then((res) => {
-      return res.data.orderID;
+  //   //return this
+  //   return axios.post(url).then((res) => {
+  //     return res.data.orderID;
+  //   });
+  // };
+
+  // let onApprove = (data, actions) => {
+  //   let url =
+  //     process.env.NODE_ENV === "development"
+  //       ? "http://localhost:3000/approve-order"
+  //       : "/approve-order";
+
+  //   return axios.post(url, { orderID: data.orderID }).then((res) => {
+  //     setShowButtons(false);
+  //     setPaid(true);
+  //   });
+  // };
+
+  let createSubscription = (data, actions) => {
+    return actions.subscription.create({
+      plan_id: "P-7M997475S9749214FMCIH2BY",
     });
   };
 
   let onApprove = (data, actions) => {
+    return actions.subscription.get(data.subscriptionID).then((details) => {
+      console.log(details);
+    });
+
     let url =
       process.env.NODE_ENV === "development"
-        ? "http://localhost:3000/approve-order"
-        : "/approve-order";
+        ? "http://localhost:3000/subscribe"
+        : "/subscribe";
 
-    return axios.post(url, { orderID: data.orderID }).then((res) => {
+    axios.post(url, { subscriptionID: data.subscriptionID }).then((res) => {
+      console.log(data.subscriptionID);
       setShowButtons(false);
       setPaid(true);
     });
@@ -89,8 +112,8 @@ const PaypalButton = (props) => {
           </div>
 
           <PayPalButton
-            createOrder={createOrder}
-            onApprove={(data, actions) => onApprove(data, actions)}
+            createSubscription={createSubscription}
+            onApprove={onApprove}
           />
         </div>
       )}
@@ -105,5 +128,5 @@ const PaypalButton = (props) => {
 };
 
 export default scriptLoader(
-  `https://www.paypal.com/sdk/js?client-id=${CLIENT_ID}`
+  `https://www.paypal.com/sdk/js?client-id=${CLIENT_ID}&disable-funding=credit&vault=true&intent=subscription`
 )(PaypalButton);

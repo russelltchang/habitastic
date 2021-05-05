@@ -7,6 +7,9 @@ const userSchema = new mongoose.Schema({
   password: { type: String, trim: true },
   habits: { type: Array },
   notes: { type: Array },
+  isPremium: { type: Boolean, default: false },
+  premiumEnd: { type: String, default: "" },
+  subscriptionID: { type: String, trim: true, default: "" },
 });
 
 //this adds salt and hash field to schema

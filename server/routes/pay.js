@@ -15,6 +15,22 @@ var paypal = require("@paypal/checkout-server-sdk");
 // PayPal HTTP client dependency
 const payPalClient = require("./paypal-config.js");
 
+router.post("/subscribe", authorize, async (req, res) => {
+  console.log("subscribing");
+  User.findOneAndUpdate(
+    { username: req.session.passport.user },
+    { $set: { subscriptionID: req.body.subscriptionID, isPremium: true } },
+    { new: true },
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send({});
+      }
+    }
+  );
+});
+
 router.post("/create-order", authorize, async (req, res) => {
   // 1. Call PayPal to set up a transaction
   const request = new paypal.orders.OrdersCreateRequest();

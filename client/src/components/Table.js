@@ -34,7 +34,7 @@ const Table = (props) => {
   }, [dateInfo.startIndex, dateInfo.endIndex]);
 
   let handleOpen = () => {
-    if (props.habits.length < 8) {
+    if (props.habits.length < 3) {
       setModalOpen(true);
     } else {
       setModalSubscribe(true);
