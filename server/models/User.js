@@ -6,6 +6,7 @@ const userSchema = new mongoose.Schema({
   username: { type: String, lowercase: true, trim: true },
   password: { type: String, trim: true },
   habits: { type: Array },
+  archive: { type: Array },
   notes: { type: Array },
   isPremium: { type: Boolean, default: false },
   premiumEnd: { type: String, default: "" },

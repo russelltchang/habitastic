@@ -45,10 +45,24 @@ $tableWidth: 95%;
   justify-content: center;
 }
 
+@mixin space-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 @mixin imageContainer {
   background-color: $primary_1;
   border-radius: 8px;
   position: relative;
+}
+
+@mixin pricingPlan {
+  border: 2px solid lightgrey;
+  width: 45%;
+  text-align: center;
+  cursor: pointer;
+  height: 80px;
 }
 
 textarea {
@@ -140,9 +154,7 @@ body {
   width: $tableWidth;
   margin: 0 auto;
   .featureHighlight {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    @include space-between;
     height: 300px;
     margin-bottom: 8rem;
     width: 100%;
@@ -242,9 +254,7 @@ body {
     margin-bottom: 3rem;
   }
   .pricingContainer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    @include space-between;
     width: 40%;
     height: 100%;
   }
@@ -262,9 +272,7 @@ body {
 }
 
 footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  @include space-between;
   width: $tableWidth;
   margin: 0 auto;
   .logoImg {
@@ -297,9 +305,7 @@ footer {
     color: black;
   }
   #navContainer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    @include space-between;
     width: $tableWidth;
     margin: 0 auto;
     padding-top: 1rem;
@@ -398,9 +404,7 @@ footer {
     width: 1000px;
   }
   .titleContainer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    @include space-between;
     padding: 16px 24px;
     h2 {
       margin: 0px;
@@ -666,9 +670,7 @@ table {
   border: 1px solid lightgrey;
   margin-bottom: 2rem;
   #buttonContainer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    @include space-between;
     padding: 0.5rem 1.5rem 0.5rem 1.5rem;
     border-bottom: 1px solid lightgrey;
     .title {
@@ -759,4 +761,63 @@ table {
   background-color: $error_primary2;
   border: 1px solid $error_primary1;
   padding: 0.5rem;
+}
+
+#loading {
+  @include flex;
+}
+
+.subscribe-dialog {
+  .MuiPaper-root {
+    width: 500px;
+  }
+  .titleContainer {
+    @include space-between;
+    padding: 16px 24px;
+    h2 {
+      margin: 0px;
+    }
+  }
+  #options {
+    @include space-between;
+    margin-bottom: 1rem;
+    #monthlyOption,
+    #annualOption {
+      @include flex;
+      @include pricingPlan;
+      width: 45%;
+    }
+    #monthlyOption-active {
+      @include flex;
+      @include pricingPlan;
+      border: 2px solid $primary_1;
+      background-color: rgba(7, 123, 248, 0.05);
+    }
+    #annualOption-active {
+      @include flex;
+      @include pricingPlan;
+
+      border: 2px solid $primary_1;
+      background-color: rgba(7, 123, 248, 0.05);
+    }
+    #discount {
+      color: $primary_2;
+      margin-top: 0.2rem;
+      font-size: 0.8rem;
+    }
+  }
+  #renewMsg {
+    font-size: 0.7rem;
+    color: $primary_2;
+  }
+
+  #total {
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+  }
+
+  .price {
+    color: $primary_1;
+    font-weight: bold;
+  }
 }

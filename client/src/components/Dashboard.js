@@ -30,6 +30,10 @@ const Dashboard = (props) => {
   }, []);
 
   useEffect(() => {
+    if (localStorage.notes) {
+      return;
+    }
+
     let url =
       process.env.NODE_ENV === "development"
         ? "http://localhost:3000/notes/"
@@ -45,6 +49,10 @@ const Dashboard = (props) => {
   useEffect(() => {
     localStorage.setItem("habits", JSON.stringify(habits));
   }, [habits]);
+
+  useEffect(() => {
+    localStorage.setItem("notes", JSON.stringify(notes));
+  }, [notes]);
 
   let handleDateChange = (dates) => {
     let formattedDates = [];
@@ -197,17 +205,23 @@ const Dashboard = (props) => {
     });
   };
 
+  let handleApprove = () => {
+    props.handleApprove();
+  };
+
   return (
     <>
       {habits.length > 0 ? (
         <>
           <Table
             habits={habits}
+            isPremium={props.isPremium}
             dateChange={handleDateChange}
             markHabit={handleMarkHabit}
             addHabit={handleAddHabit}
             editHabit={handleEditHabit}
             deleteHabit={handleDeleteHabit}
+            handleApprove={handleApprove}
           />
           <Notes
             addNote={handleAddNote}

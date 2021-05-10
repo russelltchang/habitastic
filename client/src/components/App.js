@@ -11,6 +11,7 @@ import PrivateRoute from "./PrivateRoute";
 const App = () => {
   let [isLoggedIn, setIsLoggedIn] = useState(false);
   let [username, setUsername] = useState("");
+  let [isPremium, setIsPremium] = useState(false);
 
   useEffect(() => {
     let url =
@@ -20,7 +21,8 @@ const App = () => {
 
     axios.get(url).then((res) => {
       if (res.data !== "Unauthorized") {
-        setUsername(res.data);
+        setUsername(res.data.username);
+        setIsPremium(res.data.isPremium);
         setIsLoggedIn(true);
       } else {
         setIsLoggedIn(false);
@@ -40,6 +42,12 @@ const App = () => {
 
   let handleLogout = () => {
     setIsLoggedIn(false);
+    setIsPremium(false);
+    setUsername("");
+  };
+
+  let handleApprove = () => {
+    setIsPremium(true);
   };
 
   return (
@@ -65,6 +73,8 @@ const App = () => {
           path="/dashboard"
           component={Dashboard}
           isLoggedIn={isLoggedIn}
+          isPremium={isPremium}
+          handleApprove={handleApprove}
         />
       </main>
     </Router>

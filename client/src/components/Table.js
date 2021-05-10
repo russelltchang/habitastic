@@ -34,7 +34,8 @@ const Table = (props) => {
   }, [dateInfo.startIndex, dateInfo.endIndex]);
 
   let handleOpen = () => {
-    if (props.habits.length < 3) {
+    //the 2nd IF condition is premium member had 3+ habits, but expired
+    if (props.isPremium || (!props.isPremium && props.habits.length < 3)) {
       setModalOpen(true);
     } else {
       setModalSubscribe(true);
@@ -93,6 +94,10 @@ const Table = (props) => {
     }
   };
 
+  let handleApprove = () => {
+    props.handleApprove();
+  };
+
   return (
     <div id="tableContainer">
       <table>
@@ -122,7 +127,11 @@ const Table = (props) => {
             deleteHabit={handleDeleteHabit}
             close={handleClose}
           />
-          <SubscribeModal open={modalSubscribe} close={handleClose} />
+          <SubscribeModal
+            open={modalSubscribe}
+            close={handleClose}
+            handleApprove={handleApprove}
+          />
         </tbody>
       </table>
       <div id="newHabitWrapper">

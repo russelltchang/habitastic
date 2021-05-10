@@ -23,7 +23,7 @@ router.post("/add", authorize, (req, res) => {
     if (err) {
       console.log("error: " + err);
     }
-    if (result.habits.length < 3) {
+    if (result.isPremium || result.habits.length < 3) {
       User.findOneAndUpdate(
         //find with req.session or axios data?
         { username: req.session.passport.user },

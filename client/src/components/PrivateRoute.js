@@ -7,7 +7,7 @@ let PrivateRoute = ({ component: Component, isLoggedIn, ...rest }) => {
       {...rest}
       render={({ location }) => {
         return isLoggedIn ? (
-          <Component />
+          <Component {...rest} />
         ) : (
           <Redirect
             to={{

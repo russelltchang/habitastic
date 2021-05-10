@@ -13,13 +13,18 @@ var paypal = require("@paypal/checkout-server-sdk");
 
 // Import the PayPal SDK client that was created in `Set up Server-Side SDK`.
 // PayPal HTTP client dependency
-const payPalClient = require("./paypal-config.js");
+const payPalClient = require("../config/paypal-config.js");
 
 router.post("/subscribe", authorize, async (req, res) => {
-  console.log("subscribing");
   User.findOneAndUpdate(
     { username: req.session.passport.user },
-    { $set: { subscriptionID: req.body.subscriptionID, isPremium: true } },
+    {
+      $set: {
+        subscriptionID: req.body.subscriptionID,
+        premiumEnd: req.body.premiumEnd,
+        isPremium: true,
+      },
+    },
     { new: true },
     (err, result) => {
       if (err) {
@@ -31,6 +36,7 @@ router.post("/subscribe", authorize, async (req, res) => {
   );
 });
 
+//one time order
 router.post("/create-order", authorize, async (req, res) => {
   // 1. Call PayPal to set up a transaction
   const request = new paypal.orders.OrdersCreateRequest();
@@ -66,6 +72,7 @@ router.post("/create-order", authorize, async (req, res) => {
   });
 });
 
+//one time order
 router.post("/approve-order", authorize, async (req, res) => {
   // 1. Get the order ID from the request body
   const orderID = req.body.orderID;

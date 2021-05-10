@@ -15,7 +15,13 @@ passport.deserializeUser(User.deserializeUser());
 
 router.get("/auth", (req, res) => {
   if (req.user) {
-    res.send(req.user.name);
+    User.findOne({ username: req.user.username }, (err, result) => {
+      if (err) {
+        console.log("error: " + err);
+      } else {
+        res.send({ isPremium: result.isPremium, username: req.user.username });
+      }
+    });
   } else {
     res.send("Unauthorized");
   }
