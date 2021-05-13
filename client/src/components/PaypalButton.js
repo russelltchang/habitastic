@@ -29,8 +29,9 @@ const PaypalButton = (props) => {
   let [loading, setLoading] = useState(true);
   let [paid, setPaid] = useState(false);
   let [planID, setPlanID] = useState(PLAN_ID.annual);
-  let [price, setPrice] = useState("25.00");
+  let [price, setPrice] = useState("20.00");
   let [timeInterval, setTimeInterval] = useState("year");
+  let [error, setError] = useState(false);
 
   useEffect(() => {
     const { isScriptLoaded, isScriptLoadSucceed } = props;
@@ -89,11 +90,11 @@ const PaypalButton = (props) => {
       e.currentTarget.id === "monthlyOption-active"
     ) {
       setPlanID(PLAN_ID.monthly);
-      setPrice("2.99");
+      setPrice("2.50");
       setTimeInterval("month");
     } else {
       setPlanID(PLAN_ID.annual);
-      setPrice("25.00");
+      setPrice("20.00");
       setTimeInterval("year");
     }
   };
@@ -127,43 +128,50 @@ const PaypalButton = (props) => {
     });
   };
 
+  let onError = () => {
+    setError(true);
+    setShowButtons(false);
+    props.handleError();
+  };
+
   return (
     <div>
       <div id="loading">{loading && <CircularProgress />}</div>
 
       {showButtons && (
         <div>
+          <div id="limitedOffer">
+            Hurry, get 20% off the annual plan for a limited time only!
+          </div>
+
           <div id="options">
             <div
-              id={price === "2.99" ? "monthlyOption-active" : "monthlyOption"}
+              id={price === "2.50" ? "monthlyOption-active" : "monthlyOption"}
               onClick={handleOptionClick}
             >
               <div>
                 <div>
-                  <b>Monthly Billing</b>
+                  <b>Monthly Plan</b>
                 </div>
+                <div className="desc">Unlimited habits and notes</div>
                 <div>
-                  <span className="price">$2.99</span> / month
+                  <span className="price">$2.50</span>
                 </div>
               </div>
             </div>
 
             <div
-              id={price === "25.00" ? "annualOption-active" : "annualOption"}
+              id={price === "20.00" ? "annualOption-active" : "annualOption"}
               onClick={handleOptionClick}
             >
               <div>
                 <div>
-                  <b>Annual Billing</b>
+                  <b>Annual Plan</b>
                 </div>
-                <div>
-                  <span className="price">$25.00</span> / year
-                </div>
-                <div id="discount">
-                  $2.08 a month -{" "}
-                  <span>
-                    <b style={{ color: "black" }}>save 30%!</b>
-                  </span>
+                <div className="desc">Unlimited habits and notes</div>
+                <div id="annualPricing">
+                  <span className="prevPrice">$25</span>
+                  <span className="price">$20</span>
                 </div>
               </div>
             </div>
@@ -179,13 +187,30 @@ const PaypalButton = (props) => {
           <PayPalButton
             createSubscription={createSubscription}
             onApprove={onApprove}
+            onError={onError}
           />
         </div>
       )}
 
       {paid && (
-        <div>
-          <h2>Congrats! You are now a premium member!</h2>
+        <div id="paymentSuccessMsg">
+          <div>
+            <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+          </div>
+          <div>
+            <h2>Congrats, you are now a premium member!</h2>
+          </div>
+        </div>
+      )}
+
+      {error && (
+        <div id="paymentErrorMsg">
+          <div>
+            <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+          </div>
+          <div>
+            <h2>There was an error processing payment, please try again!</h2>
+          </div>
         </div>
       )}
     </div>

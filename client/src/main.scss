@@ -80,7 +80,7 @@ textarea {
 html,
 body,
 #root {
-  height: 100%;
+  // height: 100%; comment out to allow scrollTop on Privacy/terms page
   font-family: "Lato", sans-serif;
   overflow-y: overlay; /*prevent scrollbar reduce page width */
   background-color: #fafafa;
@@ -241,32 +241,6 @@ body {
   }
 }
 
-#pricing-section {
-  @include flex;
-  height: 400px;
-  width: $tableWidth;
-  margin: 0 auto;
-  flex-wrap: wrap;
-  margin-bottom: 4rem;
-  .section-title {
-    text-align: center;
-    width: 100%;
-    margin-bottom: 3rem;
-  }
-  .pricingContainer {
-    @include space-between;
-    width: 40%;
-    height: 100%;
-  }
-  .free,
-  .premium {
-    border: 1px solid lightgrey;
-    height: 60%;
-    width: 200px;
-    background-color: white;
-  }
-}
-
 #CTA-section {
   margin-top: 10rem;
 }
@@ -291,10 +265,21 @@ footer {
       -moz-outline-style: none;
     }
   }
+  .privacyLink,
+  .termsLink {
+    color: $primary_2;
+  }
   .footerlink {
     display: inline-block;
     margin-left: 1rem;
   }
+}
+
+#privacy,
+#terms {
+  width: 60%;
+  height: 100%;
+  margin: 0 auto;
 }
 
 .appBar {
@@ -775,7 +760,12 @@ table {
     @include space-between;
     padding: 16px 24px;
     h2 {
-      margin: 0px;
+      margin: 0;
+      margin-bottom: 0.25rem;
+    }
+    p {
+      margin: 0;
+      font-weight: lighter;
     }
   }
   #options {
@@ -802,8 +792,14 @@ table {
     }
     #discount {
       color: $primary_2;
-      margin-top: 0.2rem;
+      // margin-top: 0.2rem;
       font-size: 0.8rem;
+    }
+    .desc {
+      font-size: 0.8rem;
+      color: $primary_2;
+      margin-top: 0.3rem;
+      margin-bottom: 0.3rem;
     }
   }
   #renewMsg {
@@ -816,8 +812,58 @@ table {
     font-size: 1.3rem;
   }
 
+  #annualPricing {
+    @include flex;
+  }
+
   .price {
     color: $primary_1;
     font-weight: bold;
+  }
+
+  .prevPrice {
+    color: $primary_2;
+    font-size: 0.8rem;
+    text-decoration: line-through;
+    margin-right: 0.25rem;
+  }
+
+  #limitedOffer {
+    background-color: #444;
+    color: white;
+    font-size: 0.9rem;
+    padding: 0.25rem;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  #paymentSuccessMsg {
+    @include flex;
+    flex-wrap: wrap;
+    text-align: center;
+    padding: 10px;
+    i {
+      font-size: 4rem;
+      color: #4bb543;
+      margin-bottom: 0.5rem;
+    }
+    h2 {
+      margin: 0;
+    }
+  }
+
+  #paymentErrorMsg {
+    @include flex;
+    flex-wrap: wrap;
+    text-align: center;
+    padding: 10px;
+    i {
+      font-size: 4rem;
+      color: #ff0033;
+      margin-bottom: 0.5rem;
+    }
+    h2 {
+      margin: 0;
+    }
   }
 }

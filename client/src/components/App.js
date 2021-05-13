@@ -6,6 +6,8 @@ import Login from "./Login";
 import Signup from "./Signup";
 import Navbar from "./Navbar";
 import Dashboard from "./Dashboard";
+import Terms from "./Terms";
+import Privacy from "./Privacy";
 import PrivateRoute from "./PrivateRoute";
 
 const App = () => {
@@ -29,6 +31,10 @@ const App = () => {
       }
     });
   }, []);
+
+  let handleSubExpire = () => {
+    setIsPremium(false);
+  };
 
   let handleSignup = (user) => {
     setIsLoggedIn(true);
@@ -68,13 +74,16 @@ const App = () => {
           render={() => (
             <Signup onSignup={handleSignup} isLoggedIn={isLoggedIn} />
           )}
-        />
+        />{" "}
+        <Route path="/terms" component={Terms} />
+        <Route path="/privacy" component={Privacy} />
         <PrivateRoute
           path="/dashboard"
           component={Dashboard}
           isLoggedIn={isLoggedIn}
           isPremium={isPremium}
           handleApprove={handleApprove}
+          subscriptionExpire={handleSubExpire}
         />
       </main>
     </Router>

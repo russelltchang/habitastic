@@ -34,8 +34,7 @@ const Table = (props) => {
   }, [dateInfo.startIndex, dateInfo.endIndex]);
 
   let handleOpen = () => {
-    //the 2nd IF condition is premium member had 3+ habits, but expired
-    if (props.isPremium || (!props.isPremium && props.habits.length < 3)) {
+    if (props.isPremium || props.habits.length < 3) {
       setModalOpen(true);
     } else {
       setModalSubscribe(true);

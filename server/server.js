@@ -35,6 +35,22 @@ app.use(express.urlencoded({ extended: true }));
 app.use(helmet());
 app.use(compression());
 
+//socket config
+const httpServer = require("http").createServer(app);
+const io = require("socket.io")(httpServer, {
+  cors: {
+    origin: "*",
+  },
+});
+
+io.on("connection", (socket) => {
+  app.set("socketio", socket);
+  console.log("Socket Connected");
+  socket.on("disconnect", () => {
+    console.log("Socket Disconnected");
+  });
+});
+
 mongoose
   .connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
@@ -59,6 +75,8 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../dist/index.html"));
 });
 
-app.listen(port, () => {
-  console.log("Listening at " + port);
-});
+// app.listen(port, () => {
+//   console.log("Listening at " + port);
+// });
+
+httpServer.listen(port);

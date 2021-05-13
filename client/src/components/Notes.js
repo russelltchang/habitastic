@@ -23,6 +23,11 @@ const Notes = (props) => {
 
   let openNewNote = () => {
     let today = new Date(Date.now()).toLocaleString().split(",")[0];
+    if (props.isPremium) {
+      setNoteModal(true);
+      return;
+    }
+
     for (let i = 0; i < props.notes.length; i++) {
       if (props.notes[i].date === today) {
         setSubModal(true);

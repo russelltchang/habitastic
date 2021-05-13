@@ -5,9 +5,16 @@ import PaypalButton from "./PaypalButton";
 
 const SubscribeModal = (props) => {
   let [paymentView, setPaymentView] = useState(false);
+  let [approved, setApproved] = useState(false);
+  let [error, setError] = useState(false);
 
   let handleApprove = () => {
+    setApproved(true);
     props.handleApprove();
+  };
+
+  let handleError = () => {
+    setError(true);
   };
 
   let handlePaymentView = () => {
@@ -55,11 +62,23 @@ const SubscribeModal = (props) => {
             transitionDuration={0}
           >
             <div className="titleContainer">
-              <h2>Upgrade for unlimited habits</h2>
+              {approved || error ? (
+                <span></span>
+              ) : (
+                <div>
+                  <h2>Upgrade to Premium</h2>
+                  <p>
+                    Get unlimited habits, unlimited notes, and priority support
+                  </p>
+                </div>
+              )}
               <i className="fa fa-times fa-1x" onClick={closePaymentView}></i>
             </div>
             <DialogContent dividers>
-              <PaypalButton handleApprove={handleApprove} />
+              <PaypalButton
+                handleApprove={handleApprove}
+                handleError={handleError}
+              />
             </DialogContent>
           </Dialog>
         </>

@@ -3,6 +3,15 @@ import Table from "./Table";
 import Notes from "./Notes";
 import Modal from "./Modal";
 import axios from "axios";
+import { io } from "socket.io-client";
+
+let socketURL =
+  process.env.NODE_ENV === "development" ? "http://localhost:3000/" : "/";
+
+const socket = io(socketURL);
+socket.on("connect", () => {
+  console.log("Connected");
+});
 
 const Dashboard = (props) => {
   let storageNotes = JSON.parse(localStorage.getItem("notes"));
@@ -11,6 +20,11 @@ const Dashboard = (props) => {
   let [notes, setNotes] = useState(storageNotes || []);
   let [modalOpen, setModalOpen] = useState(false);
   let [activeDates, setActiveDates] = useState([]);
+
+  socket.on("hello", (arg) => {
+    setHabits(arg);
+    props.subscriptionExpire();
+  });
 
   useEffect(() => {
     if (localStorage.habits) {
@@ -224,6 +238,7 @@ const Dashboard = (props) => {
             handleApprove={handleApprove}
           />
           <Notes
+            isPremium={props.isPremium}
             addNote={handleAddNote}
             editNote={handleEditNote}
             deleteNote={handleDeleteNote}

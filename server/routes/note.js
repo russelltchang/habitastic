@@ -19,30 +19,23 @@ router.get("/", authorize, (req, res) => {
 });
 
 router.post("/add", authorize, (req, res) => {
-  User.findOne({ username: req.user.username }, (err, result) => {
-    if (err) {
-      console.log("error: " + err);
-    }
-    User.findOneAndUpdate(
-      { username: req.session.passport.user },
-      {
-        $push: {
-          notes: {
-            id: req.body.id,
-            date: req.body.date,
-            note: req.body.note,
-          },
-        },
-      },
-      { new: true },
-      (err, result) => {
-        if (err) {
-          console.log(err);
-        } else {
-          res.send(result.notes);
-        }
+  let noteTodayExists = false;
+  let today = new Date(Date.now()).toLocaleString().split(",")[0];
+  User.find({ username: req.user.username }, (err, result) => {
+    for (let i = 0; i < result[0].notes.length; i++) {
+      if (result[0].notes[i].date === today) {
+        noteTodayExists = true;
       }
-    );
+    }
+    if (result.isPremium || (!result.isPremium && !noteTodayExists)) {
+      result[0].notes.push({
+        id: req.body.id,
+        date: req.body.date,
+        note: req.body.note,
+      });
+      result[0].save();
+      res.send(result[0].notes);
+    }
   });
 });
 

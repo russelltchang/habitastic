@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import Logo from "/client/public/logo.png";
 import Hero from "/client/public/hero.png";
 import benefit1 from "/client/public/benefit1.svg";
 import benefit2 from "/client/public/benefit2.svg";
@@ -12,6 +11,7 @@ import feature2 from "/client/public/feature2.gif";
 import feature3 from "/client/public/feature3.gif";
 import feature4 from "/client/public/feature4.gif";
 import Signup from "./Signup";
+import Footer from "./Footer";
 
 const Landing = (props) => {
   let handleSignUp = (name) => {
@@ -96,17 +96,6 @@ const Landing = (props) => {
           </div>
         </div>
       </div>
-      {/* <div id="pricing-section">
-        <h1 className="section-title">Pricing</h1>
-        <div className="pricingContainer">
-          <div className="free">
-            <h1>Free</h1>
-          </div>
-          <div className="premium">
-            <h1>Premium</h1>
-          </div>
-        </div>
-      </div> */}
       <div id="benefits-section">
         <div className="row">
           <div className="benefits-col-1">
@@ -167,16 +156,7 @@ const Landing = (props) => {
         </h1>
         <Signup CTA={true} onSignup={handleSignUp} />
       </div>
-      <footer id="footer">
-        <Link className="logo" to="/dashboard">
-          <img className="logoImg" src={Logo} />
-          <h3>Habitastic</h3>
-        </Link>
-        <div className="footer-col-1">
-          <h5 className="footerlink">Terms</h5>
-          <h5 className="footerlink">Privacy</h5>
-        </div>
-      </footer>
+      <Footer />
     </>
   );
 };
