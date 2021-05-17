@@ -55,7 +55,7 @@ router.post("/webhook-expire", (req, res) => {
     user[0].isPremium = false;
     user[0].save();
     var socket = req.app.get("socketio");
-    socket.emit("hello", user[0].habits);
+    socket.emit("webhook", user[0].habits);
     res.status(200).end();
   });
 });

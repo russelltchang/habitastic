@@ -21,7 +21,7 @@ const Dashboard = (props) => {
   let [modalOpen, setModalOpen] = useState(false);
   let [activeDates, setActiveDates] = useState([]);
 
-  socket.on("hello", (arg) => {
+  socket.on("webhook", (arg) => {
     setHabits(arg);
     props.subscriptionExpire();
   });

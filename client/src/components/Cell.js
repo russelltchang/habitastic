@@ -7,20 +7,13 @@ const Cell = (props) => {
   let [hover, setHover] = useState(false);
 
   let style = {
+    userSelect: "none",
+    webkitUserSelect: "none",
     backgroundColor: hover
-      ? active
-        ? "white"
-        : colors.habitPalette[props.index % colors.habitPalette.length]
+      ? colors.habitPalette[props.index % colors.habitPalette.length]
       : active
       ? colors.habitPalette[props.index % colors.habitPalette.length]
       : "white",
-    border: hover
-      ? active
-        ? "2px solid " +
-          colors.habitPalette[props.index % colors.habitPalette.length]
-        : "none"
-      : "none",
-    color: hover ? (active ? "black" : "white") : active ? "black" : "black",
     opacity: hover ? (active ? 1 : 0.5) : active ? 1 : 1,
   };
 
@@ -71,13 +64,7 @@ const Cell = (props) => {
           onClick={handleClick}
           style={style}
         >
-          {hover ? (
-            active ? (
-              "undo"
-            ) : (
-              ""
-            )
-          ) : active ? (
+          {active ? (
             <div
               className={
                 props.streak >= 1

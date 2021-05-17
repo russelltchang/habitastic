@@ -208,8 +208,8 @@ const Terms = () => {
           particular purpose, durability, title, and non-infringement.
         </p>
         <p>
-          In no case shall Habitastic be liable for any injury, loss, claim, or
-          any direct, indirect, incidental, punitive, special, or consequential
+          In no case shall we be liable for any injury, loss, claim, or any
+          direct, indirect, incidental, punitive, special, or consequential
           damages of any kind, including, without limitation lost profits, lost
           revenue, lost savings, loss of data, replacement costs, or any similar
           damages, whether based in contract, tort (including negligence),
@@ -227,11 +227,11 @@ const Terms = () => {
         </p>
         <h3>SECTION 12 - INDEMNIFICATION</h3>
         <p>
-          You agree to indemnify, defend and hold harmless Habitastic harmless
-          from any claim or demand, including reasonable attorneys&rsquo; fees,
-          made by any third-party due to or arising out of your breach of these
-          Terms of Service or the documents they incorporate by reference, or
-          your violation of any law or the rights of a third-party.
+          You agree to indemnify, defend and hold us harmless from any claim or
+          demand, including reasonable attorneys&rsquo; fees, made by any
+          third-party due to or arising out of your breach of these Terms of
+          Service or the documents they incorporate by reference, or your
+          violation of any law or the rights of a third-party.
         </p>
         <h3>SECTION 13 - SEVERABILITY</h3>
         <p>
@@ -304,7 +304,7 @@ const Terms = () => {
         <h3>SECTION 18 - CONTACT INFORMATION</h3>
         <p>
           Questions about the Terms of Service should be sent to us at
-          info@habitastic.app.
+          habitastic@protonmail.com.
         </p>
       </div>
       <Footer />

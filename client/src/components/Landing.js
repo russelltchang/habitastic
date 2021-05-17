@@ -24,7 +24,7 @@ const Landing = (props) => {
         <div id="heroText">
           <h1 id="header">Keep track of your habits, simply</h1>
           <h3 id="subheader">
-            An activity logger to help you reach your goals
+            Achieve your goals with a daily activity logger and notes
           </h3>
           <div className="heroBtnWrapper">
             <Link to="/signup" className="heroBtn">
@@ -35,7 +35,7 @@ const Landing = (props) => {
         <img id="heroImage" src={Hero} />
       </div>
 
-      <div id="features-section">
+      {/* <div id="features-section">
         <div className="featureHighlight">
           <div className="featureImage">
             <div className="imageContainer1">
@@ -95,7 +95,7 @@ const Landing = (props) => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
       <div id="benefits-section">
         <div className="row">
           <div className="benefits-col-1">

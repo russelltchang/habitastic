@@ -5,20 +5,25 @@ import { useEffect, useState } from "react";
 import scriptLoader from "react-async-script-loader";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
-// Mern-App-Test Sandbox App, Client ID
 const CLIENT = {
   sandbox:
     "ATf-ZbLJCuDPxXkxEDFAiOZH5HZZfDxPQi82IaNUb9aLrIBne8t61JSKUgkxwgyT4ag19eNxHKvlX3h8",
-  //do not put here.  How to access in heroku without .env?
-  production: "your_production_key",
+  production:
+    "AfUSLOnx-8lzDv0tL4fDB5Z5W0-_euwEtDGHR4pUZrlYMfJ8Zxr0AzOGKt-OxqA4OGVfkpUURlncKLe_",
 };
 
 const CLIENT_ID =
   process.env.NODE_ENV === "production" ? CLIENT.production : CLIENT.sandbox;
 
 let PLAN_ID = {
-  monthly: "P-7M997475S9749214FMCIH2BY",
-  annual: "P-1GH247053G464620YMCKCXKQ",
+  monthly:
+    process.env.NODE_ENV === "production"
+      ? "P-88T93611VX4689934MCRNJII"
+      : "P-7M997475S9749214FMCIH2BY",
+  annual:
+    process.env.NODE_ENV === "production"
+      ? "P-2EP33747C2010350GMCRNKQI"
+      : "P-1GH247053G464620YMCKCXKQ",
 };
 
 //create button here
@@ -102,6 +107,9 @@ const PaypalButton = (props) => {
   let createSubscription = (data, actions) => {
     return actions.subscription.create({
       plan_id: planID,
+      application_context: {
+        shipping_preference: "NO_SHIPPING",
+      },
     });
   };
 
