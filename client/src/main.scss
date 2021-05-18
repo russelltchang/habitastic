@@ -1,13 +1,12 @@
 $primary_1: #3f51b5;
 $primary_2: #777;
-$today_column: black;
 $error_primary1: #9f3a38;
 $error_primary2: #fff6f6;
 $tableWidth: 95%;
 
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap");
 
-@mixin button {
+%button {
   background-color: $primary_1;
   border: 3px solid $primary_1;
   color: white;
@@ -20,7 +19,7 @@ $tableWidth: 95%;
   }
 }
 
-@mixin input {
+%input {
   border: 1px solid #ccc;
   border-radius: 4px;
   line-height: 28px;
@@ -28,47 +27,24 @@ $tableWidth: 95%;
   width: 100%;
 }
 
-@mixin heroButtonWrapper {
-  margin-top: 3rem;
-  margin-bottom: 3rem;
-}
-
-@mixin heroButton {
-  @include button;
-  text-decoration: none;
-  padding: 0.8rem 2rem 0.8rem 2rem;
-}
-
-@mixin flex {
+%flex {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-@mixin space-between {
+%space-between {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-@mixin imageContainer {
-  background-color: $primary_1;
-  border-radius: 8px;
-  position: relative;
-}
-
-@mixin pricingPlan {
+%pricingPlan {
   border: 2px solid lightgrey;
   width: 45%;
   text-align: center;
   cursor: pointer;
   height: 80px;
-}
-
-textarea {
-  font-family: inherit;
-  font-size: inherit;
-  resize: none;
 }
 
 * {
@@ -88,6 +64,12 @@ body,
 
 body {
   margin: 0 auto; /* extends AppBar fully */
+}
+
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  resize: none;
 }
 
 #hero-section {
@@ -116,10 +98,13 @@ body {
     box-shadow: 0 0px 12px lightgrey;
   }
   .heroBtnWrapper {
-    @include heroButtonWrapper;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
   }
   .heroBtn {
-    @include heroButton;
+    @extend %button;
+    text-decoration: none;
+    padding: 0.8rem 2rem 0.8rem 2rem;
   }
 }
 
@@ -128,7 +113,7 @@ body {
   margin: 0 auto;
   margin-bottom: 5rem;
   .row {
-    @include flex;
+    @extend %flex;
     margin-bottom: 5rem;
   }
   .benefits-col-1,
@@ -150,103 +135,12 @@ body {
   }
 }
 
-#features-section {
-  width: $tableWidth;
-  margin: 0 auto;
-  .featureHighlight {
-    @include space-between;
-    height: 300px;
-    margin-bottom: 8rem;
-    width: 100%;
-    .featureText {
-      @include flex;
-      width: 50%;
-      flex-wrap: wrap;
-    }
-    .featureImage {
-      @include flex;
-      width: 50%;
-      height: 100%;
-    }
-    .featureTitle,
-    .featureSubtitle {
-      width: 75%;
-    }
-    .featureTitle {
-      font-size: 2rem;
-      line-height: 2rem;
-      font-weight: 900;
-      margin-bottom: 1rem;
-    }
-    .featureSubtitle {
-      color: $primary_2;
-      line-height: 1.5rem;
-      font-weight: lighter;
-      font-size: 1.2rem;
-    }
-    .imageContainer1 {
-      @include imageContainer;
-      width: 75%;
-      height: 55%;
-      border-radius: 8px;
-    }
-    .imageContainer2 {
-      @include imageContainer;
-      width: 75%;
-      height: 100%;
-    }
-    .imageContainer3 {
-      @include imageContainer;
-      width: 75%;
-      height: 80%;
-    }
-    .imageContainer4 {
-      @include imageContainer;
-      width: 65%;
-      height: 80%;
-    }
-
-    #featureImage1 {
-      width: 100%;
-      border-radius: 8px;
-      box-shadow: 8px 8px 12px lightgrey;
-      position: absolute;
-      top: 10%;
-      left: 3%;
-    }
-    #featureImage2 {
-      width: 100%;
-      border-radius: 8px;
-      box-shadow: -5px 5px 12px lightgrey;
-      position: absolute;
-      top: 8%;
-      right: 5%;
-    }
-    #featureImage3 {
-      width: 100%;
-      border-radius: 8px;
-      box-shadow: 8px 8px 12px lightgrey;
-      position: absolute;
-      top: 10%;
-      left: 5%;
-    }
-    #featureImage4 {
-      width: 100%;
-      border-radius: 8px;
-      box-shadow: -5px 5px 12px lightgrey;
-      position: absolute;
-      top: 10%;
-      right: 5%;
-    }
-  }
-}
-
 #CTA-section {
   margin-top: 10rem;
 }
 
 footer {
-  @include space-between;
+  @extend %space-between;
   width: $tableWidth;
   margin: 0 auto;
   .logoImg {
@@ -255,7 +149,7 @@ footer {
     margin-right: 0.5rem;
   }
   .logo {
-    @include flex;
+    @extend %flex;
     text-decoration: none;
     color: black;
     &:focus {
@@ -290,13 +184,13 @@ footer {
     color: black;
   }
   #navContainer {
-    @include space-between;
+    @extend %space-between;
     width: $tableWidth;
     margin: 0 auto;
     padding-top: 1rem;
     padding-bottom: 1rem;
     a {
-      @include flex;
+      @extend %flex;
       &:focus {
         outline: 0;
         border: none;
@@ -367,12 +261,12 @@ footer {
     color: black;
   }
   input {
-    @include input;
+    @extend %input;
     margin: 0.3rem 0 1rem 0;
     font-size: 1rem;
   }
   .authSubmit {
-    @include button;
+    @extend %button;
     font-size: 1rem;
     font-weight: lighter;
   }
@@ -389,18 +283,18 @@ footer {
     width: 1000px;
   }
   .titleContainer {
-    @include space-between;
+    @extend %space-between;
     padding: 16px 24px;
     h2 {
       margin: 0px;
     }
   }
   .habitInput {
-    @include input;
+    @extend %input;
     margin-top: 1rem;
   }
   .modalAddBtn {
-    @include button;
+    @extend %button;
     padding: 1rem 2rem 1rem 2rem;
     margin: 1rem 0 0 auto;
     float: right;
@@ -410,7 +304,7 @@ footer {
     align-items: center;
     margin-top: 1rem;
     .editBtn {
-      @include button;
+      @extend %button;
       padding: 1rem 2rem 1rem 2rem;
       margin-left: auto;
     }
@@ -423,14 +317,14 @@ footer {
     }
   }
   .deleteBtn {
-    @include button;
+    @extend %button;
     padding: 1rem 2rem 1rem 2rem;
     float: right;
   }
 }
 
 #openModalBtn {
-  @include button;
+  @extend %button;
   padding: 1rem 2rem 1rem 2rem;
   margin: 2rem 0 2rem 0;
 }
@@ -474,13 +368,27 @@ table {
       top: 0;
       left: 0;
     }
-    .month,
+
+    .dateCell {
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+    }
+
+    .date {
+      font-size: 1.1rem;
+    }
+
     .day {
       font-weight: lighter;
     }
 
+    .month {
+      font-weight: lighter;
+      font-size: 0.9rem;
+    }
+
     .today {
-      @include flex;
+      @extend %flex;
       margin: 0 auto;
       color: white;
       background-color: grey;
@@ -488,7 +396,7 @@ table {
       width: 25px;
     }
     .date {
-      @include flex;
+      @extend %flex;
       margin: 0 auto;
       height: 25px;
       width: 25px;
@@ -502,16 +410,16 @@ table {
     text-overflow: ellipsis;
     #bestStreakText {
       font-size: 0.8rem;
-      font-weight: lighter;
+      margin-bottom: 0.5rem;
     }
   }
 
   #bestStreakCount {
-    @include flex;
+    @extend %flex;
     width: 100%;
     border-left: 1px solid lightgrey;
     .bestStreakWrapper {
-      @include flex;
+      @extend %flex;
       color: black;
       border-radius: 50%;
       font-size: 0.8rem;
@@ -520,27 +428,24 @@ table {
     .bestStreakWrapper-1,
     .bestStreakWrapper-2,
     .bestStreakWrapper-3 {
-      @include flex;
+      @extend %flex;
       color: white;
-      height: 25px;
-      width: 25px;
+      height: 30px;
+      width: 30px;
       border-radius: 50%;
       font-size: 0.8rem;
+      font-weight: bolder;
     }
     .bestStreakWrapper-0 {
-      box-shadow: 0 0 5px 1px #9fa8da;
       background-color: #9fa8da;
     }
     .bestStreakWrapper-1 {
-      box-shadow: 0 0 5px 1px #80cbc4;
       background-color: #80cbc4;
     }
     .bestStreakWrapper-2 {
-      box-shadow: 0 0 5px 1px #ffe082;
       background-color: #ffe082;
     }
     .bestStreakWrapper-3 {
-      box-shadow: 0 0 5px 1px #ef9a9a;
       background-color: #ef9a9a;
     }
     p {
@@ -571,19 +476,18 @@ table {
     cursor: pointer;
     width: 100%;
     border-bottom: 1px solid lightgrey;
-
     .habitCellInner {
       height: 100%;
-      @include flex;
+      @extend %flex;
       .streak {
-        @include flex;
+        @extend %flex;
         color: white;
       }
       .streak-0,
       .streak-1,
       .streak-2,
       .streak-3 {
-        @include flex;
+        @extend %flex;
         background-color: white;
         height: 25px;
         width: 25px;
@@ -637,7 +541,7 @@ table {
 }
 
 .subscribeBtn {
-  @include button;
+  @extend %button;
   padding: 1rem 2rem 1rem 2rem;
   float: right;
 }
@@ -655,8 +559,8 @@ table {
   border: 1px solid lightgrey;
   margin-bottom: 2rem;
   #buttonContainer {
-    @include space-between;
-    padding: 0.5rem 1.5rem 0.5rem 1.5rem;
+    @extend %space-between;
+    padding: 0.5rem;
     border-bottom: 1px solid lightgrey;
     .title {
       color: $primary_2;
@@ -679,7 +583,7 @@ table {
 
   #notesContainer {
     width: 100%;
-    height: 333px;
+    height: 65vh;
     overflow-y: scroll;
     .noteContainer {
       padding: 1.5rem;
@@ -726,6 +630,7 @@ table {
     }
   }
 }
+
 .noteInput {
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -749,7 +654,7 @@ table {
 }
 
 #loading {
-  @include flex;
+  @extend %flex;
 }
 
 .subscribe-dialog {
@@ -757,7 +662,7 @@ table {
     width: 500px;
   }
   .titleContainer {
-    @include space-between;
+    @extend %space-between;
     padding: 16px 24px;
     h2 {
       margin: 0;
@@ -769,30 +674,28 @@ table {
     }
   }
   #options {
-    @include space-between;
+    @extend %space-between;
     margin-bottom: 1rem;
     #monthlyOption,
     #annualOption {
-      @include flex;
-      @include pricingPlan;
+      @extend %flex;
+      @extend %pricingPlan;
       width: 45%;
     }
     #monthlyOption-active {
-      @include flex;
-      @include pricingPlan;
+      @extend %flex;
+      @extend %pricingPlan;
       border: 2px solid $primary_1;
       background-color: rgba(7, 123, 248, 0.05);
     }
     #annualOption-active {
-      @include flex;
-      @include pricingPlan;
-
+      @extend %flex;
+      @extend %pricingPlan;
       border: 2px solid $primary_1;
       background-color: rgba(7, 123, 248, 0.05);
     }
     #discount {
       color: $primary_2;
-      // margin-top: 0.2rem;
       font-size: 0.8rem;
     }
     .desc {
@@ -813,7 +716,7 @@ table {
   }
 
   #annualPricing {
-    @include flex;
+    @extend %flex;
   }
 
   .price {
@@ -838,7 +741,7 @@ table {
   }
 
   #paymentSuccessMsg {
-    @include flex;
+    @extend %flex;
     flex-wrap: wrap;
     text-align: center;
     padding: 10px;
@@ -853,7 +756,7 @@ table {
   }
 
   #paymentErrorMsg {
-    @include flex;
+    @extend %flex;
     flex-wrap: wrap;
     text-align: center;
     padding: 10px;

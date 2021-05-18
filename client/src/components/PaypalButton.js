@@ -65,30 +65,6 @@ const PaypalButton = (props) => {
     [props.isScriptLoadSucceed]
   );
 
-  // let createOrder = (data, actions) => {
-  //   let url =
-  //     process.env.NODE_ENV === "development"
-  //       ? "http://localhost:3000/create-order"
-  //       : "/create-order";
-
-  //   //return this
-  //   return axios.post(url).then((res) => {
-  //     return res.data.orderID;
-  //   });
-  // };
-
-  // let onApprove = (data, actions) => {
-  //   let url =
-  //     process.env.NODE_ENV === "development"
-  //       ? "http://localhost:3000/approve-order"
-  //       : "/approve-order";
-
-  //   return axios.post(url, { orderID: data.orderID }).then((res) => {
-  //     setShowButtons(false);
-  //     setPaid(true);
-  //   });
-  // };
-
   let handleOptionClick = (e) => {
     if (
       e.currentTarget.id === "monthlyOption" ||

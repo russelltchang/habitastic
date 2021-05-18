@@ -179,6 +179,7 @@ const Dashboard = (props) => {
 
     axios.post(url, data).then((res) => {
       if (res.data) {
+        console.log("response");
         setNotes(res.data);
       }
     });

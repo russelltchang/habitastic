@@ -27,7 +27,7 @@ router.post("/add", authorize, (req, res) => {
         noteTodayExists = true;
       }
     }
-    if (result.isPremium || (!result.isPremium && !noteTodayExists)) {
+    if (result[0].isPremium || (!result[0].isPremium && !noteTodayExists)) {
       result[0].notes.push({
         id: req.body.id,
         date: req.body.date,

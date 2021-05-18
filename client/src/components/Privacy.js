@@ -102,7 +102,7 @@ const Privacy = () => {
           We may disclose personal information to third party service providers
           for the purpose of enabling them to provide their services, for
           example, IT service providers, data storage, hosting and server
-          providers, or analytics platforms
+          providers, or Google Analytics
         </p>
         <h3>Use of Cookies</h3>
         <p>
