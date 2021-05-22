@@ -1,10 +1,17 @@
 $primary_1: #3f51b5;
 $primary_2: #777;
+$secondary_blue: #e5e8f5;
 $error_primary1: #9f3a38;
 $error_primary2: #fff6f6;
-$tableWidth: 95%;
+$landingSectionWidth: 90%;
 
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap");
+
+@mixin mobile {
+  @media (min-width: 320px) and (max-width: 768px) {
+    @content;
+  }
+}
 
 %button {
   background-color: $primary_1;
@@ -47,6 +54,31 @@ $tableWidth: 95%;
   height: 80px;
 }
 
+%question {
+  border: 3px solid black;
+  background-color: white;
+  border-radius: 8px;
+  width: 60%;
+  margin: 0 auto;
+  margin-top: 2rem;
+  height: auto;
+  padding: 1rem;
+  font-size: 1.5rem;
+  font-weight: bolder;
+  cursor: pointer;
+  user-select: none;
+  flex-wrap: wrap;
+  @include mobile {
+    width: 90%;
+  }
+}
+
+%featureImage {
+  width: 100%;
+  border-radius: 8px;
+  border: 3px solid black;
+}
+
 * {
   box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -73,29 +105,35 @@ textarea {
 }
 
 #hero-section {
-  width: 85%;
+  padding-top: 1rem;
   margin: 0 auto;
-  margin-bottom: 5rem;
+  text-align: center;
   #heroText {
     text-align: center;
     #header {
+      @include mobile {
+        font-size: 2rem;
+      }
       font-size: 3rem;
     }
     #subheader {
-      width: 50%;
       margin: 0 auto;
       font-weight: lighter;
       font-size: 1.3rem;
-      color: $primary_2;
+      width: 90%;
     }
   }
   #heroImage {
+    background-color: #fafafa;
     padding: 10px;
     margin-top: 2rem;
     height: auto;
-    width: 100%;
+    width: 80%;
     border-radius: 8px;
-    box-shadow: 0 0px 12px lightgrey;
+    border: 3px solid black;
+    @include mobile {
+      width: 90%;
+    }
   }
   .heroBtnWrapper {
     margin-top: 3rem;
@@ -108,23 +146,126 @@ textarea {
   }
 }
 
-#benefits-section {
-  width: $tableWidth;
+#features-section {
+  width: $landingSectionWidth;
   margin: 0 auto;
-  margin-bottom: 5rem;
+
+  .feature {
+    @include mobile {
+      flex-direction: column;
+      .featureText {
+        order: 1;
+        margin-bottom: 1rem;
+      }
+      .featureImage {
+        order: 2;
+        margin-bottom: 0;
+      }
+      margin-top: 7rem;
+    }
+    @extend %space-between;
+    width: 100%;
+    margin-top: 10rem;
+    #feature1,
+    #feature3 {
+      width: 80%;
+    }
+    .featureText {
+      @include mobile {
+        width: 100%;
+      }
+      @extend %flex;
+      width: 50%;
+      flex-wrap: wrap;
+    }
+    .featureImage {
+      @include mobile {
+        width: 100%;
+        display: block;
+      }
+      @extend %flex;
+      width: 50%;
+      height: 100%;
+    }
+    .heroBtnWrapper {
+      width: 75%;
+      margin-top: 2rem;
+      @include mobile {
+        width: 100%;
+      }
+    }
+
+    .heroBtn {
+      @extend %button;
+      text-decoration: none;
+      padding: 0.8rem 2rem 0.8rem 2rem;
+      display: inline-block;
+    }
+    .featureTitle,
+    .featureSubtitle {
+      @include mobile {
+        width: 100%;
+      }
+      width: 75%;
+    }
+    .featureTitle {
+      font-size: 2rem;
+      line-height: 2rem;
+      font-weight: 900;
+      margin-bottom: 1rem;
+    }
+    .featureSubtitle {
+      color: $primary_2;
+      line-height: 1.5rem;
+      font-weight: lighter;
+      font-size: 1.2rem;
+    }
+    img {
+      @extend %featureImage;
+    }
+  }
+}
+
+.wave-section {
+  svg {
+    display: block;
+  }
+}
+
+#benefits-section {
+  background-color: $secondary_blue;
+  margin: 0 auto;
+  h1 {
+    text-align: center;
+    margin-top: 0;
+  }
+  h3 {
+    @include mobile {
+      padding: 0;
+      margin: 0;
+    }
+  }
   .row {
+    @include mobile {
+      display: block;
+      margin-top: 0;
+    }
     @extend %flex;
-    margin-bottom: 5rem;
+    width: $landingSectionWidth;
+    margin: 0 auto;
+    margin-top: 5rem;
   }
   .benefits-col-1,
   .benefits-col-2,
   .benefits-col-3 {
+    @include mobile {
+      width: 100%;
+    }
     width: 33.3%;
     text-align: center;
   }
   .benefits-text {
-    color: $primary_2;
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
     font-weight: lighter;
   }
@@ -132,16 +273,46 @@ textarea {
     width: 200px;
     height: 200px;
     margin: 0 auto;
+    @include mobile {
+      margin-top: 4rem;
+    }
+  }
+}
+
+#FAQ-section {
+  width: $landingSectionWidth;
+  margin: 10rem auto 10rem auto;
+
+  .question {
+    @extend %question;
+    .header {
+      @extend %space-between;
+    }
+  }
+  .answer {
+    font-size: 1rem;
+    width: 100%;
+    margin-top: 1rem;
+    font-weight: lighter;
   }
 }
 
 #CTA-section {
-  margin-top: 10rem;
+  margin: 10rem auto 3rem auto;
+  width: $landingSectionWidth;
+  background-color: $secondary_blue;
+  border-radius: 8px;
+  padding: 2rem;
+  #signUp {
+    box-shadow: none;
+    border: 3px solid black;
+    border-radius: 8px;
+  }
 }
 
 footer {
   @extend %space-between;
-  width: $tableWidth;
+  width: $landingSectionWidth;
   margin: 0 auto;
   .logoImg {
     width: 20px;
@@ -174,18 +345,21 @@ footer {
   width: 60%;
   height: 100%;
   margin: 0 auto;
+  padding-bottom: 5rem;
 }
 
 .appBar {
   background-color: #fafafa;
-  // margin-bottom: 3rem;
   a {
     text-decoration: none;
     color: black;
   }
   #navContainer {
+    @include mobile {
+      width: 90%;
+    }
     @extend %space-between;
-    width: $tableWidth;
+    width: 95%;
     margin: 0 auto;
     padding-top: 1rem;
     padding-bottom: 1rem;
@@ -241,6 +415,9 @@ footer {
 
 #signUp,
 #logIn {
+  @include mobile {
+    width: 90%;
+  }
   background-color: white;
   color: $primary_2;
   width: 400px;
@@ -332,8 +509,12 @@ footer {
 #tableContainer {
   margin-left: 2.5%;
   width: 75%;
+  @include mobile {
+    width: 95%;
+  }
   display: inline-block;
   vertical-align: top;
+  overflow-x: auto;
 }
 table {
   width: 100%;
@@ -466,6 +647,9 @@ table {
     }
     i {
       visibility: hidden;
+      @include mobile {
+        visibility: visible;
+      }
     }
     &:hover i {
       visibility: visible;
@@ -552,6 +736,12 @@ table {
 // }
 
 #notes {
+  @include mobile {
+    display: block;
+    width: 95%;
+    margin: 0 auto;
+    margin-top: 3rem;
+  }
   display: inline-block;
   margin-left: 2.5%;
   width: 17.5%;
@@ -607,6 +797,9 @@ table {
       i {
         margin-left: 1rem;
         visibility: hidden;
+        @include mobile {
+          visibility: visible;
+        }
       }
       &:hover i {
         visibility: visible;

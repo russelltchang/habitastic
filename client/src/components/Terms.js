@@ -13,53 +13,24 @@ const Terms = () => {
         <h2>TERMS OF SERVICE</h2>
         <p>
           This website is operated by Russell Chang. Throughout the site, the
-          terms "we", "us" and "our" refer to Russell Chang. We offer this
-          website, including all information, tools and services available from
-          this site to you, the user, conditioned upon your acceptance of all
-          terms, conditions, policies and notices stated here.
-        </p>
-        <p>
-          By visiting our site and/or purchasing something from us, you engage
-          in our "Service"; and agree to be bound by the following terms and
-          conditions ("Terms of Service," "Terms"). These Terms of Service apply
-          to all users of the site, including without limitation users who are
-          browsers, vendors, or customers.
-        </p>
-        <p>
-          Please read these Terms of Service carefully before accessing or using
-          our website. By accessing or using any part of the site, you agree to
-          be bound by these Terms of Service. If you do not agree to all the
-          terms and conditions of this agreement, then you may not access the
-          website or use any services. If these Terms of Service are considered
-          an offer, acceptance is expressly limited to these Terms of Service.
+          terms "we", "us" and "our" refer to Russell Chang. By visiting our
+          site and/or purchasing something from us, you engage in our "Service";
+          and agree to be bound by the following terms and conditions ("Terms of
+          Service," "Terms"). By using the site, you agree to these Terms. If
+          you do not agree to all the Terms, you may not access the website.
         </p>
         <p>
           Any new features or tools which are added to the current website shall
           also be subject to the Terms of Service. You can review the most
-          current version of the Terms of Service at any time on this page. We
-          reserve the right to update, change or replace any part of these Terms
-          of Service by posting updates and/or changes to our website. It is
-          your responsibility to check this page periodically for changes. Your
-          continued use of or access to the website following the posting of any
-          changes constitutes acceptance of those changes.
+          current version of the Terms of Service at any time on this page.
         </p>
 
         <h3>SECTION 1 - WEBSITE TERMS</h3>
         <p>
-          By agreeing to these Terms of Service, you represent that you are at
-          least the age of majority in your state or province of residence, or
-          that you are the age of majority in your state or province of
-          residence and you have given us your consent to allow any of your
-          minor dependents to use this site.
-        </p>
-        <p>
           You may not use our products for any illegal or unauthorized purpose
           nor may you, in the use of the Service, violate any laws in your
-          jurisdiction (including but not limited to copyright laws).
-        </p>
-        <p>
-          You must not transmit any worms or viruses or any code of a
-          destructive nature.
+          jurisdiction (including but not limited to copyright laws). You must
+          not transmit any worms or viruses or any code of a destructive nature.
         </p>
         <p>
           A breach or violation of any of the Terms will result in an immediate
@@ -69,20 +40,6 @@ const Terms = () => {
         <p>
           We reserve the right to refuse service to anyone for any reason at any
           time.
-        </p>
-        <p>
-          You understand that your content (not including credit card
-          information), may be transferred unencrypted and involve (a)
-          transmissions over various networks; and (b) changes to conform and
-          adapt to technical requirements of connecting networks or devices.
-          Credit card information is always encrypted during transfer over
-          networks.
-        </p>
-        <p>
-          You agree not to reproduce, duplicate, copy, sell, resell or exploit
-          any portion of the Service, use of the Service, or access to the
-          Service or any contact on the website through which the service is
-          provided, without express written permission by us.
         </p>
         <p>
           The headings used in this agreement are included for convenience only
@@ -101,22 +58,17 @@ const Terms = () => {
           risk.
         </p>
         <h3>SECTION 4 - MODIFICATIONS TO THE SERVICE AND PRICES</h3>
-        <p>Prices for our products are subject to change without notice.</p>
         <p>
           We reserve the right at any time to modify or discontinue the Service
-          (or any part or content thereof) without notice at any time.
+          (or any part or content thereof) without notice at any time. We shall
+          not be liable to you or to any third-party for any modification, price
+          change, suspension or discontinuance of the Service.
         </p>
+        <h3>SECTION 5 - PRODUCTS</h3>
         <p>
-          We shall not be liable to you or to any third-party for any
-          modification, price change, suspension or discontinuance of the
-          Service.
-        </p>
-        <h3>SECTION 5 - PRODUCTS OR SERVICES (if applicable)</h3>
-        <p>
-          We do not warrant that the quality of any products, services,
-          information, or other material purchased or obtained by you will meet
-          your expectations, or that any errors in the Service will be
-          corrected.
+          We do not warrant that the quality of any products, information, or
+          other material purchased or obtained by you will meet your
+          expectations, or that any errors in the Service will be corrected.
         </p>
         <h3>SECTION 6 - ACCURACY OF BILLING AND ACCOUNT INFORMATION</h3>
         <p>We reserve the right to refuse any order you place with us.</p>
@@ -138,8 +90,8 @@ const Terms = () => {
         </p>
         <h3>SECTION 8 - PERSONAL INFORMATION</h3>
         <p>
-          Your submission of personal information through the store is governed
-          by our Privacy Policy.
+          Your submission of personal information on our website is governed by
+          our Privacy Policy.
         </p>
         <h3>SECTION 9 - ERRORS, INACCURACIES AND OMISSIONS</h3>
         <p>
@@ -164,33 +116,23 @@ const Terms = () => {
         <p>
           In addition to other prohibitions as set forth in the Terms of
           Service, you are prohibited from using the site or its content: (a)
-          for any unlawful purpose; (b) to solicit others to perform or
-          participate in any unlawful acts; (c) to violate any international,
-          federal, provincial or state regulations, rules, laws, or local
-          ordinances; (d) to infringe upon or violate our intellectual property
-          rights or the intellectual property rights of others; (e) to harass,
-          abuse, insult, harm, defame, slander, disparage, intimidate, or
-          discriminate based on gender, sexual orientation, religion, ethnicity,
-          race, age, national origin, or disability; (f) to submit false or
-          misleading information; (g) to upload or transmit viruses or any other
+          for any unlawful purpose; (b) to violate any international, federal,
+          provincial or state regulations, rules, laws, or local ordinances; (c)
+          to infringe upon or violate our intellectual property rights or the
+          intellectual property rights of others; (d) to submit false or
+          misleading information; (e) to upload or transmit viruses or any other
           type of malicious code that will or may be used in any way that will
-          affect the functionality or operation of the Service or of any related
-          website, other websites, or the Internet; (h) to collect or track the
-          personal information of others; (i) to spam, phish, pharm, pretext,
-          spider, crawl, or scrape; (j) for any obscene or immoral purpose; or
-          (k) to interfere with or circumvent the security features of the
-          Service or any related website, other websites, or the Internet. We
-          reserve the right to terminate your use of the Service or any related
-          website for violating any of the prohibited uses.
+          affect the functionality or operation of the Service; (f) to collect
+          or track the personal information of others; (g) to spam, phish,
+          pharm, pretext, spider, crawl, or scrape; (h) for any obscene or
+          immoral purpose; or (i) to interfere with or circumvent the security
+          features of the Service. We reserve the right to terminate your use of
+          the Service for violating any of the prohibited uses.
         </p>
         <h3>SECTION 11 - DISCLAIMER OF WARRANTIES; LIMITATION OF LIABILITY</h3>
         <p>
           We do not guarantee, represent or warrant that your use of our service
           will be uninterrupted, timely, secure or error-free.
-        </p>
-        <p>
-          We do not warrant that the results that may be obtained from the use
-          of the service will be accurate or reliable.
         </p>
         <p>
           You agree that from time to time we may remove the service for
@@ -252,8 +194,7 @@ const Terms = () => {
         <p>
           These Terms of Service are effective unless and until terminated by
           either you or us. You may terminate these Terms of Service at any time
-          by notifying us that you no longer wish to use our Services, or when
-          you cease using our site.
+          by ceasing to use our site.
         </p>
         <p>
           If in our sole judgment you fail, or we suspect that you have failed,
@@ -265,28 +206,15 @@ const Terms = () => {
         </p>
         <h3>SECTION 15 - ENTIRE AGREEMENT</h3>
         <p>
-          The failure of us to exercise or enforce any right or provision of
-          these Terms of Service shall not constitute a waiver of such right or
-          provision.
-        </p>
-        <p>
-          These Terms of Service and any policies or operating rules posted by
-          us on this site or in respect to The Service constitutes the entire
-          agreement and understanding between you and us and govern your use of
-          the Service, superseding any prior or contemporaneous agreements,
-          communications and proposals, whether oral or written, between you and
-          us (including, but not limited to, any prior versions of the Terms of
-          Service).
-        </p>
-        <p>
-          Any ambiguities in the interpretation of these Terms of Service shall
-          not be construed against the drafting party.
+          These Terms of Service and any policies posted by us on this site or
+          in respect to the Service constitutes the entire agreement and
+          understanding between you and us and govern your use of the Service.
         </p>
         <h3>SECTION 16 - GOVERNING LAW</h3>
         <p>
           These Terms of Service and any separate agreements whereby we provide
           you Services shall be governed by and construed in accordance with the
-          laws of .
+          laws of the state of California.
         </p>
         <h3>SECTION 17 - CHANGES TO TERMS OF SERVICE</h3>
         <p>
@@ -301,11 +229,8 @@ const Terms = () => {
           website or the Service following the posting of any changes to these
           Terms of Service constitutes acceptance of those changes.
         </p>
-        <h3>SECTION 18 - CONTACT INFORMATION</h3>
-        <p>
-          Questions about the Terms of Service should be sent to us at
-          habitastic@protonmail.com.
-        </p>
+        <h3>SECTION 18 - CONTACT</h3>
+        <p>Have questions? Let us know at habitastic@protonmail.com.</p>
       </div>
       <Footer />
     </>
