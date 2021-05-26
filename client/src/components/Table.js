@@ -1,10 +1,9 @@
-import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { dateArray } from "../utils/dateArray";
 import Dates from "./Dates";
 import Habits from "./Habits";
 import Modal from "./Modal";
-import SubscribeModal from "./SubscribeModal";
+import LimitModal from "./LimitModal";
 
 const Table = (props) => {
   let [dateInfo, setDateInfo] = useState({
@@ -14,7 +13,7 @@ const Table = (props) => {
   });
   let [modalOpen, setModalOpen] = useState(false);
   let [modalEdit, setModalEdit] = useState(false);
-  let [modalSubscribe, setModalSubscribe] = useState(false);
+  let [modalLimit, setModalLimit] = useState(false);
   let [habitID, setHabitID] = useState("");
   let [habitToEdit, setHabitToEdit] = useState("");
 
@@ -36,7 +35,7 @@ const Table = (props) => {
     if (props.isPremium || props.habits.length < 3) {
       setModalOpen(true);
     } else {
-      setModalSubscribe(true);
+      setModalLimit(true);
     }
   };
 
@@ -50,7 +49,7 @@ const Table = (props) => {
   let handleClose = () => {
     setModalOpen(false);
     setModalEdit(false);
-    setModalSubscribe(false);
+    setModalLimit(false);
   };
 
   let handleAddHabit = (newHabit) => {
@@ -125,8 +124,8 @@ const Table = (props) => {
             deleteHabit={handleDeleteHabit}
             close={handleClose}
           />
-          <SubscribeModal
-            open={modalSubscribe}
+          <LimitModal
+            open={modalLimit}
             close={handleClose}
             handleApprove={handleApprove}
           />

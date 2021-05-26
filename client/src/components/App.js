@@ -75,7 +75,7 @@ const App = () => {
           render={() => (
             <Signup onSignup={handleSignup} isLoggedIn={isLoggedIn} />
           )}
-        />{" "}
+        />
         <Route path="/terms" component={Terms} />
         <Route path="/privacy" component={Privacy} />
         <PrivateRoute

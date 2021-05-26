@@ -102,7 +102,6 @@ const Settings = (props) => {
         <SubscribeModal
           open={modalSubscribe}
           close={handleSubClose}
-          settings={true}
           handleApprove={handleApprove}
         />
       </div>

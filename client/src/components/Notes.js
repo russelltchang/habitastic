@@ -1,12 +1,12 @@
 import NoteModal from "./NoteModal";
 import React, { useState, useEffect } from "react";
-import SubscribeModal from "./SubscribeModal";
+import LimitModal from "./LimitModal";
 
 const Notes = (props) => {
   let [ID, setID] = useState(null);
   let [noteToEdit, setNoteToEdit] = useState("");
   let [subNotes, setSubNotes] = useState(false);
-  let [subModal, setSubModal] = useState(false);
+  let [limitModal, setLimitModal] = useState(false);
   let [noteModal, setNoteModal] = useState(false);
   let [editNote, setEditNote] = useState(false);
   let [deleteNote, setDeleteNote] = useState(false);
@@ -30,7 +30,7 @@ const Notes = (props) => {
 
     for (let i = 0; i < props.notes.length; i++) {
       if (props.notes[i].date === today) {
-        setSubModal(true);
+        setLimitModal(true);
         setSubNotes(true);
         return;
       }
@@ -38,9 +38,9 @@ const Notes = (props) => {
     setNoteModal(true);
   };
 
-  let handleSubscribeClose = () => {
+  let closeLimitModal = () => {
     setSubNotes(false);
-    setSubModal(false);
+    setLimitModal(false);
   };
 
   let handleAddNote = (note) => {
@@ -126,10 +126,10 @@ const Notes = (props) => {
         editNote={handleEditNote}
         deleteNote={handleDeleteNote}
       />
-      <SubscribeModal
-        open={subModal}
+      <LimitModal
+        open={limitModal}
         fromNotes={subNotes}
-        close={handleSubscribeClose}
+        close={closeLimitModal}
       />
     </div>
   );
