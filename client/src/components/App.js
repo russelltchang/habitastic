@@ -8,6 +8,7 @@ import Navbar from "./Navbar";
 import Dashboard from "./Dashboard";
 import Terms from "./Terms";
 import Privacy from "./Privacy";
+import Settings from "./Settings";
 import PrivateRoute from "./PrivateRoute";
 
 const App = () => {
@@ -77,6 +78,14 @@ const App = () => {
         />{" "}
         <Route path="/terms" component={Terms} />
         <Route path="/privacy" component={Privacy} />
+        <PrivateRoute
+          path="/settings"
+          component={Settings}
+          isLoggedIn={isLoggedIn}
+          isPremium={isPremium}
+          handleApprove={handleApprove}
+          onLogout={handleLogout}
+        />
         <PrivateRoute
           path="/dashboard"
           component={Dashboard}

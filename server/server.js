@@ -63,6 +63,7 @@ mongoose
 app.use(require("./routes/auth.js"));
 app.use(require("./routes/cell.js"));
 app.use(require("./routes/pay.js"));
+app.use(require("./routes/settings.js"));
 app.use(require("./routes/webhook.js"));
 app.use("/habits", require("./routes/habit.js"));
 app.use("/notes", require("./routes/note.js"));

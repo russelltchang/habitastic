@@ -407,8 +407,13 @@ footer {
   }
 }
 
-#logOut {
-  font-size: 1.5rem;
+#avatar {
+  .fa-user-circle-o {
+    font-size: 1.5rem;
+  }
+  .fa-caret-down {
+    font-size: 1.1rem;
+  }
   margin: 0;
   cursor: pointer;
 }
@@ -497,6 +502,18 @@ footer {
     @extend %button;
     padding: 1rem 2rem 1rem 2rem;
     float: right;
+  }
+
+  .deleteAccountBtn {
+    @extend %button;
+    padding: 1rem 2rem 1rem 2rem;
+    float: right;
+    background-color: rgb(230, 46, 46);
+    border: 3px solid rgb(230, 46, 46);
+    &:hover {
+      color: rgb(230, 46, 46);
+      border: 3px solid rgb(230, 46, 46);
+    }
   }
 }
 
@@ -961,5 +978,54 @@ table {
     h2 {
       margin: 0;
     }
+  }
+}
+
+#settings {
+  background-color: white;
+  width: 60%;
+  margin: 0 auto;
+  border: 1px solid lightgrey;
+  padding: 1rem;
+  .section {
+    padding: 1rem;
+    input {
+      @extend %input;
+      margin-bottom: 1rem;
+      display: block;
+      background-color: #fafafa;
+    }
+    label {
+      color: $primary_2;
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+    button {
+      @extend %button;
+      padding: 0.5rem 1rem 0.5rem 1rem;
+    }
+    .deleteAccountBtn {
+      background-color: rgb(230, 46, 46);
+      border: 3px solid rgb(230, 46, 46);
+      &:hover {
+        color: rgb(230, 46, 46);
+        border: 3px solid rgb(230, 46, 46);
+      }
+    }
+    div {
+      display: inline-block;
+      width: 50%;
+      vertical-align: top;
+    }
+    .message {
+      float: right;
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+      color: $primary_2;
+    }
+  }
+  hr {
+    border: none;
+    border-top: 1px solid lightgrey;
   }
 }

@@ -12,8 +12,8 @@ const Terms = () => {
       <div id="terms">
         <h2>TERMS OF SERVICE</h2>
         <p>
-          This website is operated by Russell Chang. Throughout the site, the
-          terms "we", "us" and "our" refer to Russell Chang. By visiting our
+          This website is operated by Habitastic.app. Throughout the site, the
+          terms "we", "us" and "our" refer to Habitastic.app. By visiting our
           site and/or purchasing something from us, you engage in our "Service";
           and agree to be bound by the following terms and conditions ("Terms of
           Service," "Terms"). By using the site, you agree to these Terms. If
@@ -31,6 +31,13 @@ const Terms = () => {
           nor may you, in the use of the Service, violate any laws in your
           jurisdiction (including but not limited to copyright laws). You must
           not transmit any worms or viruses or any code of a destructive nature.
+        </p>
+        <p>
+          By agreeing to these Terms of Service, you represent that you are at
+          least the age of majority in your state or province of residence, or
+          that you are the age of majority in your state or province of
+          residence and you have given us your consent to allow any of your
+          minor dependents to use this site.
         </p>
         <p>
           A breach or violation of any of the Terms will result in an immediate
@@ -230,7 +237,10 @@ const Terms = () => {
           Terms of Service constitutes acceptance of those changes.
         </p>
         <h3>SECTION 18 - CONTACT</h3>
-        <p>Have questions? Let us know at habitastic@protonmail.com.</p>
+        <p>
+          For any questions or concerns regarding these Terms,{" "}
+          <a href="mailto:habitastic@protonmail.com">email</a> us.
+        </p>
       </div>
       <Footer />
     </>

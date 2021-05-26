@@ -49,8 +49,9 @@ const Navbar = (props) => {
           {props.isLoggedIn ? (
             <ul id="navItems">
               <li>
-                <p id="logOut" onClick={handleMenuClick}>
-                  <i className="fa fa-user-circle-o"></i>
+                <p id="avatar" onClick={handleMenuClick}>
+                  <i className="fa fa-user-circle-o"></i>{" "}
+                  <i className="fa fa-caret-down"></i>
                 </p>
                 <Menu
                   id="menu"
@@ -69,6 +70,14 @@ const Navbar = (props) => {
                   open={Boolean(anchorEl)}
                   onClose={handleMenuClose}
                 >
+                  <MenuItem onClick={handleMenuClose}>
+                    <Link
+                      to="/settings"
+                      style={{ textDecoration: "none", color: "black" }}
+                    >
+                      Settings
+                    </Link>
+                  </MenuItem>
                   <MenuItem onClick={handleLogout}>Logout</MenuItem>
                 </Menu>
               </li>

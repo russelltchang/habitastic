@@ -4,7 +4,6 @@ import { dateArray } from "../utils/dateArray";
 import Dates from "./Dates";
 import Habits from "./Habits";
 import Modal from "./Modal";
-
 import SubscribeModal from "./SubscribeModal";
 
 const Table = (props) => {

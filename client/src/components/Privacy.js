@@ -112,8 +112,8 @@ const Privacy = () => {
         </p>
         <h3>Contact</h3>
         <p>
-          For any questions or concerns regarding your privacy, you may contact
-          us at habitastic@protonmail.com.
+          For any questions or concerns regarding your privacy,{" "}
+          <a href="mailto:habitastic@protonmail.com">email</a> us.
         </p>
       </div>
       <Footer />

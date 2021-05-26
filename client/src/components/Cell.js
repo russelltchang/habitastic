@@ -8,7 +8,7 @@ const Cell = (props) => {
 
   let style = {
     userSelect: "none",
-    webkitUserSelect: "none",
+    WebkitUserSelect: "none",
     backgroundColor: hover
       ? colors.habitPalette[props.index % colors.habitPalette.length]
       : active
