@@ -1,0 +1,58 @@
+.appBar {
+  background-color: white;
+  a {
+    text-decoration: none;
+    color: black;
+  }
+  #navContainer {
+    @include mobile {
+      width: 90%;
+    }
+    @extend %space-between;
+    width: 95%;
+    margin: 0 auto;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    a {
+      @extend %flex;
+      &:focus {
+        outline: 0;
+        border: none;
+        outline-style: none;
+        -moz-outline-style: none;
+      }
+      &:active {
+        outline: 0;
+        border: none;
+        outline-style: none;
+        -moz-outline-style: none;
+      }
+    }
+    .logoImg {
+      width: 30px;
+      height: 30px;
+      margin-right: 0.5rem;
+    }
+
+    #navItems {
+      margin-left: auto;
+      list-style: none;
+      li {
+        display: inline-block;
+        margin-left: 1.5rem;
+      }
+      i {
+        color: black;
+      }
+      #signupLink {
+        color: white;
+        background-color: $primary_1;
+        padding: 0.5rem;
+        border-radius: 3px;
+      }
+      #loginLink {
+        padding: 0.5rem;
+      }
+    }
+  }
+}

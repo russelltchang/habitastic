@@ -1,0 +1,28 @@
+#FAQ-section {
+  background-color: $landing-bg-blue;
+  .question {
+    background-color: white;
+    border-radius: 8px;
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 2rem;
+    padding: 1rem;
+    font-size: 1.5rem;
+    font-weight: bolder;
+    cursor: pointer;
+    user-select: none;
+    flex-wrap: wrap;
+    @include mobile {
+      width: 90%;
+    }
+    .header {
+      @extend %space-between;
+    }
+  }
+  .answer {
+    font-size: 1rem;
+    width: 100%;
+    margin-top: 1rem;
+    font-weight: lighter;
+  }
+}

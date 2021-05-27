@@ -4,8 +4,9 @@ import Benefits from "./Benefits";
 import FAQ from "./FAQ";
 import Signup from "./Signup";
 import Footer from "./Footer";
-import Wave from "./Wave";
-import Wave2 from "./Wave2";
+import SVG1 from "./SVG1";
+import SVG2 from "./SVG2";
+import SVG3 from "./SVG3";
 
 const Landing = (props) => {
   let handleSignUp = (name) => {
@@ -16,10 +17,11 @@ const Landing = (props) => {
     <>
       <Hero />
       <Features />
-      <Wave />
+      <SVG1 />
       <Benefits />
-      <Wave2 />
+      <SVG2 />
       <FAQ />
+      <SVG3 />
       <div id="CTA-section">
         <h1 style={{ textAlign: "center" }}>
           Start tracking your habits for free

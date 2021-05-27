@@ -1,0 +1,82 @@
+#features-section {
+  margin: 0 auto;
+  background-color: $landing-bg-blue;
+  padding-top: 5rem;
+  .feature {
+    @include mobile {
+      flex-direction: column;
+      padding: 0;
+      .featureText {
+        order: 1;
+        margin-bottom: 1rem;
+      }
+      .featureImage {
+        order: 2;
+        margin-bottom: 0;
+      }
+      margin-top: 4rem;
+    }
+    @extend %space-between;
+    width: $landingSectionWidth;
+    margin: 0 auto;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    #feature1,
+    #feature3 {
+      width: 80%;
+    }
+    .featureText {
+      @include mobile {
+        width: 100%;
+      }
+      @extend %flex;
+      width: 50%;
+      flex-wrap: wrap;
+    }
+    .featureImage {
+      @include mobile {
+        width: 100%;
+        display: block;
+      }
+      @extend %flex;
+      width: 50%;
+      height: 100%;
+    }
+    .heroBtnWrapper {
+      width: 75%;
+      margin-top: 2rem;
+      @include mobile {
+        width: 100%;
+      }
+    }
+
+    .heroBtn {
+      @extend %button;
+      text-decoration: none;
+      padding: 0.8rem 2rem 0.8rem 2rem;
+      display: inline-block;
+    }
+    .featureTitle,
+    .featureSubtitle {
+      @include mobile {
+        width: 100%;
+      }
+      width: 75%;
+    }
+    .featureTitle {
+      font-size: 2rem;
+      line-height: 2rem;
+      font-weight: 900;
+      margin-bottom: 1rem;
+    }
+    .featureSubtitle {
+      color: $primary_2;
+      line-height: 1.5rem;
+      font-weight: lighter;
+      font-size: 1.2rem;
+    }
+    img {
+      @extend %featureImage;
+    }
+  }
+}

@@ -1,0 +1,27 @@
+* {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  // height: 100%; comment out to allow scrollTop on Privacy/terms page
+  font-family: "Lato", sans-serif;
+  overflow-y: overlay; /*prevent scrollbar reduce page width */
+}
+
+body {
+  margin: 0 auto; /* extends AppBar fully */
+}
+
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  resize: none;
+}
+
+.fa {
+  cursor: pointer;
+}

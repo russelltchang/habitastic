@@ -1,0 +1,29 @@
+footer {
+  @extend %space-between;
+  width: $landingSectionWidth;
+  margin: 0 auto;
+  .logoImg {
+    width: 20px;
+    height: 20px;
+    margin-right: 0.5rem;
+  }
+  .logo {
+    @extend %flex;
+    text-decoration: none;
+    color: black;
+    &:focus {
+      outline: 0;
+      border: none;
+      outline-style: none;
+      -moz-outline-style: none;
+    }
+  }
+  .privacyLink,
+  .termsLink {
+    color: $primary_2;
+  }
+  .footerlink {
+    display: inline-block;
+    margin-left: 1rem;
+  }
+}

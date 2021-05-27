@@ -1,0 +1,46 @@
+%button {
+  background-color: $primary_1;
+  border: 3px solid $primary_1;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  &:hover {
+    color: $primary_1;
+    background-color: white;
+    border: 3px solid $primary_1;
+  }
+}
+
+%input {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  line-height: 28px;
+  padding: 5px;
+  width: 100%;
+}
+
+%flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+%space-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+%pricingPlan {
+  border: 2px solid lightgrey;
+  width: 45%;
+  text-align: center;
+  cursor: pointer;
+  height: 80px;
+}
+
+%featureImage {
+  width: 100%;
+  border-radius: 8px;
+  border: $landing-img-border;
+}

@@ -1,0 +1,33 @@
+//partials
+@import "abstracts/variables";
+@import "abstracts/placeholders";
+@import "abstracts/mixins";
+
+@import "base/base";
+
+@import "layout/navbar";
+@import "layout/footer";
+@import "layout/FAQ";
+@import "layout/CTA";
+@import "layout/settings";
+@import "layout/hero";
+@import "layout/benefits";
+@import "layout/features";
+@import "layout/privacy";
+@import "layout/wave";
+
+@import "components/notes";
+@import "components/submodal";
+@import "components/login";
+@import "components/table";
+@import "components/avatar";
+@import "components/modal";
+@import "components/newhabitbtn";
+@import "components/noteinput";
+@import "components/loading";
+@import "components/subbtn";
+@import "components/errormsg";
+@import "components/nohabitmsg";
+
+//font
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap");

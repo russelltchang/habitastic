@@ -57,7 +57,7 @@ const Settings = (props) => {
   return (
     <div id="settings">
       <div className="section">
-        <div>Password</div>
+        <div className="settings-title">Password</div>
         <div>
           <form onSubmit={handleChangePassword}>
             <label>New Password: </label>
@@ -88,7 +88,7 @@ const Settings = (props) => {
       </div>
       <hr />
       <div className="section">
-        <div>Subscription</div>
+        <div className="settings-title">Subscription</div>
         <div>
           {props.isPremium ? (
             <p style={{ color: "#777", marginTop: 0 }}>Premium Member</p>
@@ -107,7 +107,7 @@ const Settings = (props) => {
       </div>
       <hr />
       <div className="section">
-        <div>Support</div>
+        <div className="settings-title">Support</div>
         <div>
           <a href="mailto:habitastic@protonmail.com">
             <button>Email</button>
@@ -116,7 +116,7 @@ const Settings = (props) => {
       </div>
       <hr />
       <div className="section">
-        <div>Delete Account</div>
+        <div className="settings-title">Delete Account</div>
         <div>
           <button className="deleteAccountBtn" onClick={handleDeleteOpen}>
             Delete

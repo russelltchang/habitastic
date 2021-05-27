@@ -1,0 +1,113 @@
+.subscribe-dialog {
+  .MuiPaper-root {
+    width: 500px;
+  }
+  .titleContainer {
+    @extend %space-between;
+    padding: 16px 24px;
+    h2 {
+      margin: 0;
+      margin-bottom: 0.25rem;
+    }
+    p {
+      margin: 0;
+      font-weight: lighter;
+    }
+  }
+  #options {
+    @extend %space-between;
+    margin-bottom: 1rem;
+    #monthlyOption,
+    #annualOption {
+      @extend %flex;
+      @extend %pricingPlan;
+      width: 45%;
+    }
+    #monthlyOption-active {
+      @extend %flex;
+      @extend %pricingPlan;
+      border: 2px solid $primary_1;
+      background-color: rgba(7, 123, 248, 0.05);
+    }
+    #annualOption-active {
+      @extend %flex;
+      @extend %pricingPlan;
+      border: 2px solid $primary_1;
+      background-color: rgba(7, 123, 248, 0.05);
+    }
+    #discount {
+      color: $primary_2;
+      font-size: 0.8rem;
+    }
+    .desc {
+      font-size: 0.8rem;
+      color: $primary_2;
+      margin-top: 0.3rem;
+      margin-bottom: 0.3rem;
+    }
+  }
+  #renewMsg {
+    font-size: 0.7rem;
+    color: $primary_2;
+  }
+
+  #total {
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+  }
+
+  #annualPricing {
+    @extend %flex;
+  }
+
+  .price {
+    color: $primary_1;
+    font-weight: bold;
+  }
+
+  .prevPrice {
+    color: $primary_2;
+    font-size: 0.8rem;
+    text-decoration: line-through;
+    margin-right: 0.25rem;
+  }
+
+  #limitedOffer {
+    background-color: #444;
+    color: white;
+    font-size: 0.9rem;
+    padding: 0.25rem;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  #paymentSuccessMsg {
+    @extend %flex;
+    flex-wrap: wrap;
+    text-align: center;
+    padding: 10px;
+    i {
+      font-size: 4rem;
+      color: #4bb543;
+      margin-bottom: 0.5rem;
+    }
+    h2 {
+      margin: 0;
+    }
+  }
+
+  #paymentErrorMsg {
+    @extend %flex;
+    flex-wrap: wrap;
+    text-align: center;
+    padding: 10px;
+    i {
+      font-size: 4rem;
+      color: #ff0033;
+      margin-bottom: 0.5rem;
+    }
+    h2 {
+      margin: 0;
+    }
+  }
+}

@@ -1,0 +1,12 @@
+.errorMsg:empty {
+  height: 0;
+}
+
+.errorMsg:not(:empty) {
+  margin: 0;
+  border-radius: 4px;
+  color: $error_primary1;
+  background-color: $error_primary2;
+  border: 1px solid $error_primary1;
+  padding: 0.5rem;
+}

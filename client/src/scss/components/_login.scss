@@ -1,0 +1,38 @@
+#signUp,
+#logIn {
+  @include mobile {
+    width: 90%;
+  }
+  background-color: white;
+  color: $primary_2;
+  width: 400px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin: 4rem auto 4rem auto;
+  padding: 2rem;
+  box-shadow: 0 0 4px 3px #eee;
+  input {
+    background-color: $landing-bg-white;
+  }
+  #errorMsg:not(:empty) {
+    border-radius: 4px;
+    color: $error_primary1;
+    background-color: $error_primary2;
+    border: 1px solid $error_primary1;
+    padding: 0.5rem;
+  }
+  h2 {
+    text-align: center;
+    color: black;
+  }
+  input {
+    @extend %input;
+    margin: 0.3rem 0 1rem 0;
+    font-size: 1rem;
+  }
+  .authSubmit {
+    @extend %button;
+    font-size: 1rem;
+    font-weight: lighter;
+  }
+}

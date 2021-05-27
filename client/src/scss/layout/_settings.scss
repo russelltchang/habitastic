@@ -1,0 +1,60 @@
+#settings {
+  background-color: white;
+  width: 60%;
+  margin: 0 auto;
+  border: 1px solid lightgrey;
+  padding: 1rem;
+  @include mobile {
+    width: 95%;
+  }
+  .section {
+    padding: 1rem;
+    input {
+      @extend %input;
+      margin-bottom: 1rem;
+      display: block;
+      background-color: $landing-bg-white;
+    }
+    label {
+      color: $primary_2;
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+    button {
+      @extend %button;
+      padding: 0.5rem 1rem 0.5rem 1rem;
+    }
+    .deleteAccountBtn {
+      background-color: red;
+      border: 3px solid red;
+      &:hover {
+        color: red;
+        border: 3px solid red;
+      }
+    }
+    div {
+      display: inline-block;
+      width: 50%;
+      vertical-align: top;
+      @include mobile {
+        display: block;
+        width: 100%;
+      }
+    }
+    .settings-title {
+      @include mobile {
+        margin-bottom: 1rem;
+      }
+    }
+    .message {
+      float: right;
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+      color: $primary_2;
+    }
+  }
+  hr {
+    border: none;
+    border-top: 1px solid lightgrey;
+  }
+}

@@ -1,0 +1,46 @@
+#benefits-section {
+  margin: 0 auto;
+  margin-top: 4rem;
+  h1 {
+    text-align: center;
+    margin-top: 0;
+  }
+  h3 {
+    @include mobile {
+      padding: 0;
+      margin: 0;
+    }
+  }
+  .row {
+    @include mobile {
+      display: block;
+      margin-top: 0;
+    }
+    @extend %flex;
+    width: $landingSectionWidth;
+    margin: 0 auto;
+    margin-top: 5rem;
+  }
+  .benefits-col-1,
+  .benefits-col-2,
+  .benefits-col-3 {
+    @include mobile {
+      width: 100%;
+    }
+    width: 33.3%;
+    text-align: center;
+  }
+  .benefits-text {
+    width: 90%;
+    margin: 0 auto;
+    font-weight: lighter;
+  }
+  img {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+    @include mobile {
+      margin-top: 4rem;
+    }
+  }
+}

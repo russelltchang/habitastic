@@ -1,0 +1,56 @@
+.dialog {
+  .MuiPaper-root {
+    width: 1000px;
+  }
+  .titleContainer {
+    @extend %space-between;
+    padding: 16px 24px;
+    h2 {
+      margin: 0px;
+    }
+  }
+  .habitInput {
+    @extend %input;
+    margin-top: 1rem;
+  }
+  .modalAddBtn {
+    @extend %button;
+    padding: 1rem 2rem 1rem 2rem;
+    margin: 1rem 0 0 auto;
+    float: right;
+  }
+  .editBtns {
+    display: flex;
+    align-items: center;
+    margin-top: 1rem;
+    .editBtn {
+      @extend %button;
+      padding: 1rem 2rem 1rem 2rem;
+      margin-left: auto;
+    }
+    .deleteContainer {
+      &:hover {
+        color: red;
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
+  }
+  .deleteBtn {
+    @extend %button;
+    padding: 1rem 2rem 1rem 2rem;
+    float: right;
+  }
+
+  .deleteAccountBtn {
+    @extend %button;
+    padding: 1rem 2rem 1rem 2rem;
+    float: right;
+    background-color: red;
+    border: 3px solid red;
+    &:hover {
+      color: red;
+      border: 3px solid red;
+    }
+  }
+}

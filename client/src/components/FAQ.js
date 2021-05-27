@@ -29,7 +29,7 @@ const FAQ = (props) => {
 
   return (
     <div id="FAQ-section">
-      <h1 style={{ textAlign: "center", marginBottom: "5rem" }}>
+      <h1 style={{ textAlign: "center", marginBottom: "5rem", marginTop: 0 }}>
         Frequently Asked Questions
       </h1>
       <div className="question" id="question1" onClick={handleQuestionClick}>

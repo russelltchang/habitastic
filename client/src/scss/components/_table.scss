@@ -1,0 +1,188 @@
+#tableContainer {
+  margin-left: 2.5%;
+  width: 75%;
+  @include mobile {
+    width: 95%;
+  }
+  display: inline-block;
+  vertical-align: top;
+  overflow-x: auto;
+  table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    background-color: white;
+    border: 1px solid lightgrey;
+    th {
+      width: 110px;
+      max-width: 90px;
+    }
+    td {
+      width: 40px;
+      height: 40px;
+      text-align: center;
+      overflow: hidden;
+      padding: 0;
+    }
+
+    .datesRow {
+      border-bottom: 1px solid lightgrey;
+      #dateControlLeft {
+        display: inline-block;
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+
+      #dateControlRight {
+        display: inline-block;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+
+      .dateCell {
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+      }
+
+      .date {
+        font-size: 1.1rem;
+      }
+
+      .day {
+        font-weight: lighter;
+      }
+
+      .month {
+        font-weight: lighter;
+        font-size: 0.9rem;
+      }
+
+      .today {
+        @extend %flex;
+        margin: 0 auto;
+        color: white;
+        background-color: grey;
+        height: 25px;
+        width: 25px;
+      }
+      .date {
+        @extend %flex;
+        margin: 0 auto;
+        height: 25px;
+        width: 25px;
+        font-weight: bold;
+      }
+    }
+
+    .streakTitleCell {
+      vertical-align: bottom;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      #bestStreakText {
+        font-size: 0.8rem;
+        margin-bottom: 0.5rem;
+      }
+    }
+
+    #bestStreakCount {
+      @extend %flex;
+      width: 100%;
+      border-left: 1px solid lightgrey;
+      .bestStreakWrapper {
+        @extend %flex;
+        color: black;
+        border-radius: 50%;
+        font-size: 0.8rem;
+      }
+      .bestStreakWrapper-0,
+      .bestStreakWrapper-1,
+      .bestStreakWrapper-2,
+      .bestStreakWrapper-3 {
+        @extend %flex;
+        color: white;
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
+        font-size: 0.8rem;
+        font-weight: bolder;
+      }
+      .bestStreakWrapper-0 {
+        background-color: #9fa8da;
+      }
+      .bestStreakWrapper-1 {
+        background-color: #80cbc4;
+      }
+      .bestStreakWrapper-2 {
+        background-color: #ffe082;
+      }
+      .bestStreakWrapper-3 {
+        background-color: #ef9a9a;
+      }
+      p {
+        margin: 0;
+      }
+    }
+
+    .habitTitleCell {
+      text-align: left;
+      font-weight: normal;
+      border: 1px solid lightgrey;
+      .habitTitle {
+        margin-left: 0.5rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-weight: lighter;
+      }
+      i {
+        visibility: hidden;
+        @include mobile {
+          visibility: visible;
+        }
+      }
+      &:hover i {
+        visibility: visible;
+      }
+    }
+
+    .habitCell {
+      cursor: pointer;
+      width: 100%;
+      border-bottom: 1px solid lightgrey;
+      .habitCellInner {
+        height: 100%;
+        @extend %flex;
+        .streak {
+          @extend %flex;
+          color: white;
+        }
+        .streak-0,
+        .streak-1,
+        .streak-2,
+        .streak-3 {
+          @extend %flex;
+          background-color: white;
+          height: 25px;
+          width: 25px;
+          font-size: 0.8rem;
+          font-weight: bold;
+          border-radius: 50%;
+        }
+        .streak-0 {
+          color: #9fa8da;
+        }
+        .streak-1 {
+          color: #80cbc4;
+        }
+        .streak-2 {
+          color: #ffe082;
+        }
+        .streak-3 {
+          color: #ef9a9a;
+        }
+      }
+    }
+  }
+}
