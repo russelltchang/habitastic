@@ -10,6 +10,7 @@ body,
   // height: 100%; comment out to allow scrollTop on Privacy/terms page
   font-family: "Lato", sans-serif;
   overflow-y: overlay; /*prevent scrollbar reduce page width */
+  background-color: $landing-bg-white;
 }
 
 body {

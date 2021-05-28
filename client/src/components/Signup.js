@@ -75,7 +75,11 @@ const Signup = (props) => {
           minLength="8"
           onChange={(e) => setPassword(e.target.value)}
         />
-        <input className="authSubmit" type="submit" value="GET STARTED" />
+        <input
+          className="authSubmit"
+          type="submit"
+          value={props.CTA ? "Achieve Goals" : "Signup"}
+        />
       </form>
     </div>
   );

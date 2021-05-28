@@ -1,10 +1,14 @@
 #CTA-section {
   margin: 0 auto;
   border-radius: 8px;
-  padding: 2rem;
-  #signUp {
-    box-shadow: none;
-    border: $landing-img-border;
-    border-radius: 8px;
+  width: 100%;
+  padding-top: 5rem;
+  h1 {
+    text-align: center;
+    margin: 0 auto;
+    width: 90%;
+  }
+  #for-free-bg {
+    border-bottom: 5px solid $primary_1;
   }
 }

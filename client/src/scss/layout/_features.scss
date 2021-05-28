@@ -6,6 +6,7 @@
     @include mobile {
       flex-direction: column;
       padding: 0;
+      padding-bottom: 5rem;
       .featureText {
         order: 1;
         margin-bottom: 1rem;
@@ -76,7 +77,9 @@
       font-size: 1.2rem;
     }
     img {
-      @extend %featureImage;
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: $landing-boxshadow;
     }
   }
 }

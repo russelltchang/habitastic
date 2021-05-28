@@ -62,9 +62,8 @@ const FAQ = (props) => {
         {Q2Active ? (
           <div className="answer">
             Simple! Add habits you want to track, and every day, mark a habit as
-            done when you complete it. Add notes for your own reference. We
-            automatically count streaks to show how many consecutive days you've
-            completed a habit.
+            done when you complete it. Add notes for your own reference. Streaks
+            show how many consecutive days you completed a habit.
           </div>
         ) : null}
       </div>
@@ -82,7 +81,7 @@ const FAQ = (props) => {
           <div className="answer">
             It's free to track up to three habits and add one note per day. For
             unlimited habits and notes, consider upgrading to Premium for just
-            $2.50 monthly, or $20 annually.
+            $2.50 a month, or $20 a year.
           </div>
         ) : null}
       </div>
@@ -98,7 +97,6 @@ const FAQ = (props) => {
         {Q4Active ? (
           <div className="answer">
             Habitastic.app is currently only available as a web application.
-            However, the app is fully responsive on a mobile browser.
           </div>
         ) : null}
       </div>
@@ -113,7 +111,7 @@ const FAQ = (props) => {
         </div>
         {Q5Active ? (
           <div className="answer">
-            Send me an <a href="mailto: habitastic@protonmail.com">email</a>!
+            Send an <a href="mailto: habitastic@protonmail.com">email</a>!
           </div>
         ) : null}
       </div>

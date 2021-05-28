@@ -5,6 +5,9 @@
   background-image: url("../../../client/public/wave.svg");
   background-repeat: no-repeat;
   background-size: cover;
+  @include mobile {
+    background-image: url("../../../client/public/wave2.svg");
+  }
   #heroText {
     text-align: center;
     #header {
@@ -23,6 +26,7 @@
   #heroImage {
     background-color: $landing-bg-white;
     border: $landing-img-border;
+    box-shadow: $landing-boxshadow;
     padding: 10px;
     margin-top: 2rem;
     height: auto;
