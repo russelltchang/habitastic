@@ -1,13 +1,39 @@
 #newHabitWrapper {
-  width: 140px;
-  #newHabitBtn {
+  width: $dashboard-right-col-width;
+  margin-bottom: 1rem;
+  float: right;
+  @include mobile {
+    width: 100%;
+    float: none;
+    display: block;
+  }
+  #firstHabitBtn {
+    width: 100%;
     border: 1px solid lightgrey;
-    margin-top: 0.5rem;
+    cursor: pointer;
+    background: $primary_1;
+    height: 40px;
+    color: white;
+    font-size: 1rem;
+    font-weight: bolder;
+    &:focus {
+      outline: none;
+    }
+    .fa {
+      font-size: 16px;
+    }
+    span {
+      margin-left: 0.3rem;
+    }
+  }
+  #newHabitBtn {
+    width: 100%;
+    border: 1px solid lightgrey;
     cursor: pointer;
     background: white;
     height: 40px;
-    font-size: 1rem;
     color: $primary_2;
+    font-size: 1rem;
     &:focus {
       outline: none;
     }

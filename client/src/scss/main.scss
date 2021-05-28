@@ -16,6 +16,7 @@
 @import "layout/privacy";
 @import "layout/wave";
 
+@import "components/dashboard";
 @import "components/notes";
 @import "components/submodal";
 @import "components/login";
@@ -27,7 +28,6 @@
 @import "components/loading";
 @import "components/subbtn";
 @import "components/errormsg";
-@import "components/nohabitmsg";
 
 //font
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap");

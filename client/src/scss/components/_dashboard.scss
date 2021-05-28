@@ -1,0 +1,7 @@
+#dashboard {
+  width: 95%;
+  margin: 0 auto;
+  @include mobile {
+    display: block;
+  }
+}

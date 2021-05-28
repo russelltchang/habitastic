@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Table from "./Table";
 import Notes from "./Notes";
-import Modal from "./Modal";
 import axios from "axios";
 import { io } from "socket.io-client";
 
@@ -18,7 +17,6 @@ const Dashboard = (props) => {
   let storageHabits = JSON.parse(localStorage.getItem("habits"));
   let [habits, setHabits] = useState(storageHabits || []);
   let [notes, setNotes] = useState(storageNotes || []);
-  let [modalOpen, setModalOpen] = useState(false);
   let [activeDates, setActiveDates] = useState([]);
 
   socket.on("webhook", (arg) => {
@@ -74,14 +72,6 @@ const Dashboard = (props) => {
       formattedDates.push(dates[i].toLocaleString().split(",")[0]);
     }
     setActiveDates(formattedDates);
-  };
-
-  let handleOpen = () => {
-    setModalOpen(true);
-  };
-
-  let handleClose = () => {
-    setModalOpen(false);
   };
 
   let handleAddHabit = (newHabit) => {
@@ -225,42 +215,26 @@ const Dashboard = (props) => {
   };
 
   return (
-    <>
-      {habits.length > 0 ? (
-        <>
-          <Table
-            habits={habits}
-            isPremium={props.isPremium}
-            dateChange={handleDateChange}
-            markHabit={handleMarkHabit}
-            addHabit={handleAddHabit}
-            editHabit={handleEditHabit}
-            deleteHabit={handleDeleteHabit}
-            handleApprove={handleApprove}
-          />
-          <Notes
-            isPremium={props.isPremium}
-            addNote={handleAddNote}
-            editNote={handleEditNote}
-            deleteNote={handleDeleteNote}
-            notes={notes}
-            activeDates={activeDates}
-          />
-        </>
-      ) : (
-        <div id="noHabitMsg">
-          <h1>Oops! Looks like you aren't tracking any habits yet.</h1>
-          <button id="openModalBtn" onClick={handleOpen}>
-            Add Habit
-          </button>
-          <Modal
-            open={modalOpen}
-            addHabit={handleAddHabit}
-            close={handleClose}
-          />
-        </div>
-      )}
-    </>
+    <div id="dashboard">
+      <Table
+        habits={habits}
+        isPremium={props.isPremium}
+        dateChange={handleDateChange}
+        markHabit={handleMarkHabit}
+        addHabit={handleAddHabit}
+        editHabit={handleEditHabit}
+        deleteHabit={handleDeleteHabit}
+        handleApprove={handleApprove}
+      />
+      <Notes
+        isPremium={props.isPremium}
+        addNote={handleAddNote}
+        editNote={handleEditNote}
+        deleteNote={handleDeleteNote}
+        notes={notes}
+        activeDates={activeDates}
+      />
+    </div>
   );
 };
 

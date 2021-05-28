@@ -1,16 +1,14 @@
 #notes {
+  width: $dashboard-right-col-width;
+  background-color: white;
+  border: 1px solid lightgrey;
+  float: right;
   @include mobile {
-    display: block;
+    float: none;
     width: 95%;
     margin: 0 auto;
     margin-top: 3rem;
   }
-  display: inline-block;
-  margin-left: 2.5%;
-  width: 17.5%;
-  background-color: white;
-  border: 1px solid lightgrey;
-  margin-bottom: 2rem;
   #buttonContainer {
     @extend %space-between;
     padding: 0.5rem;

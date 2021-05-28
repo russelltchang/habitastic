@@ -96,48 +96,54 @@ const Table = (props) => {
   };
 
   return (
-    <div id="tableContainer">
-      <table>
-        <tbody>
-          <Dates
-            leftClick={handleLeftClick}
-            rightClick={handleRightClick}
-            dates={dateInfo.dates}
-            start={dateInfo.startIndex}
-            end={dateInfo.endIndex}
-          />
-          <Habits
-            handleMark={handleMarkHabit}
-            habits={props.habits}
-            dates={dateInfo.dates}
-            start={dateInfo.startIndex}
-            end={dateInfo.endIndex}
-            edit={handleEditOpen}
-          />
-          <Modal
-            id={habitID}
-            habit={habitToEdit}
-            editMode={modalEdit}
-            open={modalOpen}
-            addHabit={handleAddHabit}
-            editHabit={handleEditHabit}
-            deleteHabit={handleDeleteHabit}
-            close={handleClose}
-          />
-          <LimitModal
-            open={modalLimit}
-            close={handleClose}
-            handleApprove={handleApprove}
-          />
-        </tbody>
-      </table>
+    <>
+      <div id="tableContainer">
+        <table>
+          <tbody>
+            <Dates
+              leftClick={handleLeftClick}
+              rightClick={handleRightClick}
+              dates={dateInfo.dates}
+              start={dateInfo.startIndex}
+              end={dateInfo.endIndex}
+            />
+            <Habits
+              handleMark={handleMarkHabit}
+              habits={props.habits}
+              dates={dateInfo.dates}
+              start={dateInfo.startIndex}
+              end={dateInfo.endIndex}
+              edit={handleEditOpen}
+            />
+            <Modal
+              id={habitID}
+              habit={habitToEdit}
+              editMode={modalEdit}
+              open={modalOpen}
+              addHabit={handleAddHabit}
+              editHabit={handleEditHabit}
+              deleteHabit={handleDeleteHabit}
+              close={handleClose}
+            />
+            <LimitModal
+              open={modalLimit}
+              close={handleClose}
+              handleApprove={handleApprove}
+            />
+          </tbody>
+        </table>
+      </div>
       <div id="newHabitWrapper">
-        <button id="newHabitBtn" onClick={handleOpen}>
-          <i className="fa fa-plus"></i>
-          <span>New Habit</span>
+        <button
+          id={props.habits.length > 0 ? "newHabitBtn" : "firstHabitBtn"}
+          onClick={handleOpen}
+        >
+          <span>
+            {props.habits.length > 0 ? "Add Habit" : "Add First Habit"}
+          </span>
         </button>
       </div>
-    </div>
+    </>
   );
 };
 

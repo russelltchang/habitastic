@@ -1,12 +1,13 @@
 #tableContainer {
-  margin-left: 2.5%;
-  width: 75%;
-  @include mobile {
-    width: 95%;
-  }
-  display: inline-block;
+  width: $dashboard-left-col-width;
   vertical-align: top;
   overflow-x: auto;
+  float: left;
+  @include mobile {
+    float: none;
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
   table {
     width: 100%;
     table-layout: fixed;
