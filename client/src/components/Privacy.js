@@ -44,6 +44,13 @@ const Privacy = () => {
           identifying by itself, it may be possible to combine it with other
           data to personally identify individual persons.
         </p>
+        <h4>Screen Recordings</h4>
+        <p>
+          We run Hotjar, which records the screen and how users interact with
+          our site. This helps us improve the product for potential customers.
+          We do not use screen recordings with other information to identify
+          you.
+        </p>
         <h4>Personal Information</h4>
         <p>
           We may ask for personal information which may include one or more of
