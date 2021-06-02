@@ -1,0 +1,28 @@
+#noHabitMsg {
+  text-align: center;
+  margin: 3rem auto 0 auto;
+  color: $primary_2;
+  background-color: white;
+  width: 65%;
+  border: 1px solid lightgrey;
+  padding: 3rem 0 3rem 0;
+  @include mobile {
+    width: $landing-section-width;
+  }
+  h1 {
+    margin-top: 2rem;
+    @include mobile {
+      width: 80%;
+      margin: 2rem auto 0 auto;
+    }
+  }
+  img {
+    width: 150px;
+    height: auto;
+  }
+  #openModalBtn {
+    @extend %button;
+    padding: 1rem 2rem 1rem 2rem;
+    margin: 2rem 0 2rem 0;
+  }
+}

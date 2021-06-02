@@ -134,13 +134,8 @@ const Table = (props) => {
         </table>
       </div>
       <div id="newHabitWrapper">
-        <button
-          id={props.habits.length > 0 ? "newHabitBtn" : "firstHabitBtn"}
-          onClick={handleOpen}
-        >
-          <span>
-            {props.habits.length > 0 ? "Add Habit" : "Add First Habit"}
-          </span>
+        <button id="newHabitBtn" onClick={handleOpen}>
+          Add Habit
         </button>
       </div>
     </>

@@ -7,25 +7,6 @@
     float: none;
     display: block;
   }
-  #firstHabitBtn {
-    width: 100%;
-    border: 1px solid lightgrey;
-    cursor: pointer;
-    background: $primary_1;
-    height: 40px;
-    color: white;
-    font-size: 1rem;
-    font-weight: bolder;
-    &:focus {
-      outline: none;
-    }
-    .fa {
-      font-size: 16px;
-    }
-    span {
-      margin-left: 0.3rem;
-    }
-  }
   #newHabitBtn {
     width: 100%;
     border: 1px solid lightgrey;
