@@ -4,6 +4,8 @@ import Notes from "./Notes";
 import Modal from "./Modal";
 import axios from "axios";
 import empty from "/client/public/empty.svg";
+import Snackbar from "@material-ui/core/Snackbar";
+import Slide from "@material-ui/core/Slide";
 import { io } from "socket.io-client";
 
 let socketURL =
@@ -14,12 +16,18 @@ socket.on("connect", () => {
   console.log("Connected");
 });
 
+function TransitionUp(props) {
+  return <Slide {...props} direction="up" />;
+}
+
 const Dashboard = (props) => {
   let storageNotes = JSON.parse(localStorage.getItem("notes"));
   let storageHabits = JSON.parse(localStorage.getItem("habits"));
   let [habits, setHabits] = useState(storageHabits || []);
   let [notes, setNotes] = useState(storageNotes || []);
   let [modalOpen, setModalOpen] = useState(false);
+  let [snackbarOpen, setSnackbarOpen] = useState(false);
+  let [transition, setTransition] = useState(undefined);
   let [activeDates, setActiveDates] = useState([]);
 
   socket.on("webhook", (arg) => {
@@ -77,6 +85,10 @@ const Dashboard = (props) => {
     setModalOpen(false);
   };
 
+  let handleSnackbarClose = () => {
+    setSnackbarOpen(false);
+  };
+
   let handleDateChange = (dates) => {
     let formattedDates = [];
     for (let i = 0; i < dates.length; i++) {
@@ -97,6 +109,8 @@ const Dashboard = (props) => {
       if (res.data) {
         setHabits((habits) => [...habits, data]);
         setModalOpen(false);
+        setTransition(() => TransitionUp);
+        setSnackbarOpen(true);
       }
     });
   };
@@ -246,6 +260,25 @@ const Dashboard = (props) => {
             deleteNote={handleDeleteNote}
             notes={notes}
             activeDates={activeDates}
+          />
+          <Snackbar
+            anchorOrigin={{
+              vertical: "bottom",
+              horizontal: "center",
+            }}
+            open={snackbarOpen}
+            autoHideDuration={5000}
+            onClose={handleSnackbarClose}
+            TransitionComponent={transition}
+            message="Habit added"
+            action={
+              <>
+                <i
+                  className="fa fa-times fa-1x"
+                  onClick={handleSnackbarClose}
+                ></i>
+              </>
+            }
           />
         </>
       ) : (

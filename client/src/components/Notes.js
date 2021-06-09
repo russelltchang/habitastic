@@ -1,6 +1,7 @@
 import NoteModal from "./NoteModal";
 import React, { useState, useEffect } from "react";
 import LimitModal from "./LimitModal";
+import empty from "/client/public/empty.svg";
 
 const Notes = (props) => {
   let [ID, setID] = useState(null);
@@ -110,8 +111,20 @@ const Notes = (props) => {
               )
             )
         ) : (
-          <div id="noNotesMsg">
-            <h3>No Notes</h3>
+          <div id="noNotesContainer">
+            <div id="noNotesMsg">
+              <div>
+                <img src={empty} />
+              </div>
+              <div>
+                <p>It's empty here...</p>
+              </div>
+              <div>
+                <button id="openModalBtn" onClick={openNewNote}>
+                  Add Note
+                </button>
+              </div>
+            </div>
           </div>
         )}
       </div>

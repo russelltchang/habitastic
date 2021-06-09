@@ -66,21 +66,23 @@
         visibility: visible;
       }
     }
-    #noNotesMsg {
+    #noNotesContainer {
       height: 100%;
+      width: 100%;
+      @extend %flex;
+    }
+    #noNotesMsg {
+      margin-top: -100px;
+      text-align: center;
       color: $primary_2;
-      position: relative;
-      text-align: middle;
-      h3 {
-        margin: 0;
-        height: 50px;
-        margin-top: -25px;
-        left: 50%;
-        position: absolute;
-        top: 50%;
-        width: 80px;
-        margin-left: -40px;
-      }
+    }
+    img {
+      width: 80px;
+      height: auto;
+    }
+    #openModalBtn {
+      @extend %button;
+      padding: 0.5rem;
     }
   }
 }
