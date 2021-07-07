@@ -31,7 +31,7 @@ const Login = (props) => {
 
     axios.post(url, data).then((res) => {
       if (res.data.username === data.username) {
-        props.onLogin(res.data.name);
+        props.onLogin(res.data.name, res.data.isPremium);
         //doesn't really match, no user exists doesn't mean invalid email
       } else if (res.data === "No User Exists") {
         setErrorMsg("Invalid email or password");

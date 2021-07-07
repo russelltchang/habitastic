@@ -56,7 +56,17 @@ router.post("/login", (req, res, next) => {
       //req.logIn calls passport.serializeUser()
       req.logIn(user, (err) => {
         if (err) throw err;
-        res.send({ username: req.user.username, name: req.user.name });
+        User.findOne({ username: req.user.username }, (err, result) => {
+          if (err) {
+            console.log("error: " + err);
+          } else {
+            res.send({
+              isPremium: result.isPremium,
+              username: req.user.username,
+              name: req.user.name,
+            });
+          }
+        });
       });
     }
   })(req, res, next);

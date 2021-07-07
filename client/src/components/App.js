@@ -42,9 +42,10 @@ const App = () => {
     setUsername(user);
   };
 
-  let handleLogin = (user) => {
+  let handleLogin = (user, isPremium) => {
     setIsLoggedIn(true);
     setUsername(user);
+    setIsPremium(isPremium);
   };
 
   let handleLogout = () => {
