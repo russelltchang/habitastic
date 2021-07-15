@@ -3,6 +3,7 @@
   vertical-align: top;
   overflow-x: auto;
   float: left;
+  margin-bottom: 5rem;
   @include mobile {
     float: none;
     width: 100%;
