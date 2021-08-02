@@ -159,12 +159,14 @@ const Dashboard = (props) => {
   };
 
   let handleMarkHabit = (action, id, date) => {
+    console.log("handleMarkHabit");
     //need to clone the objects in the array, not just the array
     let updatedHabits = habits.map((h) => Object.assign({}, h));
     if (action === "marked") {
       for (let i = 0; i < updatedHabits.length; i++) {
         if (updatedHabits[i].id === id) {
           updatedHabits[i].dates.push(date);
+          break;
         }
       }
     }
@@ -175,9 +177,11 @@ const Dashboard = (props) => {
             updatedHabits[i].dates.indexOf(date),
             1
           );
+          break;
         }
       }
     }
+    console.log("About to set Updated Habits");
     setHabits(updatedHabits);
   };
 
