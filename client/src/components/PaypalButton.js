@@ -4,6 +4,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import scriptLoader from "react-async-script-loader";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import { format } from "date-fns";
 
 const CLIENT = {
   sandbox:
@@ -93,9 +94,10 @@ const PaypalButton = (props) => {
     actions.subscription.get(data.subscriptionID).then((details) => {
       let data = {
         subscriptionID: details.id,
-        premiumEnd: new Date(
-          details.billing_info.next_billing_time
-        ).toLocaleDateString(),
+        premiumEnd: format(
+          new Date(details.billing_info.next_billing_time),
+          "M/d/yyyy"
+        ),
       };
 
       let url =
@@ -179,7 +181,7 @@ const PaypalButton = (props) => {
       {paid && (
         <div id="paymentSuccessMsg">
           <div>
-            <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+            <i className="fa fa-check-circle-o" aria-hidden="true"></i>
           </div>
           <div>
             <h2>Congrats, you are now a premium member!</h2>
@@ -190,7 +192,7 @@ const PaypalButton = (props) => {
       {error && (
         <div id="paymentErrorMsg">
           <div>
-            <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+            <i className="fa fa-exclamation-circle" aria-hidden="true"></i>
           </div>
           <div>
             <h2>There was an error processing payment, please try again!</h2>

@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import dates from "../data/Dates.js";
+import { format } from "date-fns";
 
 const Dates = (props) => {
   let [todayDate, setTodayDate] = useState(
-    new Date(Date.now()).toLocaleString().split(",")[0]
+    format(new Date(Date.now()), "M/d/yyyy")
   );
 
   return (
@@ -24,9 +25,7 @@ const Dates = (props) => {
           </div>
           <div
             className={
-              todayDate === date.toLocaleString().split(",")[0]
-                ? "today date"
-                : "date"
+              todayDate === format(date, "M/d/yyyy") ? "today date" : "date"
             }
           >
             {date.getDate()}

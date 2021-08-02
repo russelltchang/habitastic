@@ -79,4 +79,14 @@ router.put("/delete", authorize, (req, res) => {
   );
 });
 
+router.post("/reorder", authorize, (req, res) => {
+  User.find({ username: req.session.passport.user }, (err, user) => {
+    let habit = user[0].habits[req.body.sourceIndex];
+    user[0].habits.splice(req.body.sourceIndex, 1);
+    user[0].habits.splice(req.body.destinationIndex, 0, habit);
+    user[0].save();
+    res.send({});
+  });
+});
+
 module.exports = router;

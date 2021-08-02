@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { dateArray } from "../utils/dateArray";
+import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import Dates from "./Dates";
 import Habits from "./Habits";
 import Modal from "./Modal";
 import LimitModal from "./LimitModal";
+import axios from "axios";
 
 const Table = (props) => {
   let [dateInfo, setDateInfo] = useState({
@@ -95,43 +97,79 @@ const Table = (props) => {
     props.handleApprove();
   };
 
+  let onDragEnd = (result) => {
+    const { destination, source, draggableId } = result;
+
+    if (!destination) return;
+
+    if (
+      destination.droppableId === source.droppableId &&
+      destination.index === source.index
+    ) {
+      return;
+    }
+
+    let url =
+      process.env.NODE_ENV === "development"
+        ? "http://localhost:3000/habits/reorder"
+        : "/habits/reorder";
+
+    let data = {
+      sourceIndex: source.index,
+      destinationIndex: destination.index,
+    };
+
+    axios.post(url, data).then((res) => {
+      if (res.data) {
+        props.handleDrop(source.index, destination.index);
+      }
+    });
+  };
+
   return (
     <>
       <div id="tableContainer">
-        <table>
-          <tbody>
-            <Dates
-              leftClick={handleLeftClick}
-              rightClick={handleRightClick}
-              dates={dateInfo.dates}
-              start={dateInfo.startIndex}
-              end={dateInfo.endIndex}
-            />
-            <Habits
-              handleMark={handleMarkHabit}
-              habits={props.habits}
-              dates={dateInfo.dates}
-              start={dateInfo.startIndex}
-              end={dateInfo.endIndex}
-              edit={handleEditOpen}
-            />
-            <Modal
-              id={habitID}
-              habit={habitToEdit}
-              editMode={modalEdit}
-              open={modalOpen}
-              addHabit={handleAddHabit}
-              editHabit={handleEditHabit}
-              deleteHabit={handleDeleteHabit}
-              close={handleClose}
-            />
-            <LimitModal
-              open={modalLimit}
-              close={handleClose}
-              handleApprove={handleApprove}
-            />
-          </tbody>
-        </table>
+        <DragDropContext onDragEnd={onDragEnd}>
+          <table>
+            <Droppable droppableId="tbody">
+              {(provided) => (
+                <tbody ref={provided.innerRef} {...provided.droppableProps}>
+                  <Dates
+                    leftClick={handleLeftClick}
+                    rightClick={handleRightClick}
+                    dates={dateInfo.dates}
+                    start={dateInfo.startIndex}
+                    end={dateInfo.endIndex}
+                  />
+                  <Habits
+                    handleMark={handleMarkHabit}
+                    habits={props.habits}
+                    dates={dateInfo.dates}
+                    start={dateInfo.startIndex}
+                    end={dateInfo.endIndex}
+                    edit={handleEditOpen}
+                  />
+                  <Modal
+                    id={habitID}
+                    habit={habitToEdit}
+                    editMode={modalEdit}
+                    open={modalOpen}
+                    addHabit={handleAddHabit}
+                    editHabit={handleEditHabit}
+                    deleteHabit={handleDeleteHabit}
+                    close={handleClose}
+                  />
+                  <LimitModal
+                    open={modalLimit}
+                    close={handleClose}
+                    handleApprove={handleApprove}
+                  />
+                  {provided.placeholder}
+                </tbody>
+              )}
+            </Droppable>
+          </table>
+        </DragDropContext>
       </div>
       <div id="newHabitWrapper">
         <button id="newHabitBtn" onClick={handleOpen}>

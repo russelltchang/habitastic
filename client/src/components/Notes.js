@@ -2,6 +2,7 @@ import NoteModal from "./NoteModal";
 import React, { useState, useEffect } from "react";
 import LimitModal from "./LimitModal";
 import empty from "/client/public/empty.svg";
+import { format } from "date-fns";
 
 const Notes = (props) => {
   let [ID, setID] = useState(null);
@@ -23,7 +24,7 @@ const Notes = (props) => {
   }, [props.activeDates, props.notes]);
 
   let openNewNote = () => {
-    let today = new Date(Date.now()).toLocaleString().split(",")[0];
+    let today = format(new Date(Date.now()), "M/d/yyyy");
     if (props.isPremium) {
       setNoteModal(true);
       return;

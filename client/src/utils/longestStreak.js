@@ -1,3 +1,5 @@
+import { format } from "date-fns";
+
 export const longestStreak = (activeDates) => {
   if (activeDates.length === 0 || activeDates === null) return 0;
   var max = 0;
@@ -6,11 +8,14 @@ export const longestStreak = (activeDates) => {
   for (let i = 0; i < activeDates.length; i++) {
     if (
       set.has(
-        new Date(
-          new Date(activeDates[i]).setDate(
-            new Date(activeDates[i]).getDate() - 1
-          )
-        ).toLocaleDateString()
+        format(
+          new Date(
+            new Date(activeDates[i]).setDate(
+              new Date(activeDates[i]).getDate() - 1
+            )
+          ),
+          "M/d/yyyy"
+        )
       )
     ) {
       continue;
@@ -19,14 +24,16 @@ export const longestStreak = (activeDates) => {
     let date = activeDates[i];
     while (
       set.has(
-        new Date(
-          new Date(date).setDate(new Date(date).getDate() + 1)
-        ).toLocaleDateString()
+        format(
+          new Date(new Date(date).setDate(new Date(date).getDate() + 1)),
+          "M/d/yyyy"
+        )
       )
     ) {
-      date = new Date(
-        new Date(date).setDate(new Date(date).getDate() + 1)
-      ).toLocaleDateString();
+      date = format(
+        new Date(new Date(date).setDate(new Date(date).getDate() + 1)),
+        "M/d/yyyy"
+      );
       count++;
     }
 

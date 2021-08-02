@@ -7,6 +7,7 @@ import empty from "/client/public/empty.svg";
 import Snackbar from "@material-ui/core/Snackbar";
 import Slide from "@material-ui/core/Slide";
 import { io } from "socket.io-client";
+import { format } from "date-fns";
 
 let socketURL =
   process.env.NODE_ENV === "development" ? "http://localhost:3000/" : "/";
@@ -92,7 +93,7 @@ const Dashboard = (props) => {
   let handleDateChange = (dates) => {
     let formattedDates = [];
     for (let i = 0; i < dates.length; i++) {
-      formattedDates.push(dates[i].toLocaleString().split(",")[0]);
+      formattedDates.push(format(dates[i], "M/d/yyyy"));
     }
     setActiveDates(formattedDates);
   };
@@ -188,13 +189,12 @@ const Dashboard = (props) => {
 
     let data = {
       id: Date.now().toString(),
-      date: new Date(Date.now()).toLocaleString().split(",")[0],
+      date: format(new Date(Date.now()), "M/d/yyyy"),
       note: note,
     };
 
     axios.post(url, data).then((res) => {
       if (res.data) {
-        console.log("response");
         setNotes(res.data);
       }
     });
@@ -239,6 +239,15 @@ const Dashboard = (props) => {
     props.handleApprove();
   };
 
+  let handleDrop = (sourceIndex, destinationIndex) => {
+    const updatedHabits = habits.map((h) => Object.assign({}, h));
+    const habit = habits[sourceIndex];
+    updatedHabits.splice(sourceIndex, 1);
+    updatedHabits.splice(destinationIndex, 0, habit);
+    setHabits(updatedHabits);
+    //save to DB...
+  };
+
   return (
     <div id="dashboard">
       {habits.length > 0 ? (
@@ -252,6 +261,7 @@ const Dashboard = (props) => {
             editHabit={handleEditHabit}
             deleteHabit={handleDeleteHabit}
             handleApprove={handleApprove}
+            handleDrop={handleDrop}
           />
           <Notes
             isPremium={props.isPremium}

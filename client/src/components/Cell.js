@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import colors from "../data/Colors.js";
+import { format } from "date-fns";
 
 const Cell = (props) => {
   let [active, setActive] = useState(false);
@@ -39,17 +40,13 @@ const Cell = (props) => {
       : "/mark";
 
     let data = {
-      date: new Date(props.date).toLocaleString().split(",")[0],
+      date: format(props.date, "M/d/yyyy"),
       id: props.id,
     };
 
     axios.put(url, data).then((res) => {
       if (res.data) {
-        props.handleMark(
-          res.data,
-          props.id,
-          new Date(props.date).toLocaleString().split(",")[0]
-        );
+        props.handleMark(res.data, props.id, format(props.date, "M/d/yyyy"));
       }
     });
   };

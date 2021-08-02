@@ -17,7 +17,6 @@
     border: 1px solid lightgrey;
     th {
       width: 110px;
-      max-width: 90px;
     }
     td {
       width: 40px;
@@ -88,7 +87,7 @@
       }
     }
 
-    #bestStreakCount {
+    .bestStreakCount {
       @extend %flex;
       width: 100%;
       border-left: 1px solid lightgrey;
