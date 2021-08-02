@@ -46,7 +46,6 @@ const Cell = (props) => {
 
     axios.put(url, data).then((res) => {
       if (res.data) {
-        console.log("Cell.js handleClick");
         props.handleMark(res.data, props.id, format(props.date, "M/d/yyyy"));
       }
     });
