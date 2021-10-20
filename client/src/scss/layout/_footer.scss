@@ -18,12 +18,9 @@ footer {
       -moz-outline-style: none;
     }
   }
-  .privacyLink,
-  .termsLink {
-    color: $primary_2;
-  }
   .footerlink {
     display: inline-block;
     margin-left: 1rem;
+    color: $primary_2;
   }
 }

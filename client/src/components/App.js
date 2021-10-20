@@ -4,6 +4,7 @@ import axios from "axios";
 import Landing from "./Landing";
 import Login from "./Login";
 import Signup from "./Signup";
+import Reset from "./Reset";
 import Navbar from "./Navbar";
 import Dashboard from "./Dashboard";
 import Terms from "./Terms";
@@ -79,6 +80,7 @@ const App = () => {
         />
         <Route path="/terms" component={Terms} />
         <Route path="/privacy" component={Privacy} />
+        <Route path="/reset" component={Reset} />
         <PrivateRoute
           path="/settings"
           component={Settings}

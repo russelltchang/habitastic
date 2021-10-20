@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router";
-import { Redirect } from "react-router-dom";
-
+import { Link } from "react-router-dom";
+import Reset from "./Reset";
 import axios from "axios";
 
 const Login = (props) => {
@@ -57,6 +57,9 @@ const Login = (props) => {
           type="password"
           onChange={(e) => setPassword(e.target.value)}
         />
+        <Link className="forgotPassword" to="/reset">
+          <span>Forgot password?</span>
+        </Link>
         <input className="authSubmit" type="submit" value="Login" />
       </form>
     </div>

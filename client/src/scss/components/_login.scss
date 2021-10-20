@@ -1,5 +1,6 @@
 #signUp,
-#logIn {
+#logIn,
+#reset {
   @include mobile {
     width: 90%;
   }
@@ -28,7 +29,20 @@
     font-size: 1rem;
     background-color: $landing-bg-white;
   }
+  input:focus {
+    background-color: white;
+  }
   .authSubmit {
     @extend %button;
+  }
+  a {
+    color: $primary_1;
+    text-decoration: none;
+    float: right;
+    font-size: 0.9rem;
+    margin-bottom: 0.4rem;
+    :hover {
+      color: black;
+    }
   }
 }

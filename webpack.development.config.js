@@ -2,7 +2,6 @@ const HtmlWebPackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const webpack = require("webpack");
 const dotenv = require("dotenv");
-const path = require("path");
 
 // call dotenv and it will return an Object with a parsed key
 const env = dotenv.config().parsed;

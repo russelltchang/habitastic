@@ -10,12 +10,15 @@ const Footer = () => {
         <h3>Habitastic</h3>
       </Link>
       <div className="footer-col-1">
-        <Link className="termsLink" to="/terms">
+        <Link to="/terms">
           <h5 className="footerlink">Terms</h5>
         </Link>
-        <Link className="privacyLink" to="/privacy">
+        <Link to="/privacy">
           <h5 className="footerlink">Privacy</h5>
         </Link>
+        <a href="mailto: habitastic@protonmail.com">
+          <h5 className="footerlink">Contact</h5>
+        </a>
       </div>
     </footer>
   );

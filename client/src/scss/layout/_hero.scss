@@ -2,12 +2,13 @@
   padding-top: 1rem;
   margin: 0 auto;
   text-align: center;
-  background-image: url("../../../client/public/wave.svg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  @include mobile {
-    background-image: url("../../../client/public/wave2.svg");
-  }
+
+  // background-image: url("../../../client/public/wave.svg");
+  // background-repeat: no-repeat;
+  // background-size: cover;
+  // @include mobile {
+  //   background-image: url("../../../client/public/wave2.svg");
+  // }
   #heroText {
     text-align: center;
     #header {

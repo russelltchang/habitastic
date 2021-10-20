@@ -41,7 +41,7 @@ const Navbar = (props) => {
     <AppBar className="appBar" position="static" elevation={0}>
       <Toolbar disableGutters={true}>
         <div id="navContainer">
-          <Link to="/dashboard">
+          <Link to="/">
             <img className="logoImg" src={Logo} />
             <h2>Habitastic</h2>
           </Link>
@@ -50,8 +50,7 @@ const Navbar = (props) => {
             <ul id="navItems">
               <li>
                 <p id="avatar" onClick={handleMenuClick}>
-                  <i className="fa fa-user-circle-o"></i>{" "}
-                  <i className="fa fa-caret-down"></i>
+                  <i className="fa fa-user-circle-o"></i>
                 </p>
                 <Menu
                   id="menu"
