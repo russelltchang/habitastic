@@ -1,16 +1,6 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const webpack = require("webpack");
-const dotenv = require("dotenv");
-
-// call dotenv and it will return an Object with a parsed key
-// const env = dotenv.config().parsed;
-
-// reduce it to a nice object, the same as before
-// const envKeys = Object.keys(env).reduce((prev, next) => {
-//   prev[`process.env.${next}`] = JSON.stringify(env[next]);
-//   return prev;
-// }, {});
 
 module.exports = {
   mode: "production",
@@ -60,11 +50,6 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: "[name].css",
       chunkFilename: "[id].css",
-    }),
-    new DefinePlugin({
-      "process.env.PROD_CLIENT_ID": JSON.stringify(
-        "AfUSLOnx-8lzDv0tL4fDB5Z5W0-_euwEtDGHR4pUZrlYMfJ8Zxr0AzOGKt-OxqA4OGVfkpUURlncKLe_"
-      ),
     }),
   ],
   externals: {
