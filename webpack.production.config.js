@@ -51,6 +51,14 @@ module.exports = {
       filename: "[name].css",
       chunkFilename: "[id].css",
     }),
+    new DefinePlugin({
+      "process.env.SANDBOX_CLIENT_ID": JSON.stringify(
+        "ATf-ZbLJCuDPxXkxEDFAiOZH5HZZfDxPQi82IaNUb9aLrIBne8t61JSKUgkxwgyT4ag19eNxHKvlX3h8"
+      ),
+      "process.env.PROD_CLIENT_ID": JSON.stringify(
+        "AfUSLOnx-8lzDv0tL4fDB5Z5W0-_euwEtDGHR4pUZrlYMfJ8Zxr0AzOGKt-OxqA4OGVfkpUURlncKLe_"
+      ),
+    }),
   ],
   externals: {
     cheerio: "window",

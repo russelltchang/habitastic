@@ -7,10 +7,8 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import { format } from "date-fns";
 
 const CLIENT = {
-  sandbox:
-    "ATf-ZbLJCuDPxXkxEDFAiOZH5HZZfDxPQi82IaNUb9aLrIBne8t61JSKUgkxwgyT4ag19eNxHKvlX3h8",
-  production:
-    "AfUSLOnx-8lzDv0tL4fDB5Z5W0-_euwEtDGHR4pUZrlYMfJ8Zxr0AzOGKt-OxqA4OGVfkpUURlncKLe_",
+  sandbox: process.env.SANDBOX_CLIENT_ID,
+  production: process.env.PROD_CLIENT_ID,
 };
 
 const CLIENT_ID =
