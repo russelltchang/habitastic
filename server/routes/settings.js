@@ -43,6 +43,21 @@ router.post("/change-password", authorize, (req, res) => {
   );
 });
 
+router.post("/export-data", authorize, (req, res) => {
+  User.findByUsername(req.user.username).then(
+    (user) => {
+      if (user) {
+        res
+          .status(200)
+          .json({ activeHabits: user.habits, archivedHabits: user.archive });
+      } else {
+        res.status(500).json({ message: "User does not exist" });
+      }
+    },
+    (err) => console.log(err)
+  );
+});
+
 router.delete("/delete-account", authorize, (req, res) => {
   User.deleteOne({ username: req.user.username }, function (err, obj) {
     if (err) {

@@ -8,6 +8,7 @@
     width: 95%;
   }
   .section {
+    width: 100%;
     padding: 1rem;
     input {
       @extend %input;
@@ -24,7 +25,8 @@
       @extend %button;
       padding: 0.5rem 1rem 0.5rem 1rem;
     }
-    .deleteAccountBtn {
+    .deleteAccountBtn,
+    .exportDataBtn {
       background-color: red;
       border: 3px solid red;
       &:hover {

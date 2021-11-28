@@ -10,6 +10,7 @@ const Settings = (props) => {
   let [password2, setPassword2] = useState(null);
   let [matchError, setMatchError] = useState(false);
   let [changePwSuccess, setChangePwSuccess] = useState(false);
+  let [exportData, setExportData] = useState(null);
 
   let handleSubOpen = () => {
     setModalSubscribe(true);
@@ -25,6 +26,17 @@ const Settings = (props) => {
 
   let handleDeleteClose = () => {
     setModalAccountDelete(false);
+  };
+
+  let handleExportData = () => {
+    let url =
+      process.env.NODE_ENV === "development"
+        ? "http://localhost:3000/export-data"
+        : "/export-data";
+
+    axios.post(url).then((res) => {
+      setExportData(JSON.stringify(res.data));
+    });
   };
 
   let handleChangePassword = (e) => {
@@ -115,6 +127,15 @@ const Settings = (props) => {
         </div>
       </div>
       <hr />
+      <div className="section">
+        <div className="settings-title">Save Data (JSON)</div>
+        <div>
+          <button className="exportDataBtn" onClick={handleExportData}>
+            Retrieve Data
+          </button>
+        </div>
+        <div>{exportData}</div>
+      </div>
       <div className="section">
         <div className="settings-title">Delete Account</div>
         <div>

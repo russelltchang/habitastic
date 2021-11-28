@@ -5,7 +5,6 @@ export const longestStreak = (activeDates) => {
   var max = 0;
   const set = new Set();
   for (let date of activeDates) set.add(date);
-  console.log(set);
   for (let i = 0; i < activeDates.length; i++) {
     if (
       set.has(
